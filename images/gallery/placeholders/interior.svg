@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Cabin interior placeholder">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f1e6"/>
+      <stop offset="100%" stop-color="#ece1d0"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d8c7aa"/>
+      <stop offset="100%" stop-color="#c9b493"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#wall)"/>
+  <rect y="770" width="1600" height="430" fill="url(#floor)"/>
+  <rect x="140" y="180" width="420" height="340" rx="16" fill="#e9ddca" stroke="#8c7759" stroke-width="16"/>
+  <path d="M350 180V520" stroke="#8c7759" stroke-width="16"/>
+  <path d="M140 350H560" stroke="#8c7759" stroke-width="16"/>
+  <rect x="930" y="355" width="330" height="390" rx="18" fill="#d8c7aa" stroke="#7a684e" stroke-width="18"/>
+  <path d="M995 295L1095 220L1195 295" fill="none" stroke="#7a684e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1030" y="445" width="130" height="210" rx="10" fill="#efe6d7" stroke="#7a684e" stroke-width="14"/>
+  <rect x="160" y="735" width="420" height="190" rx="34" fill="#c7b393"/>
+  <rect x="630" y="695" width="240" height="110" rx="14" fill="#e6d9c4" stroke="#8c7759" stroke-width="14"/>
+  <path d="M680 805L655 960" stroke="#8c7759" stroke-width="16" stroke-linecap="round"/>
+  <path d="M820 805L845 960" stroke="#8c7759" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1040 745C1065 646 1118 586 1198 560C1280 586 1331 646 1356 745" fill="none" stroke="#d6a96c" stroke-width="22" stroke-linecap="round"/>
+  <path d="M1106 740C1128 676 1158 632 1198 610C1238 632 1268 676 1290 740" fill="none" stroke="#eac58a" stroke-width="16" stroke-linecap="round"/>
+</svg>

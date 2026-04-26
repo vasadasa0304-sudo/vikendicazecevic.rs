@@ -1,0 +1,911 @@
+const CONTENT = window.SITE_CONTENT;
+
+const AMENITY_ICONS = {
+  beds: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>',
+  fire: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 18.657A8 8 0 016.343 7.343M18 12a6 6 0 11-12 0 6 6 0 0112 0z"></path></svg>',
+  wifi: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path></svg>',
+  park: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>',
+  terrace: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+  kitchen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path></svg>',
+  bbq: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+  linen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>',
+  heat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>',
+  tv: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"></rect><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"></path></svg>',
+  pets: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>',
+  games: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg>',
+};
+
+const INQUIRY_ICONS = {
+  response:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.11 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.45-.45a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"></path></svg>',
+  price:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>',
+  beds: AMENITY_ICONS.beds,
+  phone:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.18 4.18 2 2 0 0 1 4.16 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
+  email:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>',
+  telegram:
+    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.14 13.405l-2.97-.924c-.645-.204-.658-.645.136-.953l11.57-4.461c.537-.194 1.006.131.686.181z"></path></svg>',
+};
+
+const GALLERY_OVERLAY_ICON =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>';
+
+const revealObserver =
+  "IntersectionObserver" in window
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add("visible"), index * 60);
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      )
+    : null;
+
+const nav = document.getElementById("main-nav");
+const navLinks = document.getElementById("nav-links");
+const hamburger = document.getElementById("hamburger");
+const lb = document.getElementById("lightbox");
+const lbContent = document.getElementById("lb-content");
+const mapFrame = document.getElementById("location-map");
+
+let currentLang = localStorage.getItem("lang") || "sr";
+let currentIdx = 0;
+let lastFocusedElement = null;
+
+if (!CONTENT || !CONTENT.localized) {
+  throw new Error("SITE_CONTENT is missing.");
+}
+
+if (!window.SITE_CONFIG) {
+  throw new Error("SITE_CONFIG is missing.");
+}
+
+if (!CONTENT.localized[currentLang]) {
+  currentLang = "sr";
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function getLocale(lang = currentLang) {
+  return CONTENT.localized[lang] || CONTENT.localized.sr;
+}
+
+function getPrimaryContact() {
+  return CONTENT.shared.contactDetails[0] || { label: "", value: "" };
+}
+
+function getDisplayCabinName(lang = currentLang) {
+  if (lang === "en" && CONTENT.shared.englishName) {
+    return CONTENT.shared.englishName;
+  }
+
+  return CONTENT.shared.cabinName;
+}
+
+function getHeaderCabinName(lang = currentLang) {
+  const isSmallScreen = window.matchMedia("(max-width: 560px)").matches;
+
+  if (!isSmallScreen) {
+    return getDisplayCabinName(lang);
+  }
+
+  if (lang === "en" && CONTENT.shared.englishShortName) {
+    return CONTENT.shared.englishShortName;
+  }
+
+  return CONTENT.shared.shortName || CONTENT.shared.cabinName;
+}
+
+function applyTokens(value) {
+  if (typeof value !== "string") return value;
+
+  const primaryContact = getPrimaryContact();
+  const tokens = {
+    cabinName: getDisplayCabinName(),
+    primaryContactLabel: primaryContact.label,
+    primaryContactValue: primaryContact.value,
+  };
+
+  return value.replace(/\{\{(\w+)\}\}/g, (_, token) => tokens[token] ?? "");
+}
+
+function flattenStrings(source, prefix = "", output = {}) {
+  if (!source || Array.isArray(source) || typeof source !== "object") {
+    return output;
+  }
+
+  Object.entries(source).forEach(([key, value]) => {
+    const nextKey = prefix ? `${prefix}.${key}` : key;
+
+    if (typeof value === "string") {
+      output[nextKey] = applyTokens(value);
+      return;
+    }
+
+    if (!Array.isArray(value) && typeof value === "object") {
+      flattenStrings(value, nextKey, output);
+    }
+  });
+
+  return output;
+}
+
+function getStaticStrings(lang = currentLang) {
+  return flattenStrings(getLocale(lang));
+}
+
+function getGalleryEntries(lang = currentLang) {
+  const locale = getLocale(lang);
+  const mediaItems = Array.isArray(CONTENT.shared.galleryMedia) ? CONTENT.shared.galleryMedia : [];
+  const textItems = Array.isArray(locale.gallery.items) ? locale.gallery.items : [];
+  const itemCount = Math.max(mediaItems.length, textItems.length);
+
+  return Array.from({ length: itemCount }, (_, index) => {
+    const media = mediaItems[index] || {};
+    const text = textItems[index] || {};
+    const fallbackLabel = lang === "sr" ? `Fotografija ${index + 1}` : `Photo ${index + 1}`;
+
+    return {
+      index,
+      layout: media.layout || "standard",
+      source: media.src || media.placeholder || "",
+      fallbackSource: media.placeholder || media.src || "",
+      width: Number(media.width) || 1600,
+      height: Number(media.height) || 1200,
+      label: applyTokens(text.label || fallbackLabel),
+      caption: applyTokens(text.caption || ""),
+      alt: applyTokens(text.alt || fallbackLabel),
+      openLabel: applyTokens(locale.gallery.openImage || (lang === "sr" ? "Otvori fotografiju" : "Open photo")),
+    };
+  }).filter((entry) => entry.source || entry.fallbackSource);
+}
+
+function getGalleryItemCount() {
+  return getGalleryEntries(currentLang).length;
+}
+
+function observeRevealElements(scope = document) {
+  if (!revealObserver) {
+    scope.querySelectorAll(".reveal").forEach((element) => element.classList.add("visible"));
+    return;
+  }
+
+  scope.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+}
+
+function setNavMenuOpen(isOpen) {
+  navLinks.classList.toggle("open", isOpen);
+  hamburger.setAttribute("aria-expanded", String(isOpen));
+  document.body.classList.toggle("nav-menu-open", isOpen);
+}
+
+function closeNavMenu() {
+  setNavMenuOpen(false);
+}
+
+function setMapFallbackVisible(isVisible) {
+  if (!mapFrame) return;
+
+  const fallback = mapFrame.nextElementSibling;
+  if (!fallback) return;
+
+  mapFrame.style.display = isVisible ? "none" : "block";
+  fallback.classList.toggle("map-fallback-hidden", !isVisible);
+}
+
+function initMapFallback() {
+  if (!mapFrame) return;
+
+  if (!mapFrame.getAttribute("src")) {
+    setMapFallbackVisible(true);
+    return;
+  }
+
+  mapFrame.addEventListener("error", () => setMapFallbackVisible(true));
+  mapFrame.addEventListener("load", () => setMapFallbackVisible(false));
+}
+
+function getFocusableElements(scope) {
+  return Array.from(
+    scope.querySelectorAll(
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )
+  ).filter((element) => !element.hasAttribute("hidden"));
+}
+
+function trapLightboxFocus(event) {
+  if (event.key !== "Tab" || !lb.classList.contains("open")) return;
+
+  const focusableElements = getFocusableElements(lb);
+  if (!focusableElements.length) return;
+
+  const first = focusableElements[0];
+  const last = focusableElements[focusableElements.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+    return;
+  }
+
+  if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function isLikelyEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(String(value || "").trim());
+}
+
+function isLikelyPhone(value) {
+  return String(value || "")
+    .replace(/\D/g, "")
+    .length >= 6;
+}
+
+function toDateInputValue(date) {
+  const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  return localDate.toISOString().slice(0, 10);
+}
+
+function getTodayInputValue() {
+  return toDateInputValue(new Date());
+}
+
+function addDaysToInputValue(value, days) {
+  const [year, month, day] = String(value || "")
+    .split("-")
+    .map(Number);
+
+  if (!year || !month || !day) {
+    return "";
+  }
+
+  const date = new Date(year, month - 1, day);
+  date.setDate(date.getDate() + days);
+  return toDateInputValue(date);
+}
+
+function clearFormInvalidState(form) {
+  form.querySelectorAll("[aria-invalid='true']").forEach((field) => field.removeAttribute("aria-invalid"));
+}
+
+function setFormStatus(statusElement, tone, message) {
+  statusElement.className = tone ? `form-status ${tone}` : "form-status";
+  statusElement.textContent = message || "";
+}
+
+function validateInquiryForm(form, locale) {
+  clearFormInvalidState(form);
+
+  const invalidFields = [];
+  const contactValue = form.contact.value.trim();
+  const checkin = form.checkin.value;
+  const checkout = form.checkout.value;
+  const guests = Number(form.guests.value);
+  const maxGuests = Number(CONTENT.shared.maxGuests) || 6;
+  const today = getTodayInputValue();
+
+  if (form.name.value.trim().length < 2) {
+    invalidFields.push(form.name);
+  }
+
+  if (!contactValue || (!isLikelyEmail(contactValue) && !isLikelyPhone(contactValue))) {
+    invalidFields.push(form.contact);
+  }
+
+  if (!checkin) {
+    invalidFields.push(form.checkin);
+  }
+
+  if (!checkout || (checkin && checkout <= checkin)) {
+    invalidFields.push(form.checkout);
+  }
+
+  if (checkin && checkin < today) {
+    invalidFields.push(form.checkin);
+  }
+
+  if (!form.guests.value || !Number.isFinite(guests) || guests < 1 || guests > maxGuests) {
+    invalidFields.push(form.guests);
+  }
+
+  if (!invalidFields.length) {
+    return true;
+  }
+
+  invalidFields.forEach((field) => field.setAttribute("aria-invalid", "true"));
+  setFormStatus(
+    document.getElementById("form-status"),
+    "error",
+    applyTokens(locale.form.invalid || locale.form.error)
+  );
+  invalidFields[0].focus();
+  return false;
+}
+
+function syncDateInputLimits() {
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+
+  if (!checkinInput || !checkoutInput) {
+    return;
+  }
+
+  const today = getTodayInputValue();
+  const tomorrow = addDaysToInputValue(today, 1);
+  const checkoutMin = checkinInput.value ? addDaysToInputValue(checkinInput.value, 1) : tomorrow;
+
+  checkinInput.min = today;
+  checkoutInput.min = checkoutMin || tomorrow;
+
+  if (checkinInput.value && checkinInput.value < today) {
+    checkinInput.value = "";
+    checkoutInput.min = tomorrow;
+  }
+
+  if (checkoutInput.value && checkoutInput.value < checkoutInput.min) {
+    checkoutInput.value = "";
+  }
+
+  if (checkinInput.value && checkoutInput.value && checkoutInput.value <= checkinInput.value) {
+    checkoutInput.value = "";
+  }
+}
+
+function initDateInputLimits() {
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+
+  if (!checkinInput || !checkoutInput) {
+    return;
+  }
+
+  syncDateInputLimits();
+  checkinInput.addEventListener("change", syncDateInputLimits);
+  checkinInput.addEventListener("input", syncDateInputLimits);
+  checkoutInput.addEventListener("change", syncDateInputLimits);
+}
+
+function applySharedContent(lang = currentLang) {
+  document.querySelectorAll('[data-shared="cabinName"]').forEach((element) => {
+    element.textContent = element.classList.contains("nav-logo")
+      ? getHeaderCabinName(lang)
+      : getDisplayCabinName(lang);
+  });
+
+  if (mapFrame && mapFrame.getAttribute("src") !== window.SITE_CONFIG.mapEmbedUrl) {
+    mapFrame.src = window.SITE_CONFIG.mapEmbedUrl;
+  }
+}
+
+function applyLocalizedMeta(lang) {
+  const { seo } = getLocale(lang);
+  const ogLocale = lang === "sr" ? "sr_RS" : "en_US";
+
+  document.title = applyTokens(seo.title);
+  document.getElementById("meta-description").setAttribute("content", applyTokens(seo.description));
+  document.getElementById("meta-og-title").setAttribute("content", applyTokens(seo.ogTitle));
+  document.getElementById("meta-og-description").setAttribute("content", applyTokens(seo.ogDescription));
+  document.getElementById("meta-og-site-name").setAttribute("content", CONTENT.shared.cabinName);
+  document.getElementById("meta-og-locale").setAttribute("content", ogLocale);
+  document.getElementById("meta-twitter-title").setAttribute("content", applyTokens(seo.ogTitle));
+  document.getElementById("meta-twitter-description").setAttribute("content", applyTokens(seo.ogDescription));
+
+  const canonicalUrl = document.getElementById("canonical-url");
+  const ogUrl = document.getElementById("meta-og-url");
+  if (seo.url && canonicalUrl) canonicalUrl.setAttribute("href", seo.url);
+  if (seo.url && ogUrl) ogUrl.setAttribute("content", seo.url);
+}
+
+function applyLocalizedText(lang) {
+  const strings = getStaticStrings(lang);
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const value = strings[element.dataset.i18n];
+    if (value !== undefined) {
+      element.innerHTML = value;
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-ph]").forEach((element) => {
+    const value = strings[element.dataset.i18nPh];
+    if (value !== undefined) {
+      element.placeholder = value;
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+    const value = strings[element.dataset.i18nAria];
+    const attr = element.dataset.i18nAttr || "aria-label";
+    if (value !== undefined) {
+      element.setAttribute(attr, value);
+    }
+  });
+
+  document.querySelectorAll(".lang-btn").forEach((button) => {
+    button.classList.toggle("active", button.dataset.lang === lang);
+  });
+
+  if (mapFrame) {
+    mapFrame.title = applyTokens(getLocale(lang).location.mapTitle || "Location map");
+  }
+}
+
+function renderAboutStats(lang) {
+  const container = document.getElementById("about-stats");
+  const stats = getLocale(lang).about.stats;
+
+  container.innerHTML = stats
+    .map(
+      (stat) => `
+        <div class="stat-item">
+          <div class="stat-num">${escapeHtml(stat.value)}</div>
+          <div class="stat-label">${escapeHtml(applyTokens(stat.label))}</div>
+        </div>
+      `
+    )
+    .join("");
+}
+
+function bindImageFallbacks(scope = document) {
+  scope.querySelectorAll("img[data-fallback]").forEach((image) => {
+    image.addEventListener(
+      "error",
+      () => {
+        const fallbackSource = image.dataset.fallback;
+        if (!fallbackSource || image.dataset.fallbackApplied === "true") return;
+
+        image.dataset.fallbackApplied = "true";
+        if (image.getAttribute("src") !== fallbackSource) {
+          image.setAttribute("src", fallbackSource);
+        }
+      },
+      { once: true }
+    );
+  });
+}
+
+function bindGalleryEvents() {
+  document.querySelectorAll(".gallery-card[data-index]").forEach((item) => {
+    item.addEventListener("click", () => openLightbox(Number(item.dataset.index)));
+  });
+}
+
+function renderGallery(lang) {
+  const grid = document.getElementById("gallery-grid");
+  const items = getGalleryEntries(lang);
+
+  grid.innerHTML = items
+    .map(
+      (item) => `
+        <figure
+          class="gallery-item gallery-item--${escapeHtml(item.layout)} reveal"
+        >
+          <button
+            class="gallery-card"
+            type="button"
+            data-index="${item.index}"
+            aria-haspopup="dialog"
+            aria-controls="lightbox"
+            aria-describedby="gallery-caption-${item.index}"
+            aria-label="${escapeHtml(`${item.openLabel}: ${[item.label, item.caption].filter(Boolean).join(" — ")}`)}"
+          >
+            <span class="gallery-media">
+              <img
+                class="gallery-image"
+                src="${escapeHtml(item.source)}"
+                data-fallback="${escapeHtml(item.fallbackSource)}"
+                alt="${escapeHtml(item.alt)}"
+                loading="lazy"
+                decoding="async"
+                width="${item.width}"
+                height="${item.height}"
+              >
+              <span class="gallery-overlay" aria-hidden="true">${GALLERY_OVERLAY_ICON}</span>
+            </span>
+          </button>
+          <figcaption class="gallery-caption" id="gallery-caption-${item.index}">
+            <span class="gallery-label">${escapeHtml(item.label)}</span>
+            <span class="gallery-text">${escapeHtml(item.caption)}</span>
+          </figcaption>
+        </figure>
+      `
+    )
+    .join("");
+
+  bindGalleryEvents();
+  bindImageFallbacks(grid);
+}
+
+function renderLightboxPlaceholder(lang) {
+  lbContent.innerHTML = `<div class="lightbox-empty">${escapeHtml(applyTokens(getLocale(lang).gallery.lightbox.placeholder))}</div>`;
+  lb.removeAttribute("aria-labelledby");
+  lb.removeAttribute("aria-describedby");
+}
+
+function renderLightboxContent(index, lang = currentLang) {
+  const items = getGalleryEntries(lang);
+  const item = items[index];
+
+  if (!item) {
+    renderLightboxPlaceholder(lang);
+    return false;
+  }
+
+  lbContent.innerHTML = `
+    <figure class="lightbox-figure">
+      <div class="lightbox-media">
+        <img
+          class="lightbox-image"
+          src="${escapeHtml(item.source)}"
+          data-fallback="${escapeHtml(item.fallbackSource)}"
+          alt="${escapeHtml(item.alt)}"
+          width="${item.width}"
+          height="${item.height}"
+          decoding="async"
+        >
+      </div>
+      <figcaption class="lightbox-caption" id="lb-caption">
+        <span class="lightbox-label" id="lb-caption-label">${escapeHtml(item.label)}</span>
+        <span class="lightbox-text" id="lb-caption-text">${escapeHtml(item.caption)}</span>
+        <span class="lightbox-count">${index + 1} / ${items.length}</span>
+      </figcaption>
+    </figure>
+  `;
+
+  bindImageFallbacks(lbContent);
+  lb.setAttribute("aria-labelledby", "lb-caption-label");
+  lb.setAttribute("aria-describedby", item.caption ? "lb-caption-text" : "lb-caption");
+  return true;
+}
+
+function renderAmenities(lang) {
+  const container = document.getElementById("amenities-grid");
+  const amenities = getLocale(lang).amenities;
+  const groups = Array.isArray(amenities.groups)
+    ? amenities.groups
+    : [{ title: "", items: amenities.items || [] }];
+
+  container.innerHTML = groups
+    .map((group) => {
+      const items = Array.isArray(group.items) ? group.items : [];
+
+      return `
+        <section class="amenity-group reveal">
+          ${group.title ? `<h3 class="amenity-group-title">${escapeHtml(applyTokens(group.title))}</h3>` : ""}
+          <div class="amenity-group-grid">
+            ${items
+              .map(
+                (item) => `
+                  <div class="amenity-card">
+                    <div class="amenity-icon">${AMENITY_ICONS[item.icon] || ""}</div>
+                    <div>
+                      <div class="amenity-name">${escapeHtml(applyTokens(item.name))}</div>
+                      <div class="amenity-detail">${escapeHtml(applyTokens(item.detail))}</div>
+                    </div>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        </section>
+      `
+    })
+    .join("");
+}
+
+function renderAttractions(lang) {
+  const container = document.getElementById("attractions-list");
+  const items = getLocale(lang).location.attractions;
+
+  container.innerHTML = items
+    .map(
+      (item) => `
+        <li>
+          <span class="attraction-name">${escapeHtml(applyTokens(item.name))}</span>
+          <span class="attraction-dist">${escapeHtml(applyTokens(item.distance))}</span>
+        </li>
+      `
+    )
+    .join("");
+}
+
+function renderInquiryContact(lang) {
+  const container = document.getElementById("inquiry-contact-list");
+  const { highlights } = getLocale(lang).inq;
+  const contactDetails = CONTENT.shared.contactDetails;
+
+  const highlightMarkup = highlights
+    .map(
+      (item) => `
+        <div class="contact-item">
+          ${INQUIRY_ICONS[item.icon] || ""}
+          <span>${escapeHtml(applyTokens(item.text))}</span>
+        </div>
+      `
+    )
+    .join("");
+
+  const contactMarkup = contactDetails
+    .map(
+      (item) => {
+        const label = lang === "en" && item.labelEn ? item.labelEn : item.label;
+
+        return `
+        <div class="contact-item">
+          ${INQUIRY_ICONS[item.icon] || ""}
+          <span>${escapeHtml(label)}: <strong class="contact-handle">${escapeHtml(item.value)}</strong></span>
+        </div>
+      `;
+      }
+    )
+    .join("");
+
+  container.innerHTML = `${highlightMarkup}${contactMarkup}`;
+}
+
+function renderGuestOptions(lang) {
+  const select = document.getElementById("guests");
+  const options = getLocale(lang).form.guestOptions;
+  const selectedValue = select.value;
+
+  select.innerHTML = options
+    .map(
+      (option) =>
+        `<option value="${escapeHtml(option.value)}">${escapeHtml(applyTokens(option.label))}</option>`
+    )
+    .join("");
+
+  if (options.some((option) => option.value === selectedValue)) {
+    select.value = selectedValue;
+  }
+}
+
+function renderDynamicContent(lang) {
+  renderAboutStats(lang);
+  renderGallery(lang);
+  renderAmenities(lang);
+  renderAttractions(lang);
+  renderInquiryContact(lang);
+  renderGuestOptions(lang);
+  observeRevealElements(document);
+
+  if (!lb.classList.contains("open")) {
+    renderLightboxPlaceholder(lang);
+  }
+}
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  closeNavMenu();
+
+  applySharedContent(lang);
+  applyLocalizedMeta(lang);
+  applyLocalizedText(lang);
+  renderDynamicContent(lang);
+
+  if (lb.classList.contains("open")) {
+    renderLightboxContent(currentIdx, lang);
+  }
+}
+
+function openLightbox(index) {
+  const wasOpen = lb.classList.contains("open");
+  currentIdx = index;
+  if (!renderLightboxContent(index, currentLang)) return;
+
+  if (!wasOpen) {
+    lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    document.getElementById("lb-close").focus();
+  }
+}
+
+function closeLightbox() {
+  lb.classList.remove("open");
+  lb.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  renderLightboxPlaceholder(currentLang);
+
+  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+    lastFocusedElement.focus();
+  }
+
+  lastFocusedElement = null;
+}
+
+function stepLightbox(offset) {
+  const itemCount = getGalleryItemCount();
+  if (!itemCount) return;
+  openLightbox((currentIdx + offset + itemCount) % itemCount);
+}
+
+document.querySelectorAll(".lang-btn").forEach((button) => {
+  button.addEventListener("click", () => applyLang(button.dataset.lang));
+});
+
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 60);
+});
+
+hamburger.addEventListener("click", () => {
+  setNavMenuOpen(!navLinks.classList.contains("open"));
+});
+
+document.querySelectorAll("#main-nav .nav-center a").forEach((link) => {
+  link.addEventListener("click", closeNavMenu);
+});
+
+document.addEventListener("click", (event) => {
+  if (window.innerWidth > 960 || !navLinks.classList.contains("open")) return;
+  if (nav.contains(event.target)) return;
+  closeNavMenu();
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 960 && navLinks.classList.contains("open")) {
+    closeNavMenu();
+  }
+
+  applySharedContent(currentLang);
+});
+
+document.getElementById("lb-close").addEventListener("click", closeLightbox);
+document.getElementById("lb-prev").addEventListener("click", () => stepLightbox(-1));
+document.getElementById("lb-next").addEventListener("click", () => stepLightbox(1));
+lb.addEventListener("click", (event) => {
+  if (event.target === lb) closeLightbox();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (lb.classList.contains("open")) {
+    trapLightboxFocus(event);
+
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") stepLightbox(-1);
+    if (event.key === "ArrowRight") stepLightbox(1);
+    return;
+  }
+
+  if (event.key === "Escape" && navLinks.classList.contains("open")) {
+    closeNavMenu();
+    hamburger.focus();
+  }
+});
+
+document.getElementById("inquiry-form").addEventListener("submit", async function (event) {
+  event.preventDefault();
+  if (this._hp && this._hp.value) return;
+
+  const status = document.getElementById("form-status");
+  const button = this.querySelector(".btn-send");
+  const locale = getLocale(currentLang);
+  const form = this;
+
+  if (!validateInquiryForm(form, locale)) {
+    return;
+  }
+
+  button.textContent = applyTokens(locale.form.sending);
+  button.disabled = true;
+  form.setAttribute("aria-busy", "true");
+  setFormStatus(status, "", "");
+
+  const guestName = form.name.value;
+  const data = {
+    propertyName: CONTENT.shared.cabinName,
+    guestName,
+    name: guestName,
+    contact: form.contact.value,
+    checkin: form.checkin.value,
+    checkout: form.checkout.value,
+    guests: form.guests.value,
+    message: form.message.value,
+    timestamp: new Date().toISOString(),
+    sourceLabel: window.SITE_CONFIG.siteSourceLabel || "website",
+    language: currentLang,
+    _hp: form._hp ? form._hp.value : "",
+  };
+
+  try {
+    const response = await fetch(window.SITE_CONFIG.formEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    let result = null;
+
+    try {
+      result = await response.json();
+    } catch {
+      result = null;
+    }
+
+    if (response.ok) {
+      const isPartial = response.status === 207 || result?.status === "partial_success";
+
+      if (isPartial) {
+        console.warn("[inquiry] Inquiry delivered partially.", {
+          channels: result?.channels || result?.deliveries,
+          failed: result?.failed,
+        });
+      }
+
+      setFormStatus(
+        status,
+        "success",
+        applyTokens(locale.form.success)
+      );
+      form.reset();
+      clearFormInvalidState(form);
+      renderGuestOptions(currentLang);
+      syncDateInputLimits();
+      return;
+    }
+
+    if (response.status === 400) {
+      setFormStatus(status, "error", applyTokens(locale.form.invalid || locale.form.error));
+      return;
+    }
+
+    if (response.status === 429) {
+      setFormStatus(status, "error", applyTokens(locale.form.rateLimited || locale.form.error));
+      return;
+    }
+
+    if (result?.status === "config_error" || result?.code === "config_error") {
+      setFormStatus(status, "error", applyTokens(locale.form.configError || locale.form.error));
+      return;
+    }
+
+    if (result?.status === "provider_error" || result?.code === "provider_error") {
+      setFormStatus(status, "error", applyTokens(locale.form.providerError || locale.form.error));
+      return;
+    }
+
+    setFormStatus(status, "error", applyTokens(result?.userMessage || locale.form.error));
+  } catch {
+    setFormStatus(status, "error", applyTokens(locale.form.error));
+  } finally {
+    button.textContent = applyTokens(locale.form.send);
+    button.disabled = false;
+    form.removeAttribute("aria-busy");
+  }
+});
+
+document
+  .querySelectorAll("#inquiry-form input, #inquiry-form textarea, #inquiry-form select")
+  .forEach((field) => {
+    const clearFieldFeedback = () => {
+      field.removeAttribute("aria-invalid");
+      setFormStatus(document.getElementById("form-status"), "", "");
+    };
+
+    field.addEventListener("input", clearFieldFeedback);
+    field.addEventListener("change", clearFieldFeedback);
+  });
+
+initMapFallback();
+applyLang(currentLang);
+initDateInputLimits();
+nav.classList.toggle("scrolled", window.scrollY > 60);
