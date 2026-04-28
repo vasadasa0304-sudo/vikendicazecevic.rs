@@ -179,6 +179,8 @@ Use the same business details everywhere the property is listed:
 
 Do not create a Google Business Profile for the property unless the owner confirms it is eligible under Google’s rules. Vacation homes by themselves are generally not eligible for Business Profiles.
 
+The site intentionally uses `LodgingBusiness` and visible FAQ structured data, not Google’s `VacationRental` rich-result type. Google’s vacation-rental enhancement has stricter requirements and is intended for eligible vacation-rental integrations, so using it without the full setup can create a Search Console “Holiday rental” invalid item even when the page itself is indexed.
+
 ## Known Limitations
 
 - Optimized property photos are now wired into the hero, about, and gallery sections; replace them later only if a stronger final photo set is provided.
