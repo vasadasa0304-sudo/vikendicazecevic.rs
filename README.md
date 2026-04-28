@@ -155,7 +155,7 @@ Hosts like GitHub Pages, S3, or plain Nginx are no longer enough by themselves i
 ## Known Limitations
 
 - Optimized property photos are now wired into the hero, about, and gallery sections; replace them later only if a stronger final photo set is provided.
-- The Google Maps embed is approximate until the owner provides the exact Maps pin or embed URL.
+- The Google Maps embed uses the owner-provided location pin.
 - Canonical and Open Graph URL use `https://vikendicazecevic.rs/`.
 - Rate limiting is in-memory and best-effort in serverless environments; it resets on cold starts and should be treated as light spam protection only.
 - Netlify uses `netlify/functions/inquire.js` plus the redirect in `netlify.toml` to serve `/api/inquire`.
