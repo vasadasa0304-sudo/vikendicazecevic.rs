@@ -455,12 +455,18 @@ div {
   background: linear-gradient(180deg, rgba(8, 12, 10, 0.08) 0%, rgba(8, 12, 10, 0.26) 34%, rgba(9, 13, 10, 0.84) 100%);
 }
 
-.hero-placeholder {
+.hero-photo::after {
+  content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
-    repeating-linear-gradient(135deg, rgba(245, 241, 233, 0.04) 0px, rgba(245, 241, 233, 0.04) 1px, rgba(46, 66, 53, 0.12) 1px, rgba(46, 66, 53, 0.12) 36px);
+  background: linear-gradient(180deg, rgba(8, 12, 10, 0.1) 0%, rgba(8, 12, 10, 0.34) 36%, rgba(9, 13, 10, 0.86) 100%);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .hero-content {
@@ -751,6 +757,13 @@ main,
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)),
     repeating-linear-gradient(135deg, rgba(151, 130, 95, 0.08) 0px, rgba(151, 130, 95, 0.08) 1px, rgba(244, 240, 232, 0.68) 1px, rgba(244, 240, 232, 0.68) 34px);
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .about-image-accent {

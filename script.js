@@ -437,6 +437,13 @@ function applyLocalizedText(lang) {
     }
   });
 
+  document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+    const value = strings[element.dataset.i18nAlt];
+    if (value !== undefined) {
+      element.setAttribute("alt", value);
+    }
+  });
+
   document.querySelectorAll(".lang-btn").forEach((button) => {
     button.classList.toggle("active", button.dataset.lang === lang);
   });

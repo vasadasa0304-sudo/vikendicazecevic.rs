@@ -9,14 +9,13 @@ Static extraction of the bundled `vikendica-zlatar-export.html` into plain edita
 - `config.js`: public runtime config for `/api/inquire`, source label, and the map embed URL
 - `styles.css`: extracted fonts and site styles
 - `script.js`: renders content from `content.js`, handles SR/EN switching, nav behavior, reveal animation, gallery lightbox, and inquiry form UI
-- `api/inquire.js`: Vercel-compatible serverless inquiry endpoint
-- `netlify/functions/inquire.js`: Netlify wrapper for the same inquiry endpoint
+- `netlify/functions/inquire.js`: Netlify Function for the inquiry endpoint
 - `server/inquire-handler.js`: shared inquiry validation and delivery logic
 - `netlify.toml`: Netlify redirect so the public endpoint stays `/api/inquire`
 - `.env.example`: required environment variables for Telegram, SMTP, and light rate limiting
 - `package.json`: minimal backend dependency manifest (`nodemailer`)
 - `assets/fonts/`: locally extracted `woff2` files from the export bundle
-- `images/`: reserved for future real photography and image replacements
+- `images/`: optimized production photos, placeholders, and replacement notes
 - `AGENTS.md`: concise repo rules for future edits
 
 ## Run Locally
@@ -113,13 +112,6 @@ To switch the Telegram destination, change `TELEGRAM_CHAT_ID`.
 
 Node 18+ is required for the serverless endpoint.
 
-Vercel local testing:
-
-1. `npm install`
-2. copy `.env.example` to `.env.local` and fill in the real values
-3. run `npx vercel dev`
-4. open the site and submit the form, or `curl` the endpoint directly
-
 Netlify local testing:
 
 1. `npm install`
@@ -149,13 +141,7 @@ curl -X POST http://localhost:8888/api/inquire \
 
 ## Deployment
 
-This project is still mostly static HTML/CSS/JS, but the inquiry form now needs a serverless runtime.
-
-Vercel:
-
-1. import the project or run `vercel`
-2. set all variables from `.env.example` in the Vercel project settings
-3. deploy normally; `api/inquire.js` will be served automatically at `/api/inquire`
+This project is still mostly static HTML/CSS/JS, but the inquiry form needs Netlify Functions.
 
 Netlify:
 
@@ -168,11 +154,11 @@ Hosts like GitHub Pages, S3, or plain Nginx are no longer enough by themselves i
 
 ## Known Limitations
 
-- Real property photos are still missing. Replace the hero/about placeholders and gallery `src` values before serious promotion.
+- Optimized property photos are now wired into the hero, about, and gallery sections; replace them later only if a stronger final photo set is provided.
 - The Google Maps embed is approximate until the owner provides the exact Maps pin or embed URL.
 - Canonical and Open Graph URL use `https://vikendicazecevic.rs/`.
 - Rate limiting is in-memory and best-effort in serverless environments; it resets on cold starts and should be treated as light spam protection only.
-- `api/inquire.js` is kept for Vercel compatibility. Netlify uses `netlify/functions/inquire.js` plus the redirect in `netlify.toml`.
+- Netlify uses `netlify/functions/inquire.js` plus the redirect in `netlify.toml` to serve `/api/inquire`.
 - `AGENTS.md` is ignored by `.gitignore`; remove it before manual static uploads if you are not deploying from git.
 
 ## What Was Simplified
@@ -185,6 +171,6 @@ Hosts like GitHub Pages, S3, or plain Nginx are no longer enough by themselves i
 
 ## Current Placeholders / Remaining Gaps
 
-- The hero, about, and gallery areas still use placeholder blocks instead of real photos
+- Raw source photos are not stored in the production site; keep originals in external storage.
 - SMTP and Telegram credentials still need to be configured in the deployment platform
 - The Google Maps embed depends on external availability; a fallback placeholder is already in the markup

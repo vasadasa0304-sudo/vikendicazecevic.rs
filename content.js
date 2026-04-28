@@ -1,9 +1,4 @@
-/*
-  Client-editable content source of truth.
-
-  Replace gallery `src` values with real optimized photos when available.
-  Keep placeholder paths as fallbacks until the final image set is ready.
-*/
+/* Client-editable content. Update text and image paths here. */
 
 window.SITE_CONTENT = {
   shared: {
@@ -38,59 +33,59 @@ window.SITE_CONTENT = {
 
     galleryMedia: [
       {
-        src: "",
+        src: "images/gallery/gallery-01-exterior.webp",
         placeholder: "images/gallery/placeholders/exterior.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "featured",
       },
       {
-        src: "",
+        src: "images/gallery/gallery-02-living-room.webp",
         placeholder: "images/gallery/placeholders/interior.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "standard",
       },
       {
-        src: "",
+        src: "images/gallery/gallery-03-kitchen-dining.webp",
         placeholder: "images/gallery/placeholders/interior.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "standard",
       },
       {
-        src: "",
+        src: "images/gallery/gallery-04-terrace-view.webp",
         placeholder: "images/gallery/placeholders/landscape.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "wide",
       },
       {
-        src: "",
+        src: "images/gallery/gallery-05-bedroom.webp",
         placeholder: "images/gallery/placeholders/interior.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "standard",
       },
       {
-        src: "",
+        src: "images/gallery/gallery-06-upstairs-bed.webp",
         placeholder: "images/gallery/placeholders/interior.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "standard",
       },
       {
-        src: "",
-        placeholder: "images/gallery/placeholders/landscape.svg",
+        src: "images/gallery/gallery-07-bathroom.webp",
+        placeholder: "images/gallery/placeholders/interior.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "standard",
       },
       {
-        src: "",
+        src: "images/gallery/gallery-08-surroundings.webp",
         placeholder: "images/gallery/placeholders/landscape.svg",
         width: 1600,
-        height: 1200,
+        height: 739,
         layout: "standard",
       },
     ],
@@ -101,10 +96,10 @@ window.SITE_CONTENT = {
       seo: {
         title: "Vikendica Zečević Zlatar | Smeštaj na Zlataru",
         description:
-          "Porodična vikendica na Zlataru za miran odmor u prirodi.",
+          "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
         ogTitle: "Vikendica Zečević Zlatar | Smeštaj na Zlataru",
         ogDescription:
-          "Porodična vikendica na Zlataru za miran odmor u prirodi.",
+          "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
         url: "https://vikendicazecevic.rs/",
       },
 
@@ -122,6 +117,7 @@ window.SITE_CONTENT = {
         eyebrow: "Brdo bb · Zlatar · Nova Varoš",
         title: "Vikendica Zečević",
         titleEmph: "Zlatar",
+        imageAlt: "Eksterijer Vikendice Zečević Zlatar u planinskom okruženju.",
         sub:
           "Planinska A-frame vikendica na 1.200 m nadmorske visine, idealna za miran odmor, prirodu i pogled koji se pamti.",
         cta1: "Pošaljite upit za rezervaciju",
@@ -137,6 +133,8 @@ window.SITE_CONTENT = {
           "Vikendica Zečević je planinska A-frame kuća za odmor na Zlataru, namenjena za boravak do 6 gostiju. U prizemlju se nalazi potpuno opremljena kuhinja sa trpezarijom, dnevna soba sa ugaonom garniturom na razvlačenje, spavaća soba sa dva kreveta i kupatilo. Na spratu se nalazi francuski krevet, što prostor čini praktičnim za porodice, parove ili manje grupe.",
         p2:
           "Iz dnevne sobe se izlazi na prostranu terasu sa pogledom na prirodu i okolinu Zlatara. Terasa je jedan od glavnih aduta vikendice — idealna je za jutarnju kafu, odmor tokom dana ili mirno veče na planini.",
+        imageMainAlt: "Eksterijer A-frame vikendice Zečević na Zlataru.",
+        imageAccentAlt: "Unutrašnjost A-frame vikendice — pogled na sprat, stepenište i kuhinju.",
         stats: [
           { value: "6", label: "Do 6 gostiju" },
           { value: "60 m²", label: "Površina" },
@@ -154,8 +152,8 @@ window.SITE_CONTENT = {
         items: [
           {
             label: "Eksterijer",
-            caption: "A-frame vikendica na Zlataru",
-            alt: "Eksterijer A-frame vikendice Zečević na Zlataru.",
+            caption: "Pogled na vikendicu i planinsko okruženje",
+            alt: "Dnevni pogled na A-frame vikendicu Zečević sa planinskim okruženjem.",
           },
           {
             label: "Dnevna soba",
@@ -174,8 +172,8 @@ window.SITE_CONTENT = {
           },
           {
             label: "Spavaća soba",
-            caption: "Soba sa dva kreveta u prizemlju",
-            alt: "Spavaća soba sa dva kreveta.",
+            caption: "Spavaća soba sa dva kreveta",
+            alt: "Spavaća soba u prizemlju.",
           },
           {
             label: "Sprat",
@@ -183,14 +181,14 @@ window.SITE_CONTENT = {
             alt: "Sprat sa francuskim krevetom.",
           },
           {
-            label: "Okolina",
-            caption: "Zlatar, šetališta i priroda",
-            alt: "Okolina vikendice na Zlataru.",
+            label: "Kupatilo",
+            caption: "Kupatilo sa tušem",
+            alt: "Kupatilo sa tušem u vikendici.",
           },
           {
-            label: "Dvorište",
-            caption: "Dvorište, parking i roštilj",
-            alt: "Dvorište kod vikendice.",
+            label: "Okolina",
+            caption: "Okolina Zlatara",
+            alt: "Planinsko okruženje i okolina vikendice na Zlataru.",
           },
         ],
         lightbox: {
@@ -311,10 +309,10 @@ window.SITE_CONTENT = {
       seo: {
         title: "Vikendica Zečević Zlatar | Accommodation in Zlatar",
         description:
-          "A family cabin in Zlatar for a peaceful stay in nature.",
+          "A-frame family cabin in Zlatar for up to 6 guests, with terrace, Wi-Fi, parking, barbecue, and a peaceful mountain setting at 1,200 m altitude.",
         ogTitle: "Vikendica Zečević Zlatar | Accommodation in Zlatar",
         ogDescription:
-          "A family cabin in Zlatar for a peaceful stay in nature.",
+          "A-frame family cabin in Zlatar for up to 6 guests, with terrace, Wi-Fi, parking, barbecue, and a peaceful mountain setting at 1,200 m altitude.",
         url: "https://vikendicazecevic.rs/",
       },
 
@@ -332,6 +330,7 @@ window.SITE_CONTENT = {
         eyebrow: "Brdo bb · Zlatar · Nova Varoš",
         title: "Vikendica Zečević",
         titleEmph: "Zlatar",
+        imageAlt: "The exterior of Vikendica Zečević Zlatar in a mountain setting.",
         sub:
           "A mountain A-frame cabin at 1,200 m above sea level, ideal for a peaceful stay, nature, and memorable views.",
         cta1: "Send a reservation inquiry",
@@ -347,6 +346,8 @@ window.SITE_CONTENT = {
           "Zečević Cabin is a mountain A-frame holiday cabin in Zlatar, suitable for up to 6 guests. The ground floor includes a fully equipped kitchen with a dining area, a living room with a pull-out corner sofa, one bedroom with two beds, and a bathroom. Upstairs, there is a double bed, making the cabin practical for families, couples, or small groups.",
         p2:
           "From the living room, guests can step out onto a spacious terrace overlooking the natural surroundings of Zlatar. The terrace is one of the cabin’s main highlights — ideal for morning coffee, daytime relaxation, or a quiet evening in the mountains.",
+        imageMainAlt: "The exterior of Zečević A-frame cabin in Zlatar.",
+        imageAccentAlt: "Interior of the A-frame cabin showing the upper floor, staircase, and kitchen.",
         stats: [
           { value: "6", label: "Up to 6 guests" },
           { value: "60 m²", label: "Size" },
@@ -364,8 +365,8 @@ window.SITE_CONTENT = {
         items: [
           {
             label: "Exterior",
-            caption: "A-frame cabin in Zlatar",
-            alt: "The exterior of Zečević A-frame cabin in Zlatar.",
+            caption: "View of the cabin and mountain surroundings",
+            alt: "Daytime view of Zečević A-frame cabin with mountain surroundings.",
           },
           {
             label: "Living room",
@@ -384,8 +385,8 @@ window.SITE_CONTENT = {
           },
           {
             label: "Bedroom",
-            caption: "Ground-floor room with two beds",
-            alt: "The bedroom with two beds.",
+            caption: "Bedroom with two beds",
+            alt: "The ground-floor bedroom.",
           },
           {
             label: "Upstairs",
@@ -393,14 +394,14 @@ window.SITE_CONTENT = {
             alt: "The upstairs double bed.",
           },
           {
-            label: "Surroundings",
-            caption: "Zlatar walking paths and nature",
-            alt: "The surrounding nature in Zlatar.",
+            label: "Bathroom",
+            caption: "Bathroom with shower",
+            alt: "The cabin bathroom with shower.",
           },
           {
-            label: "Yard",
-            caption: "Yard, parking, and barbecue",
-            alt: "The cabin yard.",
+            label: "Surroundings",
+            caption: "Zlatar surroundings",
+            alt: "Mountain surroundings around the cabin in Zlatar.",
           },
         ],
         lightbox: {

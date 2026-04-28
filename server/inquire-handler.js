@@ -247,6 +247,24 @@ function normalizeTimestamp(value) {
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
 }
 
+function formatDisplayTimestamp(value) {
+  const date = value ? new Date(value) : new Date();
+  const safeDate = Number.isNaN(date.getTime()) ? new Date() : date;
+
+  const parts = new Intl.DateTimeFormat("sr-RS", {
+    timeZone: "Europe/Belgrade",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(safeDate);
+
+  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${byType.day}.${byType.month}.${byType.year}. ${byType.hour}:${byType.minute}`;
+}
+
 function getTodayDateString() {
   return new Intl.DateTimeFormat("sv-SE", {
     timeZone: "Europe/Belgrade",
@@ -378,6 +396,7 @@ function getInquiryHeading(inquiry) {
 }
 
 function buildTelegramMessage(inquiry) {
+  const displayTimestamp = formatDisplayTimestamp(inquiry.timestamp);
   const lines = [
     getInquiryHeading(inquiry),
     "",
@@ -389,7 +408,7 @@ function buildTelegramMessage(inquiry) {
     `Kontakt: ${inquiry.contact}`,
     `Poruka: ${inquiry.message || "-"}`,
     `Izvor: ${inquiry.sourceLabel}`,
-    `Vreme: ${inquiry.timestamp}`,
+    `Vreme: ${displayTimestamp}`,
   ].filter(Boolean);
 
   return lines.join("\n");
@@ -400,6 +419,7 @@ function buildEmailSubject(inquiry) {
 }
 
 function buildEmailText(inquiry) {
+  const displayTimestamp = formatDisplayTimestamp(inquiry.timestamp);
   const lines = [
     getInquiryHeading(inquiry),
     "",
@@ -411,13 +431,14 @@ function buildEmailText(inquiry) {
     `Kontakt: ${inquiry.contact}`,
     `Poruka: ${inquiry.message || "-"}`,
     `Izvor: ${inquiry.sourceLabel}`,
-    `Vreme: ${inquiry.timestamp}`,
+    `Vreme: ${displayTimestamp}`,
   ].filter(Boolean);
 
   return lines.join("\n");
 }
 
 function buildEmailHtml(inquiry) {
+  const displayTimestamp = formatDisplayTimestamp(inquiry.timestamp);
   const rows = [
     ["Objekat", inquiry.propertyName],
     ["Dolazak", inquiry.checkin],
@@ -427,7 +448,7 @@ function buildEmailHtml(inquiry) {
     ["Kontakt", inquiry.contact],
     ["Poruka", inquiry.message || "-"],
     ["Izvor", inquiry.sourceLabel],
-    ["Vreme", inquiry.timestamp],
+    ["Vreme", displayTimestamp],
   ]
     .filter(Boolean)
     .map(
