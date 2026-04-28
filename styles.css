@@ -739,26 +739,6 @@ main,
   background: var(--surface-strong);
 }
 
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  padding: 1.25rem 1.4rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  color: rgba(75, 60, 39, 0.72);
-  font-family: var(--ff-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  line-height: 1.5;
-  text-align: left;
-  text-transform: uppercase;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)),
-    repeating-linear-gradient(135deg, rgba(151, 130, 95, 0.08) 0px, rgba(151, 130, 95, 0.08) 1px, rgba(244, 240, 232, 0.68) 1px, rgba(244, 240, 232, 0.68) 34px);
-}
-
 .about-photo {
   width: 100%;
   height: 100%;

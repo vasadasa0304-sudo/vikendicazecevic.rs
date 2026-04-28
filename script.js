@@ -2,7 +2,6 @@ const CONTENT = window.SITE_CONTENT;
 
 const AMENITY_ICONS = {
   beds: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>',
-  fire: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 18.657A8 8 0 016.343 7.343M18 12a6 6 0 11-12 0 6 6 0 0112 0z"></path></svg>',
   wifi: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path></svg>',
   park: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>',
   terrace: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
@@ -11,8 +10,6 @@ const AMENITY_ICONS = {
   linen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>',
   heat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>',
   tv: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"></rect><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"></path></svg>',
-  pets: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>',
-  games: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg>',
 };
 
 const INQUIRY_ICONS = {
@@ -161,8 +158,10 @@ function getGalleryEntries(lang = currentLang) {
     return {
       index,
       layout: media.layout || "standard",
-      source: media.src || media.placeholder || "",
-      fallbackSource: media.placeholder || media.src || "",
+      source: media.src || "",
+      fallbackSource: media.src || "",
+      srcset: media.srcset || "",
+      sizes: media.sizes || "",
       width: Number(media.width) || 1600,
       height: Number(media.height) || 1200,
       label: applyTokens(text.label || fallbackLabel),
@@ -445,7 +444,9 @@ function applyLocalizedText(lang) {
   });
 
   document.querySelectorAll(".lang-btn").forEach((button) => {
-    button.classList.toggle("active", button.dataset.lang === lang);
+    const isActive = button.dataset.lang === lang;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 
   if (mapFrame) {
@@ -518,6 +519,8 @@ function renderGallery(lang) {
                 src="${escapeHtml(item.source)}"
                 data-fallback="${escapeHtml(item.fallbackSource)}"
                 alt="${escapeHtml(item.alt)}"
+                ${item.srcset ? `srcset="${escapeHtml(item.srcset)}"` : ""}
+                ${item.sizes ? `sizes="${escapeHtml(item.sizes)}"` : ""}
                 loading="lazy"
                 decoding="async"
                 width="${item.width}"

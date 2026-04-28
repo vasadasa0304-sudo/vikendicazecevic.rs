@@ -22,6 +22,50 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#233429">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link
+    rel="preload"
+    as="image"
+    href="images/hero/hero-exterior.webp"
+    imagesrcset="images/hero/hero-exterior-960.webp 960w, images/hero/hero-exterior.webp 1920w"
+    imagesizes="100vw"
+  >
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LodgingBusiness", "VacationRental"],
+      "name": "Vikendica Zečević Zlatar",
+      "url": "https://vikendicazecevic.rs/",
+      "image": "https://vikendicazecevic.rs/images/hero/hero-exterior.webp",
+      "description": "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
+      "email": "vikendicazecevic@gmail.com",
+      "telephone": ["+381 65 65 89 346", "+381 69 231 69 41"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Brdo bb, Zlatar",
+        "addressLocality": "Nova Varoš",
+        "addressCountry": "RS"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.436136,
+        "longitude": 19.827811
+      },
+      "containsPlace": {
+        "@type": "Accommodation",
+        "name": "Vikendica Zečević",
+        "occupancy": {
+          "@type": "QuantitativeValue",
+          "maxValue": 6
+        },
+        "numberOfRooms": 2,
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": 60,
+          "unitCode": "MTK"
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -40,8 +84,8 @@
       </ul>
       <div class="nav-right">
         <div class="lang-toggle">
-          <button class="lang-btn active" type="button" data-lang="sr">SR</button>
-          <button class="lang-btn" type="button" data-lang="en">EN</button>
+          <button class="lang-btn active" type="button" data-lang="sr" aria-pressed="true">SR</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
         <button
           class="nav-hamburger"
@@ -66,6 +110,8 @@
       <img
         class="hero-image"
         src="images/hero/hero-exterior.webp"
+        srcset="images/hero/hero-exterior-960.webp 960w, images/hero/hero-exterior.webp 1920w"
+        sizes="100vw"
         width="1920"
         height="887"
         alt="Eksterijer Vikendice Zečević Zlatar u planinskom okruženju."
@@ -105,6 +151,8 @@
             <img
               class="about-photo"
               src="images/about/about-exterior.webp"
+              srcset="images/about/about-exterior-520.webp 520w, images/about/about-exterior.webp 693w"
+              sizes="(max-width: 768px) 90vw, 42vw"
               width="693"
               height="1500"
               alt="Eksterijer A-frame vikendice Zečević na Zlataru."
@@ -116,6 +164,8 @@
             <img
               class="about-photo"
               src="images/about/about-interior.webp"
+              srcset="images/about/about-interior-800.webp 800w, images/about/about-interior.webp 1600w"
+              sizes="(max-width: 768px) 45vw, 300px"
               width="1600"
               height="739"
               alt="Enterijer vikendice sa drvenom konstrukcijom i kuhinjom."
@@ -248,7 +298,7 @@
     <div class="lightbox-inner">
       <button class="lightbox-close" id="lb-close" type="button" data-i18n-aria="gallery.lightbox.close" aria-label="Zatvori">✕</button>
       <button class="lightbox-nav lightbox-prev" id="lb-prev" type="button" data-i18n-aria="gallery.lightbox.prev" aria-label="Prethodno">‹</button>
-      <div id="lb-content" class="lightbox-content" data-i18n="gallery.lightbox.placeholder">foto placeholder</div>
+      <div id="lb-content" class="lightbox-content" data-i18n="gallery.lightbox.placeholder">Izaberite fotografiju iz galerije.</div>
       <button class="lightbox-nav lightbox-next" id="lb-next" type="button" data-i18n-aria="gallery.lightbox.next" aria-label="Sledeće">›</button>
     </div>
   </div>

@@ -1,6 +1,6 @@
 # Vikendica Zečević Zlatar Site
 
-Static extraction of the bundled `vikendica-zlatar-export.html` into plain editable files. The goal is to preserve the current design and behavior while making future edits straightforward.
+Lightweight static-first website for Vikendica Zečević Zlatar, with bilingual content and one Netlify Function for inquiry notifications.
 
 ## Structure
 
@@ -14,9 +14,9 @@ Static extraction of the bundled `vikendica-zlatar-export.html` into plain edita
 - `netlify.toml`: Netlify redirect so the public endpoint stays `/api/inquire`
 - `.env.example`: required environment variables for Telegram, SMTP, and light rate limiting
 - `package.json`: minimal backend dependency manifest (`nodemailer`)
-- `assets/fonts/`: locally extracted `woff2` files from the export bundle
-- `images/`: optimized production photos, placeholders, and replacement notes
-- `AGENTS.md`: concise repo rules for future edits
+- `assets/fonts/`: local `woff2` font files
+- `images/`: optimized production photos and replacement notes
+- `sitemap.xml` and `robots.txt`: crawler hints for the production domain
 
 ## Run Locally
 
@@ -35,6 +35,7 @@ For normal content updates, edit `content.js`.
 
 - Text, captions, amenities, nearby distances, contact details, SEO copy, and form labels now live in `content.js`
 - `index.html` still contains fallback copy inside some elements, but `content.js` is the authoritative source used by the running site
+- Structured data lives in `index.html`; update it only when the verified business facts change.
 
 ## Inquiry Endpoint
 
@@ -155,11 +156,13 @@ Hosts like GitHub Pages, S3, or plain Nginx are no longer enough by themselves i
 ## Known Limitations
 
 - Optimized property photos are now wired into the hero, about, and gallery sections; replace them later only if a stronger final photo set is provided.
+- Responsive WebP variants are generated for mobile performance; keep the `srcset` values in `index.html` and `content.js` aligned when replacing photos.
 - The Google Maps embed uses the owner-provided location pin.
 - Canonical and Open Graph URL use `https://vikendicazecevic.rs/`.
+- `sitemap.xml` contains only the single homepage because this is a one-page static site.
 - Rate limiting is in-memory and best-effort in serverless environments; it resets on cold starts and should be treated as light spam protection only.
 - Netlify uses `netlify/functions/inquire.js` plus the redirect in `netlify.toml` to serve `/api/inquire`.
-- `AGENTS.md` is ignored by `.gitignore`; remove it before manual static uploads if you are not deploying from git.
+- Raw source photos and agent/development notes are intentionally ignored by git; deploy from GitHub/Netlify rather than manually uploading the whole local folder.
 
 ## What Was Simplified
 
@@ -172,5 +175,5 @@ Hosts like GitHub Pages, S3, or plain Nginx are no longer enough by themselves i
 ## Current Placeholders / Remaining Gaps
 
 - Raw source photos are not stored in the production site; keep originals in external storage.
-- SMTP and Telegram credentials still need to be configured in the deployment platform
+- SMTP and Telegram credentials need to be configured in the deployment platform for the live inquiry flow
 - The Google Maps embed depends on external availability; a fallback placeholder is already in the markup
