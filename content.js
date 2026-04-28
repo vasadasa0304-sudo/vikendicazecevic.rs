@@ -116,6 +116,7 @@ window.SITE_CONTENT = {
         gallery: "Galerija",
         amenities: "Sadržaj",
         location: "Lokacija",
+        faq: "Česta pitanja",
         inquire: "Upit",
         menuLabel: "Meni",
         skipToContent: "Preskočite na sadržaj",
@@ -262,6 +263,42 @@ window.SITE_CONTENT = {
         ],
       },
 
+      faq: {
+        label: "Korisne informacije",
+        title: "Česta pitanja",
+        items: [
+          {
+            question: "Koliko gostiju može da boravi u vikendici?",
+            answer:
+              "Vikendica Zečević Zlatar je namenjena za boravak do 6 gostiju. Prostor ima 60 m², 2 sobe, 5 kreveta i 1 kupatilo.",
+          },
+          {
+            question: "Da li su dostupni parking, Wi-Fi i roštilj?",
+            answer:
+              "Da. Gostima su dostupni parking, Wi-Fi internet, terasa sa pogledom, dvorište i roštilj.",
+          },
+          {
+            question: "Kakva je opremljenost vikendice?",
+            answer:
+              "U vikendici su kuhinja sa trpezarijom, frižider, šporet i rerna, posuđe, TV, kablovski kanali, peškiri, posteljina, fen za kosu i pegla.",
+          },
+          {
+            question: "Gde se nalazi vikendica?",
+            answer:
+              "Vikendica se nalazi na adresi Brdo bb, Zlatar, Nova Varoš, na oko 1.200 m nadmorske visine i u blizini RH centra Zlatar.",
+          },
+          {
+            question: "Kada su dolazak i odlazak?",
+            answer: "Dolazak je posle 14:00, a odlazak pre 10:00.",
+          },
+          {
+            question: "Kako se šalje upit za rezervaciju?",
+            answer:
+              "Izaberite datume, broj gostiju i ostavite telefon ili email u formi za upit. Odgovorićemo vam u najkraćem roku.",
+          },
+        ],
+      },
+
       inq: {
         label: "Rezervacija",
         title: "Pošaljite upit",
@@ -329,6 +366,7 @@ window.SITE_CONTENT = {
         gallery: "Gallery",
         amenities: "Amenities",
         location: "Location",
+        faq: "FAQ",
         inquire: "Inquire",
         menuLabel: "Menu",
         skipToContent: "Skip to content",
@@ -472,6 +510,42 @@ window.SITE_CONTENT = {
           { name: "Fitness trails", distance: "nearby" },
           { name: "Walking paths", distance: "nearby" },
           { name: "Rest and nature spots", distance: "in the area" },
+        ],
+      },
+
+      faq: {
+        label: "Useful information",
+        title: "Frequently asked questions",
+        items: [
+          {
+            question: "How many guests can stay at the cabin?",
+            answer:
+              "Vikendica Zečević Zlatar is suitable for up to 6 guests. The cabin has 60 m², 2 rooms, 5 beds, and 1 bathroom.",
+          },
+          {
+            question: "Are parking, Wi-Fi, and barbecue available?",
+            answer:
+              "Yes. Guests have access to parking, Wi-Fi, a terrace with a view, a yard, and barbecue.",
+          },
+          {
+            question: "What amenities are included?",
+            answer:
+              "The cabin includes a kitchen with dining area, refrigerator, stove and oven, kitchenware, TV, cable channels, towels, bed linen, hair dryer, and iron.",
+          },
+          {
+            question: "Where is the cabin located?",
+            answer:
+              "The cabin is located at Brdo bb, Zlatar, Nova Varoš, at approximately 1,200 m above sea level and close to the Zlatar Rehabilitation Centre.",
+          },
+          {
+            question: "What are the check-in and check-out times?",
+            answer: "Check-in is after 14:00, and check-out is before 10:00.",
+          },
+          {
+            question: "How do I send a reservation inquiry?",
+            answer:
+              "Choose your dates, guest count, and leave a phone number or email in the inquiry form. We will respond as soon as possible.",
+          },
         ],
       },
 

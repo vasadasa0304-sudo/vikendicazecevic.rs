@@ -153,6 +153,32 @@ Netlify:
 
 Hosts like GitHub Pages, S3, or plain Nginx are no longer enough by themselves if you want the live inquiry form to work, because they do not run the serverless endpoint.
 
+## Google Visibility Setup
+
+Google Search Console verification currently uses the HTML file method:
+
+- verification file: `google27409bef3ff9aefc.html`
+- production URL: `https://vikendicazecevic.rs/google27409bef3ff9aefc.html`
+
+After each production deploy with SEO changes:
+
+1. open Google Search Console for `https://vikendicazecevic.rs/`
+2. click **Verify** if ownership is not verified yet
+3. submit `https://vikendicazecevic.rs/sitemap.xml`
+4. use URL Inspection for `https://vikendicazecevic.rs/`
+5. request indexing after confirming Google can fetch the page
+
+Use the same business details everywhere the property is listed:
+
+- name: `Vikendica Zečević Zlatar`
+- address: `Brdo bb, Zlatar, Nova Varoš, Srbija`
+- phone: `+381 (0)65 65 89 346`
+- phone: `+381 (0)69 231 69 41`
+- email: `vikendicazecevic@gmail.com`
+- website: `https://vikendicazecevic.rs/`
+
+Do not create a Google Business Profile for the property unless the owner confirms it is eligible under Google’s rules. Vacation homes by themselves are generally not eligible for Business Profiles.
+
 ## Known Limitations
 
 - Optimized property photos are now wired into the hero, about, and gallery sections; replace them later only if a stronger final photo set is provided.

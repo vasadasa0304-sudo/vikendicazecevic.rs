@@ -6,6 +6,8 @@
   <title>Vikendica Zečević Zlatar | Smeštaj na Zlataru</title>
   <meta id="meta-description" name="description" content="Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.">
   <link id="canonical-url" rel="canonical" href="https://vikendicazecevic.rs/">
+  <link rel="alternate" hreflang="sr-RS" href="https://vikendicazecevic.rs/">
+  <link rel="alternate" hreflang="x-default" href="https://vikendicazecevic.rs/">
   <meta id="meta-og-title" property="og:title" content="Vikendica Zečević Zlatar | Smeštaj na Zlataru">
   <meta id="meta-og-description" property="og:description" content="Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.">
   <meta id="meta-og-site-name" property="og:site_name" content="Vikendica Zečević Zlatar">
@@ -39,6 +41,8 @@
       "description": "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
       "email": "vikendicazecevic@gmail.com",
       "telephone": ["+381 65 65 89 346", "+381 69 231 69 41"],
+      "checkinTime": "14:00",
+      "checkoutTime": "10:00",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Brdo bb, Zlatar",
@@ -63,7 +67,45 @@
           "value": 60,
           "unitCode": "MTK"
         }
-      }
+      },
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Terrace", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Barbecue", "value": true }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Koliko gostiju može da boravi u Vikendici Zečević Zlatar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vikendica Zečević Zlatar je namenjena za boravak do 6 gostiju."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li vikendica ima parking, Wi-Fi i roštilj?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gostima su dostupni parking, Wi-Fi internet, terasa sa pogledom i roštilj."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gde se nalazi Vikendica Zečević Zlatar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vikendica se nalazi na adresi Brdo bb, Zlatar, Nova Varoš, u blizini RH centra Zlatar."
+          }
+        }
+      ]
     }
   </script>
   <link rel="stylesheet" href="styles.css">
@@ -226,6 +268,41 @@
     </div>
   </section>
 
+  <!-- ── FAQ ── -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <p class="section-label reveal" data-i18n="faq.label">Korisne informacije</p>
+      <h2 class="section-title reveal" id="faq-title" data-i18n="faq.title">Česta pitanja</h2>
+      <div class="divider reveal"></div>
+      <div class="faq-grid">
+        <article class="faq-card reveal">
+          <h3 data-i18n="faq.items.0.question">Koliko gostiju može da boravi u vikendici?</h3>
+          <p data-i18n="faq.items.0.answer">Vikendica Zečević Zlatar je namenjena za boravak do 6 gostiju. Prostor ima 60 m², 2 sobe, 5 kreveta i 1 kupatilo.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3 data-i18n="faq.items.1.question">Da li su dostupni parking, Wi-Fi i roštilj?</h3>
+          <p data-i18n="faq.items.1.answer">Da. Gostima su dostupni parking, Wi-Fi internet, terasa sa pogledom, dvorište i roštilj.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3 data-i18n="faq.items.2.question">Kakva je opremljenost vikendice?</h3>
+          <p data-i18n="faq.items.2.answer">U vikendici su kuhinja sa trpezarijom, frižider, šporet i rerna, posuđe, TV, kablovski kanali, peškiri, posteljina, fen za kosu i pegla.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3 data-i18n="faq.items.3.question">Gde se nalazi vikendica?</h3>
+          <p data-i18n="faq.items.3.answer">Vikendica se nalazi na adresi Brdo bb, Zlatar, Nova Varoš, na oko 1.200 m nadmorske visine i u blizini RH centra Zlatar.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3 data-i18n="faq.items.4.question">Kada su dolazak i odlazak?</h3>
+          <p data-i18n="faq.items.4.answer">Dolazak je posle 14:00, a odlazak pre 10:00.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3 data-i18n="faq.items.5.question">Kako se šalje upit za rezervaciju?</h3>
+          <p data-i18n="faq.items.5.answer">Izaberite datume, broj gostiju i ostavite telefon ili email u formi za upit. Odgovorićemo vam u najkraćem roku.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Inquiry ── -->
   <section id="inquiry" aria-labelledby="inquiry-title">
     <div class="container">
@@ -287,6 +364,7 @@
         <a href="#gallery" data-i18n="nav.gallery">Galerija</a>
         <a href="#amenities" data-i18n="nav.amenities">Sadržaj</a>
         <a href="#location" data-i18n="nav.location">Lokacija</a>
+        <a href="#faq" data-i18n="nav.faq">Česta pitanja</a>
         <a href="#inquiry" data-i18n="nav.inquire">Upit</a>
       </nav>
     </div>

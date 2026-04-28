@@ -120,7 +120,7 @@ function applyTokens(value) {
 }
 
 function flattenStrings(source, prefix = "", output = {}) {
-  if (!source || Array.isArray(source) || typeof source !== "object") {
+  if (!source || typeof source !== "object") {
     return output;
   }
 
@@ -132,7 +132,7 @@ function flattenStrings(source, prefix = "", output = {}) {
       return;
     }
 
-    if (!Array.isArray(value) && typeof value === "object") {
+    if (value && typeof value === "object") {
       flattenStrings(value, nextKey, output);
     }
   });
