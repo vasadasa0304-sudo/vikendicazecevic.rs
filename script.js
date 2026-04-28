@@ -288,6 +288,23 @@ function setFormStatus(statusElement, tone, message) {
   statusElement.textContent = message || "";
 }
 
+function setFormSuccessStatus(statusElement, locale, isPartial = false) {
+  const title = isPartial
+    ? locale.form.partialTitle || locale.form.successTitle
+    : locale.form.successTitle;
+  const text = isPartial
+    ? locale.form.partialText || locale.form.partialSuccess
+    : locale.form.successText || locale.form.success;
+  const fallback = locale.form.successFallback || "";
+
+  statusElement.className = isPartial ? "form-status success partial" : "form-status success";
+  statusElement.innerHTML = `
+    <strong class="form-status-title">${escapeHtml(applyTokens(title || ""))}</strong>
+    <span class="form-status-text">${escapeHtml(applyTokens(text || ""))}</span>
+    ${fallback ? `<span class="form-status-contact">${escapeHtml(applyTokens(fallback))}</span>` : ""}
+  `;
+}
+
 function validateInquiryForm(form, locale) {
   clearFormInvalidState(form);
 
@@ -861,11 +878,7 @@ document.getElementById("inquiry-form").addEventListener("submit", async functio
         });
       }
 
-      setFormStatus(
-        status,
-        "success",
-        applyTokens(locale.form.success)
-      );
+      setFormSuccessStatus(status, locale, isPartial);
       form.reset();
       clearFormInvalidState(form);
       renderGuestOptions(currentLang);

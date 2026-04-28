@@ -117,6 +117,7 @@ window.SITE_CONTENT = {
         amenities: "Sadržaj",
         location: "Lokacija",
         faq: "Česta pitanja",
+        stayInfo: "Informacije",
         inquire: "Upit",
         menuLabel: "Meni",
         skipToContent: "Preskočite na sadržaj",
@@ -299,6 +300,25 @@ window.SITE_CONTENT = {
         ],
       },
 
+      stayInfo: {
+        label: "Pre slanja upita",
+        title: "Informacije za boravak",
+        titleEmph: "i cenu",
+        intro:
+          "Najvažnije informacije za planiranje boravka u Vikendici Zečević Zlatar, bez komplikovanog procesa rezervacije.",
+        priceTitle: "Cena na upit",
+        priceText:
+          "Cena zavisi od termina i broja gostiju. Pošaljite upit za tačnu ponudu.",
+        cards: [
+          { value: "Do 6 gostiju", label: "Kapacitet vikendice" },
+          { value: "Dolazak posle 14:00", label: "Vreme dolaska" },
+          { value: "Odlazak pre 10:00", label: "Vreme odlaska" },
+          { value: "Parking, Wi-Fi i roštilj", label: "Dostupno gostima" },
+          { value: "Brdo bb, Zlatar", label: "Lokacija vikendice" },
+          { value: "Direktan kontakt", label: "Telefon ili email" },
+        ],
+      },
+
       inq: {
         label: "Rezervacija",
         title: "Pošaljite upit",
@@ -329,9 +349,17 @@ window.SITE_CONTENT = {
         message: { label: "Poruka (opciono)", placeholder: "Dodatna pitanja ili napomena..." },
         send: "Pošaljite upit →",
         sending: "Slanje...",
-        success: "✓ Upit je poslat. Odgovorićemo vam u najkraćem roku.",
+        success: "Upit je poslat. Odgovorićemo vam telefonom ili emailom u najkraćem roku.",
+        successTitle: "Upit je poslat.",
+        successText:
+          "Odgovorićemo vam telefonom ili emailom u najkraćem roku.",
+        successFallback:
+          "Ako želite, možete nas kontaktirati direktno: +381 (0)65 65 89 346 ili vikendicazecevic@gmail.com.",
         partialSuccess:
-          "✓ Upit je primljen, ali jedna notifikacija nije poslata. Odgovorićemo vam putem kontakta koji ste naveli.",
+          "Upit je primljen. Odgovorićemo vam putem kontakta koji ste naveli.",
+        partialTitle: "Upit je primljen.",
+        partialText:
+          "Jedna interna notifikacija nije poslata, ali ćemo vam odgovoriti putem kontakta koji ste naveli.",
         invalid:
           "Molimo proverite obavezna polja. Datum odlaska mora biti posle datuma dolaska, broj gostiju ne može biti veći od 6, a telefon ili email su obavezni.",
         rateLimited:
@@ -367,6 +395,7 @@ window.SITE_CONTENT = {
         amenities: "Amenities",
         location: "Location",
         faq: "FAQ",
+        stayInfo: "Stay info",
         inquire: "Inquire",
         menuLabel: "Menu",
         skipToContent: "Skip to content",
@@ -549,6 +578,25 @@ window.SITE_CONTENT = {
         ],
       },
 
+      stayInfo: {
+        label: "Before sending an inquiry",
+        title: "Stay information",
+        titleEmph: "and price",
+        intro:
+          "The key details for planning a stay at Vikendica Zečević Zlatar, with a simple direct inquiry process.",
+        priceTitle: "Price on request",
+        priceText:
+          "The price depends on dates and guest count. Send an inquiry for an exact offer.",
+        cards: [
+          { value: "Up to 6 guests", label: "Cabin capacity" },
+          { value: "Check-in after 14:00", label: "Check-in time" },
+          { value: "Check-out before 10:00", label: "Check-out time" },
+          { value: "Parking, Wi-Fi, and barbecue", label: "Available to guests" },
+          { value: "Brdo bb, Zlatar", label: "Cabin location" },
+          { value: "Direct contact", label: "Phone or email" },
+        ],
+      },
+
       inq: {
         label: "Reservation",
         title: "Send a reservation",
@@ -579,9 +627,17 @@ window.SITE_CONTENT = {
         message: { label: "Message (optional)", placeholder: "Additional questions or notes..." },
         send: "Send inquiry →",
         sending: "Sending...",
-        success: "✓ Inquiry sent. We will respond as soon as possible.",
+        success: "Your inquiry has been sent. We will respond by phone or email as soon as possible.",
+        successTitle: "Your inquiry has been sent.",
+        successText:
+          "We will respond by phone or email as soon as possible.",
+        successFallback:
+          "If you prefer, you can contact us directly: +381 (0)65 65 89 346 or vikendicazecevic@gmail.com.",
         partialSuccess:
-          "✓ Inquiry received, but one notification was not sent. We will still respond using the contact you provided.",
+          "Inquiry received. We will respond using the contact you provided.",
+        partialTitle: "Inquiry received.",
+        partialText:
+          "One internal notification was not sent, but we will still respond using the contact you provided.",
         invalid:
           "Please check the required fields. Check-out must be after check-in, the number of guests cannot exceed 6, and phone or email is required.",
         rateLimited:
