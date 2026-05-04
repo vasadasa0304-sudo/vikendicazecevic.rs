@@ -43,10 +43,21 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LodgingBusiness",
+      "@type": ["LodgingBusiness", "VacationRental"],
+      "identifier": "vikendica-zecevic-zlatar-brdo-bb",
+      "additionalType": "Cabin",
       "name": "Vikendica Zečević Zlatar",
       "url": "https://vikendicazecevic.rs/",
-      "image": "https://vikendicazecevic.rs/images/hero/hero-exterior.webp",
+      "image": [
+        "https://vikendicazecevic.rs/images/gallery/gallery-01-exterior.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-02-living-room.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-03-kitchen-dining.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-04-terrace-view.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-05-bedroom.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-06-upstairs-bed.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-07-bathroom.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-08-surroundings.webp"
+      ],
       "description": "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
       "priceRange": "Na upit",
       "numberOfRooms": 2,
@@ -68,6 +79,8 @@
         "@type": "PostalAddress",
         "streetAddress": "Brdo bb, Zlatar",
         "addressLocality": "Nova Varoš",
+        "addressRegion": "Zlatibor District",
+        "postalCode": "31320",
         "addressCountry": "RS"
       },
       "geo": {
@@ -75,13 +88,38 @@
         "latitude": 43.436136,
         "longitude": 19.827811
       },
+      "latitude": 43.436136,
+      "longitude": 19.827811,
       "containsPlace": {
         "@type": "Accommodation",
+        "additionalType": "EntirePlace",
         "name": "Vikendica Zečević",
+        "bed": [
+          {
+            "@type": "BedDetails",
+            "numberOfBeds": 5
+          }
+        ],
         "occupancy": {
           "@type": "QuantitativeValue",
+          "value": 6,
           "maxValue": 6
         },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "wifi", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "internetType", "value": "Free" },
+          { "@type": "LocationFeatureSpecification", "name": "parkingType", "value": "Free" },
+          { "@type": "LocationFeatureSpecification", "name": "patio", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "outdoorGrill", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "kitchen", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "ovenStove", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "tv", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "heating", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "ac", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "ironingBoard", "value": true }
+        ],
+        "numberOfBedrooms": 2,
+        "numberOfBathroomsTotal": 1,
         "numberOfRooms": 2,
         "floorSize": {
           "@type": "QuantitativeValue",
@@ -90,10 +128,17 @@
         }
       },
       "amenityFeature": [
-        { "@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Terrace", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Barbecue", "value": true }
+        { "@type": "LocationFeatureSpecification", "name": "wifi", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "internetType", "value": "Free" },
+        { "@type": "LocationFeatureSpecification", "name": "parkingType", "value": "Free" },
+        { "@type": "LocationFeatureSpecification", "name": "patio", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "outdoorGrill", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "kitchen", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "ovenStove", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "tv", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "heating", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "ac", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "ironingBoard", "value": true }
       ]
     }
   </script>
