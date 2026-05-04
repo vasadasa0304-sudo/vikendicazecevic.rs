@@ -67,6 +67,8 @@ if (!CONTENT.localized[currentLang]) {
   currentLang = "sr";
 }
 
+document.documentElement.classList.add("reveal-ready");
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -74,6 +76,10 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function toAvifPath(value) {
+  return String(value || "").replaceAll(".webp", ".avif");
 }
 
 function getLocale(lang = currentLang) {
@@ -496,6 +502,7 @@ function bindImageFallbacks(scope = document) {
         if (!fallbackSource || image.dataset.fallbackApplied === "true") return;
 
         image.dataset.fallbackApplied = "true";
+        image.closest("picture")?.querySelectorAll("source").forEach((source) => source.remove());
         if (image.getAttribute("src") !== fallbackSource) {
           image.setAttribute("src", fallbackSource);
         }
@@ -531,18 +538,26 @@ function renderGallery(lang) {
             aria-label="${escapeHtml(`${item.openLabel}: ${[item.label, item.caption].filter(Boolean).join(" — ")}`)}"
           >
             <span class="gallery-media">
-              <img
-                class="gallery-image"
-                src="${escapeHtml(item.source)}"
-                data-fallback="${escapeHtml(item.fallbackSource)}"
-                alt="${escapeHtml(item.alt)}"
-                ${item.srcset ? `srcset="${escapeHtml(item.srcset)}"` : ""}
-                ${item.sizes ? `sizes="${escapeHtml(item.sizes)}"` : ""}
-                loading="lazy"
-                decoding="async"
-                width="${item.width}"
-                height="${item.height}"
-              >
+              <picture>
+                <source
+                  type="image/avif"
+                  srcset="${escapeHtml(toAvifPath(item.srcset || item.source))}"
+                  ${item.sizes ? `sizes="${escapeHtml(item.sizes)}"` : ""}
+                  media="not all"
+                >
+                <img
+                  class="gallery-image"
+                  src="${escapeHtml(item.source)}"
+                  data-fallback="${escapeHtml(item.fallbackSource)}"
+                  alt="${escapeHtml(item.alt)}"
+                  ${item.srcset ? `srcset="${escapeHtml(item.srcset)}"` : ""}
+                  ${item.sizes ? `sizes="${escapeHtml(item.sizes)}"` : ""}
+                  loading="lazy"
+                  decoding="async"
+                  width="${item.width}"
+                  height="${item.height}"
+                >
+              </picture>
               <span class="gallery-overlay" aria-hidden="true">${GALLERY_OVERLAY_ICON}</span>
             </span>
           </button>
@@ -577,15 +592,22 @@ function renderLightboxContent(index, lang = currentLang) {
   lbContent.innerHTML = `
     <figure class="lightbox-figure">
       <div class="lightbox-media">
-        <img
-          class="lightbox-image"
-          src="${escapeHtml(item.source)}"
-          data-fallback="${escapeHtml(item.fallbackSource)}"
-          alt="${escapeHtml(item.alt)}"
-          width="${item.width}"
-          height="${item.height}"
-          decoding="async"
-        >
+        <picture>
+          <source
+            type="image/avif"
+            srcset="${escapeHtml(toAvifPath(item.source))}"
+            media="not all"
+          >
+          <img
+            class="lightbox-image"
+            src="${escapeHtml(item.source)}"
+            data-fallback="${escapeHtml(item.fallbackSource)}"
+            alt="${escapeHtml(item.alt)}"
+            width="${item.width}"
+            height="${item.height}"
+            decoding="async"
+          >
+        </picture>
       </div>
       <figcaption class="lightbox-caption" id="lb-caption">
         <span class="lightbox-label" id="lb-caption-label">${escapeHtml(item.label)}</span>
@@ -720,7 +742,7 @@ function renderDynamicContent(lang) {
 function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
-  document.documentElement.lang = lang;
+  document.documentElement.lang = lang === "en" ? "en" : "sr";
   closeNavMenu();
 
   applySharedContent(lang);
@@ -770,9 +792,61 @@ document.querySelectorAll(".lang-btn").forEach((button) => {
   button.addEventListener("click", () => applyLang(button.dataset.lang));
 });
 
+const navSectionEls = ["about", "gallery", "amenities", "location", "inquiry"]
+  .map((id) => document.getElementById(id))
+  .filter(Boolean);
+
+function updateActiveNavLink() {
+  const threshold = nav.offsetHeight + 24;
+  const scrollY = window.scrollY;
+  let currentId = null;
+
+  navSectionEls.forEach((section) => {
+    if (section.offsetTop - threshold <= scrollY) {
+      currentId = section.id;
+    }
+  });
+
+  document.querySelectorAll("#main-nav .nav-center a:not(.nav-cta)").forEach((link) => {
+    link.classList.toggle("nav-active", link.getAttribute("href") === `#${currentId}`);
+  });
+}
+
+function getHashTarget() {
+  const rawHash = window.location.hash.slice(1);
+  if (!rawHash) return null;
+
+  try {
+    return document.getElementById(decodeURIComponent(rawHash));
+  } catch {
+    return document.getElementById(rawHash);
+  }
+}
+
+function alignHashTarget() {
+  const target = getHashTarget();
+  if (!target) return;
+
+  target.scrollIntoView({ block: "start" });
+  updateActiveNavLink();
+}
+
+function scheduleHashAlignment() {
+  if (!window.location.hash) return;
+
+  requestAnimationFrame(() => {
+    alignHashTarget();
+    window.setTimeout(alignHashTarget, 120);
+    window.setTimeout(alignHashTarget, 450);
+  });
+}
+
 window.addEventListener("scroll", () => {
   nav.classList.toggle("scrolled", window.scrollY > 60);
+  updateActiveNavLink();
 });
+
+window.addEventListener("hashchange", scheduleHashAlignment);
 
 hamburger.addEventListener("click", () => {
   setNavMenuOpen(!navLinks.classList.contains("open"));
@@ -822,6 +896,7 @@ document.addEventListener("keydown", (event) => {
 document.getElementById("inquiry-form").addEventListener("submit", async function (event) {
   event.preventDefault();
   if (this._hp && this._hp.value) return;
+  if (this.website && this.website.value) return;
 
   const status = document.getElementById("form-status");
   const button = this.querySelector(".btn-send");
@@ -851,6 +926,7 @@ document.getElementById("inquiry-form").addEventListener("submit", async functio
     sourceLabel: window.SITE_CONFIG.siteSourceLabel || "website",
     language: currentLang,
     _hp: form._hp ? form._hp.value : "",
+    website: form.website ? form.website.value : "",
   };
 
   try {
@@ -931,4 +1007,6 @@ document
 initMapFallback();
 applyLang(currentLang);
 initDateInputLimits();
+scheduleHashAlignment();
 nav.classList.toggle("scrolled", window.scrollY > 60);
+updateActiveNavLink();

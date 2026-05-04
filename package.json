@@ -5,6 +5,15 @@
   "engines": {
     "node": ">=18"
   },
+  "scripts": {
+    "start": "npm run serve",
+    "serve": "python3 -m http.server 8000",
+    "prestage": "npm run check",
+    "stage": "npx --yes netlify-cli@17.38.1 dev --offline --port 8888",
+    "stage:smoke": "node scripts/stage-smoke.js",
+    "check": "node --check config.js && node --check content.js && node --check script.js && node --check server/inquire-handler.js && node --check netlify/functions/inquire.js",
+    "audit:prod": "npm audit --omit=dev"
+  },
   "dependencies": {
     "nodemailer": "^8.0.6"
   }

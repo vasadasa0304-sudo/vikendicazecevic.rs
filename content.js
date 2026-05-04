@@ -116,8 +116,7 @@ window.SITE_CONTENT = {
         gallery: "Galerija",
         amenities: "Sadržaj",
         location: "Lokacija",
-        faq: "Česta pitanja",
-        stayInfo: "Informacije",
+        stayInfo: "Boravak",
         inquire: "Upit",
         menuLabel: "Meni",
         skipToContent: "Preskočite na sadržaj",
@@ -264,57 +263,21 @@ window.SITE_CONTENT = {
         ],
       },
 
-      faq: {
-        label: "Korisne informacije",
-        title: "Česta pitanja",
-        items: [
-          {
-            question: "Koliko gostiju može da boravi u vikendici?",
-            answer:
-              "Vikendica Zečević Zlatar je namenjena za boravak do 6 gostiju. Prostor ima 60 m², 2 sobe, 5 kreveta i 1 kupatilo.",
-          },
-          {
-            question: "Da li su dostupni parking, Wi-Fi i roštilj?",
-            answer:
-              "Da. Gostima su dostupni parking, Wi-Fi internet, terasa sa pogledom, dvorište i roštilj.",
-          },
-          {
-            question: "Kakva je opremljenost vikendice?",
-            answer:
-              "U vikendici su kuhinja sa trpezarijom, frižider, šporet i rerna, posuđe, TV, kablovski kanali, peškiri, posteljina, fen za kosu i pegla.",
-          },
-          {
-            question: "Gde se nalazi vikendica?",
-            answer:
-              "Vikendica se nalazi na adresi Brdo bb, Zlatar, Nova Varoš, na oko 1.200 m nadmorske visine i u blizini RH centra Zlatar.",
-          },
-          {
-            question: "Kada su dolazak i odlazak?",
-            answer: "Dolazak je posle 14:00, a odlazak pre 10:00.",
-          },
-          {
-            question: "Kako se šalje upit za rezervaciju?",
-            answer:
-              "Izaberite datume, broj gostiju i ostavite telefon ili email u formi za upit. Odgovorićemo vam u najkraćem roku.",
-          },
-        ],
-      },
-
       stayInfo: {
-        label: "Pre slanja upita",
-        title: "Informacije za boravak",
-        titleEmph: "i cenu",
+        label: "Pre rezervacije",
+        title: "Planiranje",
+        titleEmph: "boravka",
         intro:
-          "Najvažnije informacije za planiranje boravka u Vikendici Zečević Zlatar, bez komplikovanog procesa rezervacije.",
-        priceTitle: "Cena na upit",
+          "Ključni detalji za miran dolazak i jednostavan dogovor oko termina.",
+        priceTitle: "Ponuda prema terminu",
         priceText:
-          "Cena zavisi od termina i broja gostiju. Pošaljite upit za tačnu ponudu.",
+          "Cena zavisi od datuma i broja gostiju. Pošaljite upit i dobićete tačnu ponudu.",
         cards: [
-          { value: "Do 6 gostiju", label: "Kapacitet vikendice" },
+          { value: "Do 6 gostiju", label: "Kapacitet" },
           { value: "Dolazak posle 14:00", label: "Vreme dolaska" },
           { value: "Odlazak pre 10:00", label: "Vreme odlaska" },
           { value: "Parking, Wi-Fi i roštilj", label: "Dostupno gostima" },
-          { value: "Brdo bb, Zlatar", label: "Lokacija vikendice" },
+          { value: "Brdo bb, Zlatar", label: "Lokacija" },
           { value: "Direktan kontakt", label: "Telefon ili email" },
         ],
       },
@@ -394,8 +357,7 @@ window.SITE_CONTENT = {
         gallery: "Gallery",
         amenities: "Amenities",
         location: "Location",
-        faq: "FAQ",
-        stayInfo: "Stay info",
+        stayInfo: "Stay",
         inquire: "Inquire",
         menuLabel: "Menu",
         skipToContent: "Skip to content",
@@ -542,57 +504,21 @@ window.SITE_CONTENT = {
         ],
       },
 
-      faq: {
-        label: "Useful information",
-        title: "Frequently asked questions",
-        items: [
-          {
-            question: "How many guests can stay at the cabin?",
-            answer:
-              "Vikendica Zečević Zlatar is suitable for up to 6 guests. The cabin has 60 m², 2 rooms, 5 beds, and 1 bathroom.",
-          },
-          {
-            question: "Are parking, Wi-Fi, and barbecue available?",
-            answer:
-              "Yes. Guests have access to parking, Wi-Fi, a terrace with a view, a yard, and barbecue.",
-          },
-          {
-            question: "What amenities are included?",
-            answer:
-              "The cabin includes a kitchen with dining area, refrigerator, stove and oven, kitchenware, TV, cable channels, towels, bed linen, hair dryer, and iron.",
-          },
-          {
-            question: "Where is the cabin located?",
-            answer:
-              "The cabin is located at Brdo bb, Zlatar, Nova Varoš, at approximately 1,200 m above sea level and close to the Zlatar Rehabilitation Centre.",
-          },
-          {
-            question: "What are the check-in and check-out times?",
-            answer: "Check-in is after 14:00, and check-out is before 10:00.",
-          },
-          {
-            question: "How do I send a reservation inquiry?",
-            answer:
-              "Choose your dates, guest count, and leave a phone number or email in the inquiry form. We will respond as soon as possible.",
-          },
-        ],
-      },
-
       stayInfo: {
-        label: "Before sending an inquiry",
-        title: "Stay information",
-        titleEmph: "and price",
+        label: "Before booking",
+        title: "Planning",
+        titleEmph: "your stay",
         intro:
-          "The key details for planning a stay at Vikendica Zečević Zlatar, with a simple direct inquiry process.",
-        priceTitle: "Price on request",
+          "The key details for an easy arrival and a simple date-based offer.",
+        priceTitle: "Quote by dates",
         priceText:
-          "The price depends on dates and guest count. Send an inquiry for an exact offer.",
+          "Price depends on dates and guest count. Send an inquiry and we will reply with an exact offer.",
         cards: [
-          { value: "Up to 6 guests", label: "Cabin capacity" },
+          { value: "Up to 6 guests", label: "Capacity" },
           { value: "Check-in after 14:00", label: "Check-in time" },
           { value: "Check-out before 10:00", label: "Check-out time" },
           { value: "Parking, Wi-Fi, and barbecue", label: "Available to guests" },
-          { value: "Brdo bb, Zlatar", label: "Cabin location" },
+          { value: "Brdo bb, Zlatar", label: "Location" },
           { value: "Direct contact", label: "Phone or email" },
         ],
       },

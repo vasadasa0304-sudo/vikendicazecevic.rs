@@ -7,6 +7,7 @@
   <meta id="meta-description" name="description" content="Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.">
   <link id="canonical-url" rel="canonical" href="https://vikendicazecevic.rs/">
   <link rel="alternate" hreflang="sr-RS" href="https://vikendicazecevic.rs/">
+  <link rel="alternate" hreflang="en" href="https://vikendicazecevic.rs/">
   <link rel="alternate" hreflang="x-default" href="https://vikendicazecevic.rs/">
   <meta id="meta-og-title" property="og:title" content="Vikendica Zečević Zlatar | Smeštaj na Zlataru">
   <meta id="meta-og-description" property="og:description" content="Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.">
@@ -24,6 +25,8 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#233429">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://maps.google.com">
+  <link rel="preconnect" href="https://maps.googleapis.com">
   <link
     rel="preload"
     as="image"
@@ -31,6 +34,12 @@
     imagesrcset="images/hero/hero-exterior-960.webp 960w, images/hero/hero-exterior.webp 1920w"
     imagesizes="100vw"
   >
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-italic-400-cyrillic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-italic-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-normal-400-600-cyrillic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-normal-400-600-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/source-sans-3-normal-300-500-cyrillic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/source-sans-3-normal-300-500-latin.woff2" crossorigin>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -39,6 +48,18 @@
       "url": "https://vikendicazecevic.rs/",
       "image": "https://vikendicazecevic.rs/images/hero/hero-exterior.webp",
       "description": "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
+      "priceRange": "Na upit",
+      "numberOfRooms": 2,
+      "photo": [
+        "https://vikendicazecevic.rs/images/gallery/gallery-01-exterior.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-02-living-room.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-03-kitchen-dining.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-04-terrace-view.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-05-bedroom.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-06-upstairs-bed.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-07-bathroom.webp",
+        "https://vikendicazecevic.rs/images/gallery/gallery-08-surroundings.webp"
+      ],
       "email": "vikendicazecevic@gmail.com",
       "telephone": ["+381 65 65 89 346", "+381 69 231 69 41"],
       "checkinTime": "14:00",
@@ -73,38 +94,6 @@
         { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Terrace", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Barbecue", "value": true }
-      ]
-    }
-  </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Koliko gostiju može da boravi u Vikendici Zečević Zlatar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vikendica Zečević Zlatar je namenjena za boravak do 6 gostiju."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Da li vikendica ima parking, Wi-Fi i roštilj?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Gostima su dostupni parking, Wi-Fi internet, terasa sa pogledom i roštilj."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Gde se nalazi Vikendica Zečević Zlatar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vikendica se nalazi na adresi Brdo bb, Zlatar, Nova Varoš, u blizini RH centra Zlatar."
-          }
-        }
       ]
     }
   </script>
@@ -149,17 +138,25 @@
   <section class="hero" id="home" aria-labelledby="hero-title">
     <div class="hero-bg"></div>
     <div class="hero-photo">
-      <img
-        class="hero-image"
-        src="images/hero/hero-exterior.webp"
-        srcset="images/hero/hero-exterior-960.webp 960w, images/hero/hero-exterior.webp 1920w"
-        sizes="100vw"
-        width="1920"
-        height="887"
-        alt="Eksterijer Vikendice Zečević Zlatar u planinskom okruženju."
-        data-i18n-alt="hero.imageAlt"
-        fetchpriority="high"
-      >
+      <picture>
+        <source
+          type="image/avif"
+          srcset="images/hero/hero-exterior-960.avif 960w, images/hero/hero-exterior.avif 1920w"
+          sizes="100vw"
+          media="not all"
+        >
+        <img
+          class="hero-image"
+          src="images/hero/hero-exterior.webp"
+          srcset="images/hero/hero-exterior-960.webp 960w, images/hero/hero-exterior.webp 1920w"
+          sizes="100vw"
+          width="1920"
+          height="887"
+          alt="Eksterijer Vikendice Zečević Zlatar u planinskom okruženju."
+          data-i18n-alt="hero.imageAlt"
+          fetchpriority="high"
+        >
+      </picture>
     </div>
     <div class="hero-content">
       <p class="hero-eyebrow" data-i18n="hero.eyebrow">Brdo bb · Zlatar · Nova Varoš</p>
@@ -190,30 +187,48 @@
         </div>
         <div class="about-image reveal">
           <div class="about-image-main">
-            <img
-              class="about-photo"
-              src="images/about/about-exterior.webp"
-              srcset="images/about/about-exterior-520.webp 520w, images/about/about-exterior.webp 693w"
-              sizes="(max-width: 768px) 90vw, 42vw"
-              width="693"
-              height="1500"
-              alt="Eksterijer A-frame vikendice Zečević na Zlataru."
-              data-i18n-alt="about.imageMainAlt"
-              loading="lazy"
-            >
+            <picture>
+              <source
+                type="image/avif"
+                srcset="images/about/about-exterior-520.avif 520w, images/about/about-exterior.avif 693w"
+                sizes="(max-width: 768px) 90vw, 42vw"
+                media="not all"
+              >
+              <img
+                class="about-photo"
+                src="images/about/about-exterior.webp"
+                srcset="images/about/about-exterior-520.webp 520w, images/about/about-exterior.webp 693w"
+                sizes="(max-width: 768px) 90vw, 42vw"
+                width="693"
+                height="1500"
+                alt="Eksterijer A-frame vikendice Zečević na Zlataru."
+                data-i18n-alt="about.imageMainAlt"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
           </div>
           <div class="about-image-accent">
-            <img
-              class="about-photo"
-              src="images/about/about-interior.webp"
-              srcset="images/about/about-interior-800.webp 800w, images/about/about-interior.webp 1600w"
-              sizes="(max-width: 768px) 45vw, 300px"
-              width="1600"
-              height="739"
-              alt="Enterijer vikendice sa drvenom konstrukcijom i kuhinjom."
-              data-i18n-alt="about.imageAccentAlt"
-              loading="lazy"
-            >
+            <picture>
+              <source
+                type="image/avif"
+                srcset="images/about/about-interior-800.avif 800w, images/about/about-interior.avif 1600w"
+                sizes="(max-width: 768px) 45vw, 300px"
+                media="not all"
+              >
+              <img
+                class="about-photo"
+                src="images/about/about-interior.webp"
+                srcset="images/about/about-interior-800.webp 800w, images/about/about-interior.webp 1600w"
+                sizes="(max-width: 768px) 45vw, 300px"
+                width="1600"
+                height="739"
+                alt="Enterijer vikendice sa drvenom konstrukcijom i kuhinjom."
+                data-i18n-alt="about.imageAccentAlt"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
           </div>
         </div>
       </div>
@@ -268,54 +283,19 @@
     </div>
   </section>
 
-  <!-- ── FAQ ── -->
-  <section id="faq" aria-labelledby="faq-title">
-    <div class="container">
-      <p class="section-label reveal" data-i18n="faq.label">Korisne informacije</p>
-      <h2 class="section-title reveal" id="faq-title" data-i18n="faq.title">Česta pitanja</h2>
-      <div class="divider reveal"></div>
-      <div class="faq-grid">
-        <article class="faq-card reveal">
-          <h3 data-i18n="faq.items.0.question">Koliko gostiju može da boravi u vikendici?</h3>
-          <p data-i18n="faq.items.0.answer">Vikendica Zečević Zlatar je namenjena za boravak do 6 gostiju. Prostor ima 60 m², 2 sobe, 5 kreveta i 1 kupatilo.</p>
-        </article>
-        <article class="faq-card reveal">
-          <h3 data-i18n="faq.items.1.question">Da li su dostupni parking, Wi-Fi i roštilj?</h3>
-          <p data-i18n="faq.items.1.answer">Da. Gostima su dostupni parking, Wi-Fi internet, terasa sa pogledom, dvorište i roštilj.</p>
-        </article>
-        <article class="faq-card reveal">
-          <h3 data-i18n="faq.items.2.question">Kakva je opremljenost vikendice?</h3>
-          <p data-i18n="faq.items.2.answer">U vikendici su kuhinja sa trpezarijom, frižider, šporet i rerna, posuđe, TV, kablovski kanali, peškiri, posteljina, fen za kosu i pegla.</p>
-        </article>
-        <article class="faq-card reveal">
-          <h3 data-i18n="faq.items.3.question">Gde se nalazi vikendica?</h3>
-          <p data-i18n="faq.items.3.answer">Vikendica se nalazi na adresi Brdo bb, Zlatar, Nova Varoš, na oko 1.200 m nadmorske visine i u blizini RH centra Zlatar.</p>
-        </article>
-        <article class="faq-card reveal">
-          <h3 data-i18n="faq.items.4.question">Kada su dolazak i odlazak?</h3>
-          <p data-i18n="faq.items.4.answer">Dolazak je posle 14:00, a odlazak pre 10:00.</p>
-        </article>
-        <article class="faq-card reveal">
-          <h3 data-i18n="faq.items.5.question">Kako se šalje upit za rezervaciju?</h3>
-          <p data-i18n="faq.items.5.answer">Izaberite datume, broj gostiju i ostavite telefon ili email u formi za upit. Odgovorićemo vam u najkraćem roku.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Stay Info ── -->
   <section id="stay-info" aria-labelledby="stay-info-title">
     <div class="container">
       <div class="stay-info-head reveal">
-        <p class="section-label" data-i18n="stayInfo.label">Pre slanja upita</p>
-        <h2 class="section-title" id="stay-info-title"><span data-i18n="stayInfo.title">Informacije za boravak</span> <em data-i18n="stayInfo.titleEmph">i cenu</em></h2>
+        <p class="section-label" data-i18n="stayInfo.label">Pre rezervacije</p>
+        <h2 class="section-title" id="stay-info-title"><span data-i18n="stayInfo.title">Planiranje</span> <em data-i18n="stayInfo.titleEmph">boravka</em></h2>
         <div class="divider"></div>
-        <p data-i18n="stayInfo.intro">Najvažnije informacije za planiranje boravka u Vikendici Zečević Zlatar, bez komplikovanog procesa rezervacije.</p>
+        <p data-i18n="stayInfo.intro">Ključni detalji za miran dolazak i jednostavan dogovor oko termina.</p>
       </div>
       <div class="stay-info-grid">
         <article class="stay-price-card reveal">
-          <span class="stay-card-kicker" data-i18n="stayInfo.priceTitle">Cena na upit</span>
-          <p data-i18n="stayInfo.priceText">Cena zavisi od termina i broja gostiju. Pošaljite upit za tačnu ponudu.</p>
+          <span class="stay-card-kicker" data-i18n="stayInfo.priceTitle">Ponuda prema terminu</span>
+          <p data-i18n="stayInfo.priceText">Cena zavisi od datuma i broja gostiju. Pošaljite upit i dobićete tačnu ponudu.</p>
           <a class="stay-price-link" href="#inquiry" data-i18n="hero.cta1">Pošaljite upit za rezervaciju</a>
         </article>
         <div class="stay-facts">
@@ -362,6 +342,7 @@
         </div>
         <div class="reveal">
           <form id="inquiry-form" novalidate="">
+            <input type="text" name="website" id="honeypot-field" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
             <input type="text" name="_hp" class="honeypot-field" tabindex="-1" autocomplete="off">
             <div class="form-row">
               <div>
@@ -409,8 +390,7 @@
         <a href="#gallery" data-i18n="nav.gallery">Galerija</a>
         <a href="#amenities" data-i18n="nav.amenities">Sadržaj</a>
         <a href="#location" data-i18n="nav.location">Lokacija</a>
-        <a href="#faq" data-i18n="nav.faq">Česta pitanja</a>
-        <a href="#stay-info" data-i18n="nav.stayInfo">Informacije</a>
+        <a href="#stay-info" data-i18n="nav.stayInfo">Boravak</a>
         <a href="#inquiry" data-i18n="nav.inquire">Upit</a>
       </nav>
     </div>

@@ -20,14 +20,33 @@ Lightweight static-first website for Vikendica Zečević Zlatar, with bilingual 
 
 ## Run Locally
 
-Use any static file server from this folder.
+For a static preview without the inquiry function:
 
 ```bash
 cd vikendica-zlatar-site
-python3 -m http.server 8000
+npm run serve
 ```
 
 Then open `http://localhost:8000`.
+
+For a Netlify-style staging preview with `/api/inquire` routed to the local function:
+
+```bash
+npm install
+npm run stage
+```
+
+Then open `http://localhost:8888`.
+
+In a second terminal, verify the staging server:
+
+```bash
+npm run stage:smoke
+```
+
+The smoke test checks that the page responds, security headers are present, `/api/inquire` reaches the local Netlify Function, and missing-function routes return `404`. Without real local environment variables, `/api/inquire` is expected to return `config_error`.
+
+The staging script pins `netlify-cli@17.38.1` because newer Netlify CLI packages require Node 20+, while this project supports Node 18+.
 
 ## Editing Content
 
@@ -117,7 +136,7 @@ Netlify local testing:
 
 1. `npm install`
 2. export the same variables in your shell or load them from an `.env` file
-3. run `npx netlify dev`
+3. run `npm run stage`
 4. submit the form or test `POST /api/inquire` with `curl`
 
 Example direct test:
