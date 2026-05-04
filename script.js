@@ -534,20 +534,18 @@ function renderGallery(lang) {
             aria-label="${escapeHtml(`${item.openLabel}: ${[item.label, item.caption].filter(Boolean).join(" — ")}`)}"
           >
             <span class="gallery-media">
-              <picture>
-                <img
-                  class="gallery-image"
-                  src="${escapeHtml(item.source)}"
-                  data-fallback="${escapeHtml(item.fallbackSource)}"
-                  alt="${escapeHtml(item.alt)}"
-                  ${item.srcset ? `srcset="${escapeHtml(item.srcset)}"` : ""}
-                  ${item.sizes ? `sizes="${escapeHtml(item.sizes)}"` : ""}
-                  loading="lazy"
-                  decoding="async"
-                  width="${item.width}"
-                  height="${item.height}"
-                >
-              </picture>
+              <img
+                class="gallery-image"
+                src="${escapeHtml(item.source)}"
+                data-fallback="${escapeHtml(item.fallbackSource)}"
+                alt="${escapeHtml(item.alt)}"
+                ${item.srcset ? `srcset="${escapeHtml(item.srcset)}"` : ""}
+                ${item.sizes ? `sizes="${escapeHtml(item.sizes)}"` : ""}
+                loading="lazy"
+                decoding="async"
+                width="${item.width}"
+                height="${item.height}"
+              >
               <span class="gallery-overlay" aria-hidden="true">${GALLERY_OVERLAY_ICON}</span>
             </span>
           </button>
@@ -582,17 +580,15 @@ function renderLightboxContent(index, lang = currentLang) {
   lbContent.innerHTML = `
     <figure class="lightbox-figure">
       <div class="lightbox-media">
-        <picture>
-          <img
-            class="lightbox-image"
-            src="${escapeHtml(item.source)}"
-            data-fallback="${escapeHtml(item.fallbackSource)}"
-            alt="${escapeHtml(item.alt)}"
-            width="${item.width}"
-            height="${item.height}"
-            decoding="async"
-          >
-        </picture>
+        <img
+          class="lightbox-image"
+          src="${escapeHtml(item.source)}"
+          data-fallback="${escapeHtml(item.fallbackSource)}"
+          alt="${escapeHtml(item.alt)}"
+          width="${item.width}"
+          height="${item.height}"
+          decoding="async"
+        >
       </div>
       <figcaption class="lightbox-caption" id="lb-caption">
         <span class="lightbox-label" id="lb-caption-label">${escapeHtml(item.label)}</span>
@@ -777,7 +773,7 @@ document.querySelectorAll(".lang-btn").forEach((button) => {
   button.addEventListener("click", () => applyLang(button.dataset.lang));
 });
 
-const navSectionEls = ["about", "gallery", "amenities", "location", "stay-info", "inquiry"]
+const navSectionEls = ["about", "gallery", "amenities", "location", "inquiry"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 
