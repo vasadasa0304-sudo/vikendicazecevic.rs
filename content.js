@@ -273,11 +273,11 @@ window.SITE_CONTENT = {
         priceText:
           "Cena zavisi od datuma i broja gostiju. Pošaljite upit i dobićete tačnu ponudu.",
         cards: [
-          { value: "Do 6 gostiju", label: "Kapacitet" },
+          { value: "Do 6 gostiju", label: "Kapacitet vikendice" },
           { value: "Dolazak posle 14:00", label: "Vreme dolaska" },
           { value: "Odlazak pre 10:00", label: "Vreme odlaska" },
           { value: "Parking, Wi-Fi i roštilj", label: "Dostupno gostima" },
-          { value: "Brdo bb, Zlatar", label: "Lokacija" },
+          { value: "Brdo bb, Zlatar", label: "Lokacija vikendice" },
           { value: "Direktan kontakt", label: "Telefon ili email" },
         ],
       },
@@ -514,11 +514,11 @@ window.SITE_CONTENT = {
         priceText:
           "Price depends on dates and guest count. Send an inquiry and we will reply with an exact offer.",
         cards: [
-          { value: "Up to 6 guests", label: "Capacity" },
+          { value: "Up to 6 guests", label: "Cabin capacity" },
           { value: "Check-in after 14:00", label: "Check-in time" },
           { value: "Check-out before 10:00", label: "Check-out time" },
           { value: "Parking, Wi-Fi, and barbecue", label: "Available to guests" },
-          { value: "Brdo bb, Zlatar", label: "Location" },
+          { value: "Brdo bb, Zlatar", label: "Cabin location" },
           { value: "Direct contact", label: "Phone or email" },
         ],
       },

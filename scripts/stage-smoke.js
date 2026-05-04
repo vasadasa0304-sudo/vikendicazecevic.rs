@@ -35,6 +35,10 @@ async function checkHome() {
   assert(!missingHeaders.length, `Missing security headers: ${missingHeaders.join(", ")}`);
 }
 
+function futureDate(daysFromNow) {
+  return new Date(Date.now() + daysFromNow * 86400000).toISOString().slice(0, 10);
+}
+
 async function checkInquiryRoute() {
   const response = await fetch(`${BASE_URL}/api/inquire`, {
     method: "POST",
@@ -42,8 +46,8 @@ async function checkInquiryRoute() {
     body: JSON.stringify({
       guestName: "Smoke Test",
       contact: "smoke@example.com",
-      checkin: "2026-05-10",
-      checkout: "2026-05-12",
+      checkin: futureDate(7),
+      checkout: futureDate(9),
       guests: "2",
     }),
   });

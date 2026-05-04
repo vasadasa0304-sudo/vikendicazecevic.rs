@@ -78,10 +78,6 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function toAvifPath(value) {
-  return String(value || "").replaceAll(".webp", ".avif");
-}
-
 function getLocale(lang = currentLang) {
   return CONTENT.localized[lang] || CONTENT.localized.sr;
 }
@@ -539,12 +535,6 @@ function renderGallery(lang) {
           >
             <span class="gallery-media">
               <picture>
-                <source
-                  type="image/avif"
-                  srcset="${escapeHtml(toAvifPath(item.srcset || item.source))}"
-                  ${item.sizes ? `sizes="${escapeHtml(item.sizes)}"` : ""}
-                  media="not all"
-                >
                 <img
                   class="gallery-image"
                   src="${escapeHtml(item.source)}"
@@ -593,11 +583,6 @@ function renderLightboxContent(index, lang = currentLang) {
     <figure class="lightbox-figure">
       <div class="lightbox-media">
         <picture>
-          <source
-            type="image/avif"
-            srcset="${escapeHtml(toAvifPath(item.source))}"
-            media="not all"
-          >
           <img
             class="lightbox-image"
             src="${escapeHtml(item.source)}"
@@ -792,7 +777,7 @@ document.querySelectorAll(".lang-btn").forEach((button) => {
   button.addEventListener("click", () => applyLang(button.dataset.lang));
 });
 
-const navSectionEls = ["about", "gallery", "amenities", "location", "inquiry"]
+const navSectionEls = ["about", "gallery", "amenities", "location", "stay-info", "inquiry"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 
