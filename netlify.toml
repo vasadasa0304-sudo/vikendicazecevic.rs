@@ -1,8 +1,16 @@
 [build]
   publish = "."
+  command = "node scripts/prebake.js"
 
 [functions]
   directory = "netlify/functions"
+
+# Canonical host: force www → apex before any path rules.
+[[redirects]]
+  from = "https://www.vikendicazecevic.rs/*"
+  to = "https://vikendicazecevic.rs/:splat"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/api/*"
@@ -28,3 +36,9 @@
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Custom 404 — keep LAST so it only fires for unknown paths (never shadows /api/* or real files).
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

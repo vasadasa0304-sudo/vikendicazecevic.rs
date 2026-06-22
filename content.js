@@ -33,64 +33,64 @@ window.SITE_CONTENT = {
 
     galleryMedia: [
       {
-        src: "images/gallery/gallery-01-exterior.webp",
-        srcset: "images/gallery/gallery-01-exterior-800.webp 800w, images/gallery/gallery-01-exterior.webp 1600w",
+        src: "/images/gallery/gallery-01-exterior.webp",
+        srcset: "/images/gallery/gallery-01-exterior-800.webp 800w, /images/gallery/gallery-01-exterior.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 100vw, 50vw",
         width: 1600,
         height: 739,
         layout: "featured",
       },
       {
-        src: "images/gallery/gallery-02-living-room.webp",
-        srcset: "images/gallery/gallery-02-living-room-800.webp 800w, images/gallery/gallery-02-living-room.webp 1600w",
+        src: "/images/gallery/gallery-02-living-room.webp",
+        srcset: "/images/gallery/gallery-02-living-room-800.webp 800w, /images/gallery/gallery-02-living-room.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
         layout: "standard",
       },
       {
-        src: "images/gallery/gallery-03-kitchen-dining.webp",
-        srcset: "images/gallery/gallery-03-kitchen-dining-800.webp 800w, images/gallery/gallery-03-kitchen-dining.webp 1600w",
+        src: "/images/gallery/gallery-03-kitchen-dining.webp",
+        srcset: "/images/gallery/gallery-03-kitchen-dining-800.webp 800w, /images/gallery/gallery-03-kitchen-dining.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
         layout: "standard",
       },
       {
-        src: "images/gallery/gallery-04-terrace-view.webp",
-        srcset: "images/gallery/gallery-04-terrace-view-800.webp 800w, images/gallery/gallery-04-terrace-view.webp 1600w",
+        src: "/images/gallery/gallery-04-terrace-view.webp",
+        srcset: "/images/gallery/gallery-04-terrace-view-800.webp 800w, /images/gallery/gallery-04-terrace-view.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 100vw, 50vw",
         width: 1600,
         height: 739,
         layout: "wide",
       },
       {
-        src: "images/gallery/gallery-05-bedroom.webp",
-        srcset: "images/gallery/gallery-05-bedroom-800.webp 800w, images/gallery/gallery-05-bedroom.webp 1600w",
+        src: "/images/gallery/gallery-05-bedroom.webp",
+        srcset: "/images/gallery/gallery-05-bedroom-800.webp 800w, /images/gallery/gallery-05-bedroom.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
         layout: "standard",
       },
       {
-        src: "images/gallery/gallery-06-upstairs-bed.webp",
-        srcset: "images/gallery/gallery-06-upstairs-bed-800.webp 800w, images/gallery/gallery-06-upstairs-bed.webp 1600w",
+        src: "/images/gallery/gallery-06-upstairs-bed.webp",
+        srcset: "/images/gallery/gallery-06-upstairs-bed-800.webp 800w, /images/gallery/gallery-06-upstairs-bed.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
         layout: "standard",
       },
       {
-        src: "images/gallery/gallery-07-bathroom.webp",
-        srcset: "images/gallery/gallery-07-bathroom-800.webp 800w, images/gallery/gallery-07-bathroom.webp 1600w",
+        src: "/images/gallery/gallery-07-bathroom.webp",
+        srcset: "/images/gallery/gallery-07-bathroom-800.webp 800w, /images/gallery/gallery-07-bathroom.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
         layout: "standard",
       },
       {
-        src: "images/gallery/gallery-08-surroundings.webp",
-        srcset: "images/gallery/gallery-08-surroundings-800.webp 800w, images/gallery/gallery-08-surroundings.webp 1600w",
+        src: "/images/gallery/gallery-08-surroundings.webp",
+        srcset: "/images/gallery/gallery-08-surroundings-800.webp 800w, /images/gallery/gallery-08-surroundings.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
@@ -116,6 +116,7 @@ window.SITE_CONTENT = {
         gallery: "Galerija",
         amenities: "Sadržaj",
         location: "Lokacija",
+        faq: "Pitanja",
         stayInfo: "Boravak",
         inquire: "Upit",
         menuLabel: "Meni",
@@ -263,6 +264,50 @@ window.SITE_CONTENT = {
         ],
       },
 
+      faq: {
+        label: "Česta pitanja",
+        title: "Pitanja i",
+        titleEmph: "odgovori",
+        items: [
+          {
+            q: "Koliko gostiju može da boravi u vikendici?",
+            a: "Vikendica prima do 6 gostiju.",
+          },
+          {
+            q: "Koliko soba, kreveta i kupatila ima vikendica?",
+            a: "Vikendica ima 2 sobe i ukupno 5 kreveta — spavaću sobu sa dva kreveta u prizemlju i francuski krevet na spratu — kao i 1 kupatilo.",
+          },
+          {
+            q: "Kolika je površina vikendice?",
+            a: "Vikendica je A-frame kuća površine oko 60 m².",
+          },
+          {
+            q: "Na kojoj se nadmorskoj visini nalazi vikendica?",
+            a: "Vikendica se nalazi na oko 1.200 metara nadmorske visine, na planini Zlatar.",
+          },
+          {
+            q: "Da li postoje Wi-Fi, parking i roštilj?",
+            a: "Da. Gostima su na raspolaganju Wi-Fi internet, besplatan parking i roštilj.",
+          },
+          {
+            q: "Da li je vikendica grejana zimi?",
+            a: "Da. Vikendica ima grejanje na struju i norveške radijatore, kao i klima uređaje.",
+          },
+          {
+            q: "Kada su prijava i odjava?",
+            a: "Dolazak je posle 14:00, a odlazak pre 10:00.",
+          },
+          {
+            q: "Šta se nalazi u blizini vikendice?",
+            a: "U neposrednoj blizini su Rehabilitacioni centar Zlatar, sportski tereni, trim staze i šetališta.",
+          },
+          {
+            q: "Kako mogu da rezervišem i kolika je cena?",
+            a: "Cena zavisi od datuma i broja gostiju. Pošaljite upit preko sajta ili nas kontaktirajte telefonom ili emailom i dobićete tačnu ponudu.",
+          },
+        ],
+      },
+
       stayInfo: {
         label: "Pre rezervacije",
         title: "Planiranje",
@@ -357,6 +402,7 @@ window.SITE_CONTENT = {
         gallery: "Gallery",
         amenities: "Amenities",
         location: "Location",
+        faq: "FAQ",
         stayInfo: "Stay",
         inquire: "Inquire",
         menuLabel: "Menu",
@@ -501,6 +547,50 @@ window.SITE_CONTENT = {
           { name: "Fitness trails", distance: "nearby" },
           { name: "Walking paths", distance: "nearby" },
           { name: "Rest and nature spots", distance: "in the area" },
+        ],
+      },
+
+      faq: {
+        label: "FAQ",
+        title: "Frequently asked",
+        titleEmph: "questions",
+        items: [
+          {
+            q: "How many guests can stay at the cabin?",
+            a: "The cabin accommodates up to 6 guests.",
+          },
+          {
+            q: "How many rooms, beds and bathrooms are there?",
+            a: "The cabin has 2 rooms and 5 beds in total — a ground-floor bedroom with two beds and a double bed upstairs — plus 1 bathroom.",
+          },
+          {
+            q: "How big is the cabin?",
+            a: "It is an A-frame cabin of approximately 60 m².",
+          },
+          {
+            q: "What is the altitude?",
+            a: "The cabin sits at approximately 1,200 metres above sea level, on Mount Zlatar.",
+          },
+          {
+            q: "Is there Wi-Fi, parking and a barbecue?",
+            a: "Yes. Wi-Fi internet, free parking and a barbecue are available to guests.",
+          },
+          {
+            q: "Is the cabin heated in winter?",
+            a: "Yes. The cabin has electric heating and Norwegian radiators, as well as air conditioning.",
+          },
+          {
+            q: "What are the check-in and check-out times?",
+            a: "Check-in is after 14:00 and check-out is before 10:00.",
+          },
+          {
+            q: "What is nearby?",
+            a: "The Zlatar Rehabilitation Centre, sports courts, fitness trails and walking paths are all close by.",
+          },
+          {
+            q: "How do I book and how much does it cost?",
+            a: "The price depends on the dates and number of guests. Send an inquiry through the site or contact us by phone or email and we will reply with an exact offer.",
+          },
         ],
       },
 

@@ -7,11 +7,13 @@
   },
   "scripts": {
     "start": "npm run serve",
+    "build": "node scripts/prebake.js",
+    "preserve": "npm run build",
     "serve": "python3 -m http.server 8000",
-    "prestage": "npm run check",
+    "prestage": "npm run check && npm run build",
     "stage": "npx --yes netlify-cli@17.38.1 dev --offline --port 8888",
     "stage:smoke": "node scripts/stage-smoke.js",
-    "check": "node --check config.js && node --check content.js && node --check script.js && node --check server/inquire-handler.js && node --check netlify/functions/inquire.js",
+    "check": "node --check config.js && node --check content.js && node --check script.js && node --check scripts/prebake.js && node --check server/inquire-handler.js && node --check netlify/functions/inquire.js",
     "audit:prod": "npm audit --omit=dev"
   },
   "dependencies": {

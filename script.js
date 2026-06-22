@@ -51,7 +51,10 @@ const lb = document.getElementById("lightbox");
 const lbContent = document.getElementById("lb-content");
 const mapFrame = document.getElementById("location-map");
 
-let currentLang = localStorage.getItem("lang") || "sr";
+// Default to the page's own baked language (/ = sr, /en/ = en) so a server-rendered
+// English page doesn't flip back to Serbian on load; an explicit saved choice still wins.
+const PAGE_LANG = document.documentElement.lang === "en" ? "en" : "sr";
+let currentLang = localStorage.getItem("lang") || PAGE_LANG;
 let currentIdx = 0;
 let lastFocusedElement = null;
 
@@ -585,6 +588,8 @@ function renderLightboxContent(index, lang = currentLang) {
           src="${escapeHtml(item.source)}"
           data-fallback="${escapeHtml(item.fallbackSource)}"
           alt="${escapeHtml(item.alt)}"
+          ${item.srcset ? `srcset="${escapeHtml(item.srcset)}"` : ""}
+          sizes="(max-width: 768px) 92vw, (max-width: 1200px) 85vw, 1100px"
           width="${item.width}"
           height="${item.height}"
           decoding="async"
@@ -773,7 +778,7 @@ document.querySelectorAll(".lang-btn").forEach((button) => {
   button.addEventListener("click", () => applyLang(button.dataset.lang));
 });
 
-const navSectionEls = ["about", "gallery", "amenities", "location", "inquiry"]
+const navSectionEls = ["about", "gallery", "amenities", "location", "faq", "inquiry"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 

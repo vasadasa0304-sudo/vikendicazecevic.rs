@@ -1,0 +1,19 @@
+{
+  "name": "Vikendica Zečević Zlatar",
+  "short_name": "Vikendica Zečević",
+  "description": "Porodična A-frame vikendica na Zlataru za do 6 gostiju.",
+  "lang": "sr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f3ee",
+  "theme_color": "#233429",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

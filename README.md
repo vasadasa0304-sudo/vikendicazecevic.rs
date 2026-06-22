@@ -9,14 +9,17 @@ Lightweight static-first website for Vikendica Zečević Zlatar, with bilingual 
 - `config.js`: public runtime config for `/api/inquire`, source label, and the map embed URL
 - `styles.css`: extracted fonts and site styles
 - `script.js`: renders content from `content.js`, handles SR/EN switching, nav behavior, reveal animation, gallery lightbox, and inquiry form UI
+- `scripts/prebake.js`: static prerender (no deps) — bakes `content.js` into `index.html`'s containers, generates the crawlable English page, and regenerates `sitemap.xml`
+- `en/index.html`: **generated** English page (do not edit by hand; produced by `npm run build`)
 - `netlify/functions/inquire.js`: Netlify Function for the inquiry endpoint
 - `server/inquire-handler.js`: shared inquiry validation and delivery logic
-- `netlify.toml`: Netlify redirect so the public endpoint stays `/api/inquire`
+- `netlify.toml`: Netlify build command, `/api/inquire` proxy, headers/CSP, www→apex + 404 redirects
 - `.env.example`: required environment variables for Telegram, SMTP, and light rate limiting
 - `package.json`: minimal backend dependency manifest (`nodemailer`)
 - `assets/fonts/`: local `woff2` font files
 - `images/`: optimized production photos and replacement notes
-- `sitemap.xml` and `robots.txt`: crawler hints for the production domain
+- `sitemap.xml`, `robots.txt`, `llms.txt`: crawler/AI-search hints for the production domain
+- `manifest.json`, `404.html`, `favicon.svg`: web app manifest, custom not-found page, icon
 
 ## Run Locally
 
@@ -48,13 +51,36 @@ The smoke test checks that the page responds, security headers are present, `/ap
 
 The staging script pins `netlify-cli@17.38.1` because newer Netlify CLI packages require Node 20+, while this project supports Node 18+.
 
+## Build (prerender for SEO / AI search)
+
+```bash
+npm run build   # node scripts/prebake.js
+```
+
+`script.js` renders the amenities, gallery, nearby list, stats, guest options and
+contact list into **empty** containers at runtime. Crawlers that don't execute
+JavaScript (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Google-Extended …)
+would otherwise see empty sections and no English. `npm run build` fixes that:
+
+- bakes the **Serbian** content into `index.html` (between `<!--PB:key-->` sentinels — idempotent)
+- generates a fully crawlable **English** page at `en/index.html`
+- bakes a `FAQPage` JSON-LD block into each page
+- regenerates `sitemap.xml` (image entries, `/en/` alternate, `lastmod`)
+
+It mirrors the markup `script.js` produces, so the client hydration is a no-op
+(no flash). It runs automatically on every Netlify deploy (the `[build]` command)
+and before `npm run serve` (the `preserve` hook), so the served HTML is always
+baked. The amenity/inquiry icons are read straight out of `script.js`, so they
+can't drift from the live renderer.
+
 ## Editing Content
 
-For normal content updates, edit `content.js`.
+For normal content updates, edit `content.js`, then run `npm run build` (or just
+`npm run serve`, which rebuilds first). On deploy, Netlify runs the build for you.
 
-- Text, captions, amenities, nearby distances, contact details, SEO copy, and form labels now live in `content.js`
-- `index.html` still contains fallback copy inside some elements, but `content.js` is the authoritative source used by the running site
-- Structured data lives in `index.html`; update it only when the verified business facts change.
+- Text, captions, amenities, nearby distances, contact details, SEO copy, form labels, and the FAQ now live in `content.js` (Serbian under `localized.sr`, English under `localized.en`)
+- `index.html` is the **baked Serbian page**; the prerender fills its containers and `en/index.html` from `content.js` — don't hand-edit the generated regions or `en/index.html`
+- The `LodgingBusiness`/`VacationRental` structured data lives in `index.html`; update it only when the verified business facts change. The `FAQPage` schema is generated from `content.js` `faq`.
 
 ## Inquiry Endpoint
 
