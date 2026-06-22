@@ -18,6 +18,7 @@ Lightweight static-first website for Vikendica Zečević Zlatar, with bilingual 
 - `package.json`: minimal backend dependency manifest (`nodemailer`)
 - `assets/fonts/`: local `woff2` font files
 - `images/`: optimized production photos and replacement notes
+- `images/og/`: generated 1200×630 social share cards (`og-sr.jpg`, `og-en.jpg`)
 - `sitemap.xml`, `robots.txt`, `llms.txt`: crawler/AI-search hints for the production domain
 - `manifest.json`, `404.html`, `favicon.svg`: web app manifest, custom not-found page, icon
 
@@ -81,6 +82,27 @@ For normal content updates, edit `content.js`, then run `npm run build` (or just
 - Text, captions, amenities, nearby distances, contact details, SEO copy, form labels, and the FAQ now live in `content.js` (Serbian under `localized.sr`, English under `localized.en`)
 - `index.html` is the **baked Serbian page**; the prerender fills its containers and `en/index.html` from `content.js` — don't hand-edit the generated regions or `en/index.html`
 - The `LodgingBusiness`/`VacationRental` structured data lives in `index.html`; update it only when the verified business facts change. The `FAQPage` schema is generated from `content.js` `faq`.
+
+## Analytics (optional, privacy-first)
+
+Cloudflare Web Analytics is wired but **off by default** — no cookies, no consent
+banner, and nothing external loads until you add a token:
+
+1. `dash.cloudflare.com` → **Web Analytics** → add `vikendicazecevic.rs` → copy the **token**.
+2. Paste it into `config.js` → `analyticsBeaconToken: "..."`.
+3. Commit + deploy. The beacon then loads on both `/` and `/en/`.
+
+The CSP in `netlify.toml` already allows `static.cloudflareinsights.com` /
+`cloudflareinsights.com`. Leave the token empty to keep analytics fully disabled.
+(A zero-JS alternative is Netlify Analytics — server-side, paid, enabled in the
+Netlify dashboard with no code changes.)
+
+## Social share image
+
+`og:image` / `twitter:image` point to `images/og/og-sr.jpg` (and `og-en.jpg` on
+`/en/`, swapped by the prerender) — a 1200×630 card built from the hero photo and
+the brand fonts. To regenerate after a rebrand or new hero photo, re-run the
+one-off card generator (uses a headless browser; not part of the normal build).
 
 ## Inquiry Endpoint
 

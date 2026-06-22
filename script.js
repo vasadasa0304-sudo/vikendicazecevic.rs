@@ -996,3 +996,15 @@ initDateInputLimits();
 scheduleHashAlignment();
 nav.classList.toggle("scrolled", window.scrollY > 60);
 updateActiveNavLink();
+
+// Privacy-friendly analytics (Cloudflare Web Analytics) — loads only if a token
+// is configured in config.js; with no token, nothing external is requested.
+(function initAnalytics() {
+  const token = window.SITE_CONFIG && window.SITE_CONFIG.analyticsBeaconToken;
+  if (!token) return;
+  const beacon = document.createElement("script");
+  beacon.defer = true;
+  beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+  beacon.setAttribute("data-cf-beacon", JSON.stringify({ token }));
+  document.head.appendChild(beacon);
+})();

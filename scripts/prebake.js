@@ -347,6 +347,15 @@ function generateEnglish(srHtml) {
     /(<meta id="meta-og-locale-alt" property="og:locale:alternate" content=")[^"]*(")/,
     "$1sr_RS$2"
   );
+  // English share/social card
+  html = html.replace(
+    /(<meta id="meta-og-image" property="og:image" content=")[^"]*(")/,
+    `$1${ORIGIN}/images/og/og-en.jpg$2`
+  );
+  html = html.replace(
+    /(<meta id="meta-twitter-image" name="twitter:image" content=")[^"]*(")/,
+    `$1${ORIGIN}/images/og/og-en.jpg$2`
+  );
   return html;
 }
 
