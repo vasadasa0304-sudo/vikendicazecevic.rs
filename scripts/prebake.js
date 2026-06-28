@@ -359,7 +359,33 @@ function generateEnglish(srHtml) {
   return html;
 }
 
-// ── sitemap with image entries + /en/ alternate + lastmod ──
+// ── tour video facts (single source of truth for the sitemap + on-page VideoObject) ──
+const VIDEO = {
+  contentLoc: `${ORIGIN}/video/vikendica-tour.mp4`,
+  thumbnailLoc: `${ORIGIN}/video/tour-poster.jpg`,
+  duration: 108,
+  publicationDate: "2026-06-29",
+};
+
+// localized <video:video> block for a page that embeds the tour
+function buildVideoXml(lang) {
+  const tour = getLocale(lang).tour;
+  const title = `${CONTENT.shared.englishName} — ${lang === "sr" ? "video tura" : "video tour"}`;
+  const description = applyTokens(tour.intro, lang);
+  return `
+    <video:video>
+      <video:thumbnail_loc>${escapeXml(VIDEO.thumbnailLoc)}</video:thumbnail_loc>
+      <video:title>${escapeXml(title)}</video:title>
+      <video:description>${escapeXml(description)}</video:description>
+      <video:content_loc>${escapeXml(VIDEO.contentLoc)}</video:content_loc>
+      <video:duration>${VIDEO.duration}</video:duration>
+      <video:publication_date>${VIDEO.publicationDate}</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>`;
+}
+
+// ── sitemap with image + video entries + /en/ alternate + lastmod ──
 function buildSitemap() {
   const today = new Date().toISOString().slice(0, 10);
   const gallery = getGalleryEntries("sr");
@@ -386,18 +412,19 @@ function buildSitemap() {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>${ORIGIN}/</loc>${alternates}
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>${imagesXml}
+    <priority>1.0</priority>${imagesXml}${buildVideoXml("sr")}
   </url>
   <url>
     <loc>${ORIGIN}/en/</loc>${alternates}
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.9</priority>${buildVideoXml("en")}
   </url>
 </urlset>
 `;
