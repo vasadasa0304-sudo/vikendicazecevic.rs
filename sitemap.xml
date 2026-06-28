@@ -7,7 +7,7 @@
     <xhtml:link rel="alternate" hreflang="sr-RS" href="https://vikendicazecevic.rs/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vikendicazecevic.rs/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vikendicazecevic.rs/"/>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -16,11 +16,11 @@
     </image:image>
     <image:image>
       <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-01-exterior.webp</image:loc>
-      <image:title>Eksterijer — Pogled na vikendicu i planinsko okruženje</image:title>
+      <image:title>Eksterijer — A-frame vikendica i planinski vidik</image:title>
     </image:image>
     <image:image>
       <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-02-living-room.webp</image:loc>
-      <image:title>Dnevna soba — Ugaona garnitura na razvlačenje</image:title>
+      <image:title>Dnevna soba — Ugaona garnitura i pogled na dolinu</image:title>
     </image:image>
     <image:image>
       <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-03-kitchen-dining.webp</image:loc>
@@ -28,11 +28,11 @@
     </image:image>
     <image:image>
       <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-04-terrace-view.webp</image:loc>
-      <image:title>Terasa — Prostrana terasa sa pogledom</image:title>
+      <image:title>Terasa — Terasa sa pogledom na Zlatar</image:title>
     </image:image>
     <image:image>
       <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-05-bedroom.webp</image:loc>
-      <image:title>Spavaća soba — Spavaća soba sa dva kreveta</image:title>
+      <image:title>Spavaća soba — Soba sa dva kreveta u prizemlju</image:title>
     </image:image>
     <image:image>
       <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-06-upstairs-bed.webp</image:loc>
@@ -44,7 +44,31 @@
     </image:image>
     <image:image>
       <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-08-surroundings.webp</image:loc>
-      <image:title>Okolina — Okolina Zlatara</image:title>
+      <image:title>Okolina — Zelene padine i vidici Zlatara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-09-loft.webp</image:loc>
+      <image:title>Mezanin — Pogled sa galerije kroz stakleni zabat</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-10-interior-overview.webp</image:loc>
+      <image:title>Enterijer — Otvoren prostor sa stepeništem</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-11-terrace-coffee.webp</image:loc>
+      <image:title>Jutarnja kafa — Kafa na terasi uz vidik</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-12-terrace-golden.webp</image:loc>
+      <image:title>Terasa u suton — Predvečerje na terasi</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-13-exterior-night.webp</image:loc>
+      <image:title>Vikendica noću — Osvetljena A-frame fasada</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vikendicazecevic.rs/images/gallery/gallery-14-playground.webp</image:loc>
+      <image:title>Igralište za decu — Ljuljaška i tobogan u dvorištu</image:title>
     </image:image>
   </url>
   <url>
@@ -52,7 +76,7 @@
     <xhtml:link rel="alternate" hreflang="sr-RS" href="https://vikendicazecevic.rs/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vikendicazecevic.rs/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vikendicazecevic.rs/"/>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

@@ -91,6 +91,54 @@ window.SITE_CONTENT = {
       {
         src: "/images/gallery/gallery-08-surroundings.webp",
         srcset: "/images/gallery/gallery-08-surroundings-800.webp 800w, /images/gallery/gallery-08-surroundings.webp 1600w",
+        sizes: "(max-width: 560px) 100vw, (max-width: 900px) 100vw, 50vw",
+        width: 1600,
+        height: 739,
+        layout: "wide",
+      },
+      {
+        src: "/images/gallery/gallery-09-loft.webp",
+        srcset: "/images/gallery/gallery-09-loft-800.webp 800w, /images/gallery/gallery-09-loft.webp 1600w",
+        sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
+        width: 1600,
+        height: 739,
+        layout: "standard",
+      },
+      {
+        src: "/images/gallery/gallery-10-interior-overview.webp",
+        srcset: "/images/gallery/gallery-10-interior-overview-800.webp 800w, /images/gallery/gallery-10-interior-overview.webp 1600w",
+        sizes: "(max-width: 560px) 100vw, (max-width: 900px) 100vw, 50vw",
+        width: 1600,
+        height: 739,
+        layout: "wide",
+      },
+      {
+        src: "/images/gallery/gallery-11-terrace-coffee.webp",
+        srcset: "/images/gallery/gallery-11-terrace-coffee-800.webp 800w, /images/gallery/gallery-11-terrace-coffee.webp 1600w",
+        sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
+        width: 1600,
+        height: 739,
+        layout: "standard",
+      },
+      {
+        src: "/images/gallery/gallery-12-terrace-golden.webp",
+        srcset: "/images/gallery/gallery-12-terrace-golden-800.webp 800w, /images/gallery/gallery-12-terrace-golden.webp 1600w",
+        sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
+        width: 1600,
+        height: 739,
+        layout: "standard",
+      },
+      {
+        src: "/images/gallery/gallery-13-exterior-night.webp",
+        srcset: "/images/gallery/gallery-13-exterior-night-800.webp 800w, /images/gallery/gallery-13-exterior-night.webp 1600w",
+        sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
+        width: 1600,
+        height: 739,
+        layout: "standard",
+      },
+      {
+        src: "/images/gallery/gallery-14-playground.webp",
+        srcset: "/images/gallery/gallery-14-playground-800.webp 800w, /images/gallery/gallery-14-playground.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
@@ -114,6 +162,7 @@ window.SITE_CONTENT = {
       nav: {
         about: "O vikendici",
         gallery: "Galerija",
+        tour: "Video",
         amenities: "Sadržaj",
         location: "Lokacija",
         faq: "Pitanja",
@@ -144,7 +193,7 @@ window.SITE_CONTENT = {
         p2:
           "Iz dnevne sobe se izlazi na prostranu terasu sa pogledom na prirodu i okolinu Zlatara. Terasa je jedan od glavnih aduta vikendice — idealna je za jutarnju kafu, odmor tokom dana ili mirno veče na planini.",
         imageMainAlt: "Eksterijer A-frame vikendice Zečević na Zlataru.",
-        imageAccentAlt: "Unutrašnjost A-frame vikendice — pogled na sprat, stepenište i kuhinju.",
+        imageAccentAlt: "Dnevna soba vikendice sa pogledom na dolinu kroz staklenu A-frame fasadu.",
         stats: [
           { value: "6", label: "Do 6 gostiju" },
           { value: "60 m²", label: "Površina" },
@@ -162,43 +211,73 @@ window.SITE_CONTENT = {
         items: [
           {
             label: "Eksterijer",
-            caption: "Pogled na vikendicu i planinsko okruženje",
-            alt: "Dnevni pogled na A-frame vikendicu Zečević sa planinskim okruženjem.",
+            caption: "A-frame vikendica i planinski vidik",
+            alt: "Dnevni pogled na A-frame vikendicu Zečević sa zelenim padinama Zlatara.",
           },
           {
             label: "Dnevna soba",
-            caption: "Ugaona garnitura na razvlačenje",
-            alt: "Dnevna soba sa ugaonom garniturom.",
+            caption: "Ugaona garnitura i pogled na dolinu",
+            alt: "Dnevna soba sa ugaonom garniturom i staklenom fasadom ka dolini.",
           },
           {
             label: "Kuhinja",
             caption: "Kuhinja sa trpezarijom",
-            alt: "Kuhinja i trpezarija.",
+            alt: "Potpuno opremljena kuhinja sa trpezarijskim stolom.",
           },
           {
             label: "Terasa",
-            caption: "Prostrana terasa sa pogledom",
-            alt: "Terasa i pogled sa vikendice.",
+            caption: "Terasa sa pogledom na Zlatar",
+            alt: "Terasa sa stolom i pogledom na zelene planine Zlatara.",
           },
           {
             label: "Spavaća soba",
-            caption: "Spavaća soba sa dva kreveta",
-            alt: "Spavaća soba u prizemlju.",
+            caption: "Soba sa dva kreveta u prizemlju",
+            alt: "Spavaća soba u prizemlju sa dva odvojena kreveta.",
           },
           {
             label: "Sprat",
             caption: "Francuski krevet na spratu",
-            alt: "Sprat sa francuskim krevetom.",
+            alt: "Spavaći deo na spratu sa francuskim krevetom pod A-frame krovom.",
           },
           {
             label: "Kupatilo",
             caption: "Kupatilo sa tušem",
-            alt: "Kupatilo sa tušem u vikendici.",
+            alt: "Kupatilo sa tuš kabinom i mermernim pločicama.",
           },
           {
             label: "Okolina",
-            caption: "Okolina Zlatara",
-            alt: "Planinsko okruženje i okolina vikendice na Zlataru.",
+            caption: "Zelene padine i vidici Zlatara",
+            alt: "Panoramski pogled na zelene planine i sela oko Zlatara.",
+          },
+          {
+            label: "Mezanin",
+            caption: "Pogled sa galerije kroz stakleni zabat",
+            alt: "Pogled sa mezanina kroz veliki trougaoni stakleni zabat A-frame kuće.",
+          },
+          {
+            label: "Enterijer",
+            caption: "Otvoren prostor sa stepeništem",
+            alt: "Otvoren enterijer vikendice sa dnevnom sobom, stepeništem i kuhinjom.",
+          },
+          {
+            label: "Jutarnja kafa",
+            caption: "Kafa na terasi uz vidik",
+            alt: "Dve šoljice kafe na stolu terase uz pogled na planinu.",
+          },
+          {
+            label: "Terasa u suton",
+            caption: "Predvečerje na terasi",
+            alt: "Terasa vikendice u zlatno predvečerje sa pogledom na šumu i planine.",
+          },
+          {
+            label: "Vikendica noću",
+            caption: "Osvetljena A-frame fasada",
+            alt: "A-frame vikendica noću sa toplo osvetljenim staklenim zabatom.",
+          },
+          {
+            label: "Igralište za decu",
+            caption: "Ljuljaška i tobogan u dvorištu",
+            alt: "Dečje igralište sa ljuljaškom i toboganom u dvorištu okruženom borovima.",
           },
         ],
         lightbox: {
@@ -207,6 +286,16 @@ window.SITE_CONTENT = {
           prev: "Prethodna fotografija",
           next: "Sledeća fotografija",
         },
+      },
+
+      tour: {
+        label: "Video",
+        title: "Video tura",
+        titleEmph: "vikendice",
+        intro: "Prošetajte kroz vikendicu, terasu i okolinu pre nego što rezervišete.",
+        play: "Pokreni video",
+        playAria: "Pokreni video turu vikendice",
+        posterAlt: "Naslovna slika video ture — dnevna soba vikendice sa pogledom na dolinu.",
       },
 
       amenities: {
@@ -220,7 +309,7 @@ window.SITE_CONTENT = {
               { icon: "wifi", name: "Wi-Fi", detail: "Internet u vikendici" },
               { icon: "linen", name: "Peškiri i posteljina", detail: "Uključeno u boravak" },
               { icon: "heat", name: "Grejanje", detail: "Grejanje na struju i norveški radijatori" },
-              { icon: "heat", name: "Klima uređaji", detail: "Za prijatniji boravak" },
+              { icon: "ac", name: "Klima uređaji", detail: "Za prijatniji boravak" },
               { icon: "linen", name: "Lična higijena", detail: "Osnovna sredstva za ličnu higijenu" },
               { icon: "linen", name: "Fen za kosu", detail: "Dostupan gostima" },
               { icon: "linen", name: "Pegla", detail: "Dostupna gostima" },
@@ -240,8 +329,9 @@ window.SITE_CONTENT = {
             items: [
               { icon: "terrace", name: "Terasa sa pogledom", detail: "Izlaz iz dnevne sobe" },
               { icon: "park", name: "Dvorište", detail: "Prostor oko vikendice" },
-              { icon: "park", name: "Parking", detail: "Dostupan gostima" },
+              { icon: "parking", name: "Parking", detail: "Dostupan gostima" },
               { icon: "bbq", name: "Roštilj", detail: "Za boravak napolju" },
+              { icon: "playground", name: "Dečje igralište", detail: "Ljuljaška i tobogan u dvorištu" },
             ],
           },
         ],
@@ -400,6 +490,7 @@ window.SITE_CONTENT = {
       nav: {
         about: "About",
         gallery: "Gallery",
+        tour: "Video",
         amenities: "Amenities",
         location: "Location",
         faq: "FAQ",
@@ -430,7 +521,7 @@ window.SITE_CONTENT = {
         p2:
           "From the living room, guests can step out onto a spacious terrace overlooking the natural surroundings of Zlatar. The terrace is one of the cabin’s main highlights — ideal for morning coffee, daytime relaxation, or a quiet evening in the mountains.",
         imageMainAlt: "The exterior of Zečević A-frame cabin in Zlatar.",
-        imageAccentAlt: "Interior of the A-frame cabin showing the upper floor, staircase, and kitchen.",
+        imageAccentAlt: "The cabin living room with valley views through the glass A-frame gable.",
         stats: [
           { value: "6", label: "Up to 6 guests" },
           { value: "60 m²", label: "Size" },
@@ -448,43 +539,73 @@ window.SITE_CONTENT = {
         items: [
           {
             label: "Exterior",
-            caption: "View of the cabin and mountain surroundings",
-            alt: "Daytime view of Zečević A-frame cabin with mountain surroundings.",
+            caption: "The A-frame cabin and mountain view",
+            alt: "Daytime view of the Zečević A-frame cabin on the green slopes of Zlatar.",
           },
           {
             label: "Living room",
-            caption: "Pull-out corner sofa",
-            alt: "The living room with a pull-out corner sofa.",
+            caption: "Corner sofa and valley view",
+            alt: "The living room with a corner sofa and a glass wall facing the valley.",
           },
           {
             label: "Kitchen",
             caption: "Kitchen and dining area",
-            alt: "The kitchen and dining area.",
+            alt: "The fully equipped kitchen with a dining table.",
           },
           {
             label: "Terrace",
-            caption: "Spacious terrace with a view",
-            alt: "The terrace and view from the cabin.",
+            caption: "Terrace with views over Zlatar",
+            alt: "The terrace with a table and views over the green mountains of Zlatar.",
           },
           {
             label: "Bedroom",
-            caption: "Bedroom with two beds",
-            alt: "The ground-floor bedroom.",
+            caption: "Ground-floor room with two beds",
+            alt: "The ground-floor bedroom with two single beds.",
           },
           {
             label: "Upstairs",
             caption: "Double bed upstairs",
-            alt: "The upstairs double bed.",
+            alt: "The upstairs sleeping area with a double bed under the A-frame roof.",
           },
           {
             label: "Bathroom",
             caption: "Bathroom with shower",
-            alt: "The cabin bathroom with shower.",
+            alt: "The bathroom with a walk-in shower and marble tiling.",
           },
           {
             label: "Surroundings",
-            caption: "Zlatar surroundings",
-            alt: "Mountain surroundings around the cabin in Zlatar.",
+            caption: "Green slopes and views of Zlatar",
+            alt: "Panoramic view of the green mountains and villages around Zlatar.",
+          },
+          {
+            label: "Mezzanine",
+            caption: "View from the loft through the glass gable",
+            alt: "View from the mezzanine through the large triangular glass gable of the A-frame.",
+          },
+          {
+            label: "Interior",
+            caption: "Open-plan living with the staircase",
+            alt: "The open-plan interior with living room, staircase and kitchen.",
+          },
+          {
+            label: "Morning coffee",
+            caption: "Coffee on the terrace with a view",
+            alt: "Two cups of coffee on the terrace table overlooking the mountains.",
+          },
+          {
+            label: "Terrace at dusk",
+            caption: "Golden hour on the terrace",
+            alt: "The cabin terrace at golden hour with views over the forest and mountains.",
+          },
+          {
+            label: "Cabin at night",
+            caption: "The illuminated A-frame",
+            alt: "The A-frame cabin at night with a warmly lit glass gable.",
+          },
+          {
+            label: "Children's playground",
+            caption: "Swing and slide in the yard",
+            alt: "A children's playground with a swing and slide in the pine-fringed yard.",
           },
         ],
         lightbox: {
@@ -493,6 +614,16 @@ window.SITE_CONTENT = {
           prev: "Previous photo",
           next: "Next photo",
         },
+      },
+
+      tour: {
+        label: "Video",
+        title: "Video tour",
+        titleEmph: "of the cabin",
+        intro: "Take a walk through the cabin, terrace and surroundings before you book.",
+        play: "Play video",
+        playAria: "Play the cabin video tour",
+        posterAlt: "Video tour cover — the cabin living room with valley views.",
       },
 
       amenities: {
@@ -506,7 +637,7 @@ window.SITE_CONTENT = {
               { icon: "wifi", name: "Wi-Fi", detail: "Internet in the cabin" },
               { icon: "linen", name: "Towels and bed linen", detail: "Included with the stay" },
               { icon: "heat", name: "Heating", detail: "Electric heating and Norwegian radiators" },
-              { icon: "heat", name: "Air conditioning", detail: "For a more comfortable stay" },
+              { icon: "ac", name: "Air conditioning", detail: "For a more comfortable stay" },
               { icon: "linen", name: "Basic toiletries", detail: "Available for guests" },
               { icon: "linen", name: "Hair dryer", detail: "Available for guests" },
               { icon: "linen", name: "Iron", detail: "Available for guests" },
@@ -526,8 +657,9 @@ window.SITE_CONTENT = {
             items: [
               { icon: "terrace", name: "Terrace with a view", detail: "Access from the living room" },
               { icon: "park", name: "Yard", detail: "Outdoor space around the cabin" },
-              { icon: "park", name: "Parking", detail: "Available for guests" },
+              { icon: "parking", name: "Parking", detail: "Available for guests" },
               { icon: "bbq", name: "Barbecue", detail: "For outdoor meals" },
+              { icon: "playground", name: "Children's playground", detail: "Swing and slide in the yard" },
             ],
           },
         ],

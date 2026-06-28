@@ -1011,6 +1011,114 @@ main,
   display: none;
 }
 
+/* ── Video tour ── */
+.tour-intro {
+  max-width: 40rem;
+  margin-bottom: 2.5rem;
+  color: var(--ink-mid);
+  font-family: var(--ff-head);
+  font-style: italic;
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+.tour-player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: #0c100d;
+  box-shadow: var(--shadow-card);
+}
+
+.tour-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tour-play {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  cursor: pointer;
+  color: var(--white);
+  background: linear-gradient(180deg, rgba(12, 16, 13, 0.12) 0%, rgba(12, 16, 13, 0.46) 100%);
+  transition: background 0.25s ease;
+}
+
+.tour-play:hover,
+.tour-play:focus-visible {
+  background: linear-gradient(180deg, rgba(12, 16, 13, 0.2) 0%, rgba(12, 16, 13, 0.54) 100%);
+}
+
+.tour-play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.tour-play:hover .tour-play-icon,
+.tour-play:focus-visible .tour-play-icon {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.tour-play-icon svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+}
+
+.tour-play-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.tour-video {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+@media (max-width: 560px) {
+  .tour-play-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .tour-play-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
 /* Lightbox */
 .lightbox {
   position: fixed;
