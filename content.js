@@ -150,13 +150,18 @@ window.SITE_CONTENT = {
   localized: {
     sr: {
       seo: {
-        title: "Vikendica Zečević Zlatar | Smeštaj na Zlataru",
+        title: "Vikendica Zečević Zlatar — zvanični sajt | A-frame na 1.200 m",
         description:
           "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
-        ogTitle: "Vikendica Zečević Zlatar | Smeštaj na Zlataru",
+        ogTitle: "Vikendica Zečević Zlatar — zvanični sajt | A-frame na 1.200 m",
         ogDescription:
           "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
         url: "https://vikendicazecevic.rs/",
+      },
+
+      brand: {
+        tagline: "A-frame vikendica · 1.200 m",
+        official: "Zvanični sajt vikendice Zečević Zlatar",
       },
 
       nav: {
@@ -478,13 +483,18 @@ window.SITE_CONTENT = {
 
     en: {
       seo: {
-        title: "Vikendica Zečević Zlatar | Accommodation in Zlatar",
+        title: "Vikendica Zečević Zlatar — official site | A-frame at 1,200 m",
         description:
           "A-frame family cabin in Zlatar for up to 6 guests, with terrace, Wi-Fi, parking, barbecue, and a peaceful mountain setting at 1,200 m altitude.",
-        ogTitle: "Vikendica Zečević Zlatar | Accommodation in Zlatar",
+        ogTitle: "Vikendica Zečević Zlatar — official site | A-frame at 1,200 m",
         ogDescription:
           "A-frame family cabin in Zlatar for up to 6 guests, with terrace, Wi-Fi, parking, barbecue, and a peaceful mountain setting at 1,200 m altitude.",
         url: "https://vikendicazecevic.rs/",
+      },
+
+      brand: {
+        tagline: "A-frame cabin · 1,200 m",
+        official: "Official site of Vikendica Zečević Zlatar",
       },
 
       nav: {

@@ -292,6 +292,35 @@ div {
   color: var(--ink);
   text-shadow: none;
 }
+.nav-logo-link {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  min-width: 0;
+  line-height: 1.12;
+  text-decoration: none;
+}
+.nav-logo-tag {
+  font-family: var(--ff-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.18);
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+#main-nav.scrolled .nav-logo-tag {
+  color: var(--ink-mid);
+  text-shadow: none;
+}
+@media (max-width: 560px) {
+  .nav-logo-tag {
+    display: none;
+  }
+}
 
 #main-nav .nav-center {
   display: flex;
@@ -1798,11 +1827,27 @@ footer {
   gap: 1.75rem;
 }
 
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
 .footer-logo {
   color: rgba(255, 255, 255, 0.88);
   font-family: var(--ff-head);
   font-size: 1.2rem;
   letter-spacing: 0.02em;
+}
+
+.footer-official {
+  margin: 0;
+  font-family: var(--ff-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-links {
