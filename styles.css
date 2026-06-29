@@ -294,12 +294,36 @@ div {
 }
 .nav-logo-link {
   display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.nav-logo-mark path {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.22));
+  transition: stroke 0.35s ease, filter 0.35s ease;
+}
+#main-nav.scrolled .nav-logo-mark path {
+  filter: none;
+}
+.nav-logo-text {
+  display: inline-flex;
   flex-direction: column;
   justify-content: center;
   gap: 1px;
   min-width: 0;
   line-height: 1.12;
-  text-decoration: none;
 }
 .nav-logo-tag {
   font-family: var(--ff-body);

@@ -6,3 +6,9 @@ AGENTS.md
 images/gallery/all images raw/
 
 .netlify/
+
+# local ops doc — never deploy
+GBP-setup-pack.md
+
+# local brand/design assets — not for the live site
+brand-assets/
