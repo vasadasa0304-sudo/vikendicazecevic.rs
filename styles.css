@@ -308,7 +308,7 @@ div {
 .nav-logo-mark path {
   fill: none;
   stroke: var(--amber);
-  stroke-width: 8;
+  stroke-width: 6.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.22));
