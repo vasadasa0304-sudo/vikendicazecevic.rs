@@ -113,8 +113,8 @@ window.SITE_CONTENT = {
         layout: "wide",
       },
       {
-        src: "/images/gallery/gallery-11-terrace-coffee.webp",
-        srcset: "/images/gallery/gallery-11-terrace-coffee-800.webp 800w, /images/gallery/gallery-11-terrace-coffee.webp 1600w",
+        src: "/images/gallery/gallery-11-exterior-dusk.webp",
+        srcset: "/images/gallery/gallery-11-exterior-dusk-800.webp 800w, /images/gallery/gallery-11-exterior-dusk.webp 1600w",
         sizes: "(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw",
         width: 1600,
         height: 739,
@@ -265,9 +265,9 @@ window.SITE_CONTENT = {
             alt: "Otvoren enterijer vikendice sa dnevnom sobom, stepeništem i kuhinjom.",
           },
           {
-            label: "Jutarnja kafa",
-            caption: "Kafa na terasi uz vidik",
-            alt: "Dve šoljice kafe na stolu terase uz pogled na planinu.",
+            label: "Suton",
+            caption: "Vikendica u plavi sat",
+            alt: "A-frame vikendica u plavi sat sa toplo osvetljenim strehama i pogledom na planine.",
           },
           {
             label: "Terasa u suton",
@@ -598,9 +598,9 @@ window.SITE_CONTENT = {
             alt: "The open-plan interior with living room, staircase and kitchen.",
           },
           {
-            label: "Morning coffee",
-            caption: "Coffee on the terrace with a view",
-            alt: "Two cups of coffee on the terrace table overlooking the mountains.",
+            label: "Twilight",
+            caption: "The cabin at blue hour",
+            alt: "The A-frame cabin at blue hour with warmly lit eaves and mountain views.",
           },
           {
             label: "Terrace at dusk",
