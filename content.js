@@ -352,6 +352,7 @@ window.SITE_CONTENT = {
         mapFallbackLabel: "karta · Brdo bb · Zlatar",
         attractions: [
           { name: "Rehabilitacioni centar Zlatar", distance: "u neposrednoj blizini" },
+          { name: "Restorani", distance: "1000 m" },
           { name: "Sportski tereni", distance: "u blizini" },
           { name: "Trim staze", distance: "u blizini" },
           { name: "Šetališta", distance: "u blizini" },
@@ -685,6 +686,7 @@ window.SITE_CONTENT = {
         mapFallbackLabel: "map · Brdo bb · Zlatar",
         attractions: [
           { name: "Zlatar Rehabilitation Centre", distance: "nearby" },
+          { name: "Restaurants", distance: "1000 m" },
           { name: "Sports courts", distance: "nearby" },
           { name: "Fitness trails", distance: "nearby" },
           { name: "Walking paths", distance: "nearby" },
