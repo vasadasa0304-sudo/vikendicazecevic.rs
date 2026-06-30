@@ -403,7 +403,7 @@ window.SITE_CONTENT = {
           },
           {
             q: "Da li mogu da dodam sajt kao aplikaciju na telefon?",
-            a: "Da. Na Android telefonu (Chrome) otvorite meni i izaberite „Dodaj na početni ekran"; na iPhone-u (Safari) dodirnite dugme Podeli pa „Dodaj na početni ekran". Sajt se otvara kao aplikacija i uvek prikazuje najnovije informacije i fotografije.",
+            a: "Da. Na Android telefonu (Chrome) otvorite meni i izaberite opciju Dodaj na početni ekran; na iPhone-u (Safari) dodirnite dugme Podeli pa Dodaj na početni ekran. Sajt se otvara kao aplikacija i uvek prikazuje najnovije informacije i fotografije.",
           },
         ],
       },
