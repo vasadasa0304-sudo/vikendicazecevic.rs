@@ -401,6 +401,10 @@ window.SITE_CONTENT = {
             q: "Kako mogu da rezervišem i kolika je cena?",
             a: "Cena zavisi od datuma i broja gostiju. Pošaljite upit preko sajta ili nas kontaktirajte telefonom ili emailom i dobićete tačnu ponudu.",
           },
+          {
+            q: "Da li mogu da dodam sajt kao aplikaciju na telefon?",
+            a: "Da. Na Android telefonu (Chrome) otvorite meni i izaberite „Dodaj na početni ekran"; na iPhone-u (Safari) dodirnite dugme Podeli pa „Dodaj na početni ekran". Sajt se otvara kao aplikacija i uvek prikazuje najnovije informacije i fotografije.",
+          },
         ],
       },
 
@@ -734,6 +738,10 @@ window.SITE_CONTENT = {
           {
             q: "How do I book and how much does it cost?",
             a: "The price depends on the dates and number of guests. Send an inquiry through the site or contact us by phone or email and we will reply with an exact offer.",
+          },
+          {
+            q: "Can I add the site as an app on my phone?",
+            a: "Yes. On Android (Chrome), open the menu and choose 'Add to Home screen'; on iPhone (Safari), tap the Share button and 'Add to Home Screen'. It opens like an app and always shows the latest information and photos.",
           },
         ],
       },
