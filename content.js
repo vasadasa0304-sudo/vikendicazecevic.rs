@@ -16,18 +16,21 @@ window.SITE_CONTENT = {
         label: "Telefon",
         labelEn: "Phone",
         value: "+381 (0)65 65 89 346",
+        href: "tel:+381656589346",
       },
       {
         icon: "phone",
         label: "Telefon",
         labelEn: "Phone",
         value: "+381 (0)69 231 69 41",
+        href: "tel:+381692316941",
       },
       {
         icon: "email",
         label: "Email",
         labelEn: "Email",
         value: "vikendicazecevic@gmail.com",
+        href: "mailto:vikendicazecevic@gmail.com",
       },
     ],
 
@@ -481,8 +484,7 @@ window.SITE_CONTENT = {
       },
 
       footer: {
-        copy:
-          "Vikendica Zečević Zlatar · Brdo bb, Zlatar, Nova Varoš, Srbija · +381 (0)65 65 89 346 · +381 (0)69 231 69 41 · vikendicazecevic@gmail.com",
+        copyBase: "Vikendica Zečević Zlatar · Brdo bb, Zlatar, Nova Varoš, Srbija",
       },
     },
 
@@ -819,8 +821,7 @@ window.SITE_CONTENT = {
       },
 
       footer: {
-        copy:
-          "Vikendica Zečević Zlatar · Brdo bb, Zlatar, Nova Varoš, Serbia · +381 (0)65 65 89 346 · +381 (0)69 231 69 41 · vikendicazecevic@gmail.com",
+        copyBase: "Vikendica Zečević Zlatar · Brdo bb, Zlatar, Nova Varoš, Serbia",
       },
     },
   },

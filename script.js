@@ -712,11 +712,14 @@ function renderInquiryContact(lang) {
     .map(
       (item) => {
         const label = lang === "en" && item.labelEn ? item.labelEn : item.label;
+        const handle = item.href
+          ? `<a class="contact-handle" href="${escapeHtml(item.href)}">${escapeHtml(item.value)}</a>`
+          : `<strong class="contact-handle">${escapeHtml(item.value)}</strong>`;
 
         return `
         <div class="contact-item">
           ${INQUIRY_ICONS[item.icon] || ""}
-          <span>${escapeHtml(label)}: <strong class="contact-handle">${escapeHtml(item.value)}</strong></span>
+          <span>${escapeHtml(label)}: ${handle}</span>
         </div>
       `;
       }
