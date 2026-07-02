@@ -17,6 +17,13 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
+# Parked features — built but deliberately unshipped (see preview/README.md).
+[[redirects]]
+  from = "/preview/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Internal source files — tracked in git but not part of the public site.
 [[redirects]]
   from = "/server/*"

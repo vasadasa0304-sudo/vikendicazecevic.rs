@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popunjenost — pregled (nije objavljeno) · Vikendica Zečević Zlatar</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/preview/availability-calendar.css">
+  <style>
+    /* preview-page chrome only — NOT part of the shippable feature */
+    body { background: var(--bg); }
+    .preview-shell { max-width: 960px; margin: 0 auto; padding: 3rem var(--page-x) 5rem; }
+    .preview-banner {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1rem; margin-bottom: 2.5rem;
+      border: 1px dashed var(--line-strong); border-radius: 10px;
+      font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-mid);
+    }
+    .preview-banner::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--amber); }
+    .preview-head { margin-bottom: 2.2rem; }
+    .preview-label { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-lt); }
+    .preview-title { margin: 0.4rem 0 0.6rem; font-family: var(--ff-head); font-weight: 500; font-size: clamp(1.9rem, 4.5vw, 2.7rem); color: var(--ink); }
+    .preview-title em { color: var(--amber); font-style: italic; }
+    .preview-sub { max-width: 40rem; line-height: 1.65; color: var(--ink-mid); }
+    .preview-lang { display: inline-flex; gap: 0.25rem; margin-bottom: 2rem; padding: 0.25rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-strong); }
+    .preview-lang button { padding: 0.35rem 0.9rem; border: 0; border-radius: 999px; background: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ink-mid); cursor: pointer; }
+    .preview-lang button.active { background: var(--green); color: #fff; }
+    .preview-cta { margin-top: 2.6rem; }
+    .preview-cta a {
+      display: inline-block; padding: 0.9rem 1.7rem; border-radius: 12px;
+      background: var(--green); color: #fff; text-decoration: none; font-weight: 600; letter-spacing: 0.01em;
+    }
+    .preview-cta a:hover { background: var(--green-lt); }
+  </style>
+</head>
+<body>
+  <div class="preview-shell">
+    <div class="preview-banner" id="banner">Interni pregled — nije objavljeno na sajtu</div>
+
+    <header class="preview-head">
+      <p class="preview-label" id="head-label">Popunjenost</p>
+      <h1 class="preview-title" id="head-title">Slobodni <em>termini</em></h1>
+      <p class="preview-sub" id="head-sub">
+        Pogledajte okvirnu popunjenost vikendice. Termin se potvrđuje kroz upit —
+        odgovaramo u najkraćem roku.
+      </p>
+    </header>
+
+    <div class="preview-lang" role="group" aria-label="Jezik">
+      <button type="button" class="active" data-lang="sr">SR</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+
+    <div class="avail-wrap" id="availability-calendar"></div>
+
+    <p class="preview-cta">
+      <a href="https://vikendicazecevic.rs/#inquiry" id="cta">Pošaljite upit za rezervaciju</a>
+    </p>
+  </div>
+
+  <script src="/preview/availability-data.js"></script>
+  <script src="/preview/availability-calendar.js"></script>
+  <script>
+    const PREVIEW_STRINGS = {
+      sr: {
+        banner: "Interni pregled — nije objavljeno na sajtu",
+        label: "Popunjenost",
+        title: "Slobodni <em>termini</em>",
+        sub: "Pogledajte okvirnu popunjenost vikendice. Termin se potvrđuje kroz upit — odgovaramo u najkraćem roku.",
+        cta: "Pošaljite upit za rezervaciju",
+      },
+      en: {
+        banner: "Internal preview — not published on the site",
+        label: "Availability",
+        title: "Open <em>dates</em>",
+        sub: "See the cabin's indicative availability. Dates are confirmed through an inquiry — we reply as soon as possible.",
+        cta: "Send a reservation inquiry",
+      },
+    };
+
+    AvailabilityCalendar.mount(document.getElementById("availability-calendar"), { lang: "sr" });
+
+    document.querySelectorAll(".preview-lang button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const lang = button.dataset.lang;
+        document.querySelectorAll(".preview-lang button").forEach((b) => b.classList.toggle("active", b === button));
+        document.documentElement.lang = lang;
+        const t = PREVIEW_STRINGS[lang];
+        document.getElementById("banner").textContent = t.banner;
+        document.getElementById("head-label").textContent = t.label;
+        document.getElementById("head-title").innerHTML = t.title;
+        document.getElementById("head-sub").textContent = t.sub;
+        document.getElementById("cta").textContent = t.cta;
+        AvailabilityCalendar.setLang(lang);
+      });
+    });
+  </script>
+</body>
+</html>

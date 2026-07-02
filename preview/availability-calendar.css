@@ -1,0 +1,176 @@
+/* Availability calendar — uses the site's design tokens (styles.css :root).
+   Every rule is prefixed .avail- so the whole block can be pasted into
+   styles.css unchanged when the feature ships. */
+
+.avail-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.avail-nav {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.avail-nav-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-top: 2.4rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--surface-strong);
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.avail-nav-btn:hover:not(:disabled) {
+  border-color: var(--green);
+  background: var(--white);
+}
+
+.avail-nav-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.avail-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.avail-months {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+@media (min-width: 760px) {
+  .avail-months {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.avail-month {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.avail-month-name {
+  padding-bottom: 0.9rem;
+  font-family: var(--ff-head);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+  caption-side: top;
+}
+
+.avail-month th {
+  padding: 0.35rem 0;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-align: center;
+}
+
+.avail-month td {
+  padding: 2px;
+  text-align: center;
+}
+
+.avail-day span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.avail-day--free span {
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.avail-day--busy span {
+  background: var(--ink-mid);
+  border: 1px solid var(--ink-mid);
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.avail-day--past span {
+  border: 1px dashed var(--line);
+  color: var(--ink-mid);
+  opacity: 0.45;
+}
+
+.avail-day--today span {
+  box-shadow: 0 0 0 2px var(--amber);
+}
+
+.avail-blank {
+  background: none;
+}
+
+/* legend */
+.avail-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+}
+
+.avail-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avail-key::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 5px;
+}
+
+.avail-key--free::before {
+  background: var(--surface-strong);
+  border: 1px solid var(--line-strong);
+}
+
+.avail-key--busy::before {
+  background: var(--ink-mid);
+}
+
+.avail-key--today::before {
+  background: var(--white);
+  box-shadow: 0 0 0 2px var(--amber);
+}
+
+.avail-note {
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+.avail-updated {
+  display: block;
+  margin-top: 0.2rem;
+  opacity: 0.75;
+}
