@@ -773,9 +773,74 @@ function applyLang(lang) {
   applyLocalizedText(lang);
   renderDynamicContent(lang);
 
+  if (window.AvailabilityCalendar) {
+    AvailabilityCalendar.setLang(lang);
+  }
+
   if (lb.classList.contains("open")) {
     renderLightboxContent(currentIdx, lang);
   }
+}
+
+function handleAvailabilitySelection(selection) {
+  const status = document.getElementById("avail-selection");
+  const cta = document.getElementById("avail-inquire");
+  if (!status || !cta) return;
+
+  if (!selection) {
+    status.hidden = true;
+    status.textContent = "";
+    cta.hidden = true;
+    return;
+  }
+
+  status.textContent = `${applyTokens(getLocale(currentLang).avail.selectedPrefix)} ${selection.label}`;
+  status.hidden = false;
+  cta.hidden = false;
+
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+  if (checkinInput && checkoutInput) {
+    checkinInput.value = selection.from;
+    checkoutInput.value = selection.to;
+    syncDateInputLimits();
+  }
+}
+
+function initAvailabilityCalendar() {
+  const container = document.getElementById("availability-calendar");
+  const section = document.getElementById("availability");
+  if (!container || !section || !window.AvailabilityCalendar) return;
+
+  AvailabilityCalendar.mount(container, {
+    lang: currentLang,
+    endpoint: "/api/availability",
+    selectable: true,
+    onSelect: handleAvailabilitySelection,
+  }).then((loaded) => {
+    if (!loaded) {
+      section.hidden = true;
+      document.querySelectorAll('a[href="#availability"]').forEach((link) => {
+        const item = link.closest("li");
+        (item || link).hidden = true;
+      });
+    }
+  });
+}
+
+function applyDateParamsFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const checkin = params.get("checkin");
+  const checkout = params.get("checkout");
+  if (!checkin || !checkout) return;
+
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+  if (!checkinInput || !checkoutInput) return;
+
+  checkinInput.value = checkin;
+  checkoutInput.value = checkout;
+  syncDateInputLimits(); // clears anything past/invalid
 }
 
 function openLightbox(index) {
@@ -815,7 +880,7 @@ document.querySelectorAll(".lang-btn").forEach((button) => {
   button.addEventListener("click", () => applyLang(button.dataset.lang));
 });
 
-const navSectionEls = ["about", "gallery", "amenities", "location", "faq", "inquiry"]
+const navSectionEls = ["about", "gallery", "amenities", "location", "availability", "faq", "inquiry"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 
@@ -1030,7 +1095,9 @@ document
 initMapFallback();
 initVideoTour();
 applyLang(currentLang);
+initAvailabilityCalendar();
 initDateInputLimits();
+applyDateParamsFromUrl();
 scheduleHashAlignment();
 nav.classList.toggle("scrolled", window.scrollY > 60);
 updateActiveNavLink();

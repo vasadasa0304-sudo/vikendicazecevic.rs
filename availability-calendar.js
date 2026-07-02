@@ -367,7 +367,7 @@
       if (!data) {
         container.hidden = true;
         console.info("[availability] no data source — calendar hidden");
-        return;
+        return false;
       }
 
       state.busyNights = collectBusyNights(data.busy);
@@ -384,6 +384,8 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(render, 150);
       });
+
+      return true;
     },
     setLang(lang) {
       state.lang = lang === "en" ? "en" : "sr";

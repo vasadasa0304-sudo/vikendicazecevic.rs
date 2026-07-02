@@ -180,6 +180,7 @@ window.SITE_CONTENT = {
         tour: "Video",
         amenities: "Sadržaj",
         location: "Lokacija",
+        availability: "Termini",
         faq: "Pitanja",
         stayInfo: "Boravak",
         inquire: "Upit",
@@ -497,6 +498,16 @@ window.SITE_CONTENT = {
       viber: {
         fabAria: "Pišite nam na Viber",
       },
+
+      avail: {
+        label: "Popunjenost",
+        title: "Slobodni",
+        titleEmph: "termini",
+        intro:
+          "Pogledajte okvirnu popunjenost vikendice i izaberite termin — potvrđujemo ga kroz upit.",
+        selectedPrefix: "Izabrani termin:",
+        cta: "Pošaljite upit za izabrane datume",
+      },
     },
 
     en: {
@@ -521,6 +532,7 @@ window.SITE_CONTENT = {
         tour: "Video",
         amenities: "Amenities",
         location: "Location",
+        availability: "Dates",
         faq: "FAQ",
         stayInfo: "Stay",
         inquire: "Inquire",
@@ -837,6 +849,16 @@ window.SITE_CONTENT = {
 
       viber: {
         fabAria: "Message us on Viber",
+      },
+
+      avail: {
+        label: "Availability",
+        title: "Open",
+        titleEmph: "dates",
+        intro:
+          "See the cabin's indicative availability and pick your dates — we confirm them through an inquiry.",
+        selectedPrefix: "Selected dates:",
+        cta: "Send an inquiry for the selected dates",
       },
     },
   },

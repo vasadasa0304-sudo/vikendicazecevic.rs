@@ -276,6 +276,7 @@
         <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
         <li><a href="#amenities" data-i18n="nav.amenities">Amenities</a></li>
         <li><a href="#location" data-i18n="nav.location">Location</a></li>
+        <li><a href="#availability" data-i18n="nav.availability">Dates</a></li>
         <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
         <li><a href="#inquiry" class="nav-cta" data-i18n="nav.inquire">Inquire</a></li>
       </ul>
@@ -1151,6 +1152,19 @@
     </div>
   </section>
 
+  <!-- ── Availability ── -->
+  <section id="availability" aria-labelledby="availability-title">
+    <div class="container">
+      <p class="section-label reveal" data-i18n="avail.label">Availability</p>
+      <h2 class="section-title reveal" id="availability-title"><span data-i18n="avail.title">Open</span> <em data-i18n="avail.titleEmph">dates</em></h2>
+      <div class="divider reveal"></div>
+      <p class="avail-intro reveal" data-i18n="avail.intro">See the cabin's indicative availability and pick your dates — we confirm them through an inquiry.</p>
+      <div class="avail-wrap reveal" id="availability-calendar"></div>
+      <p class="avail-selection" id="avail-selection" hidden></p>
+      <a class="btn btn-primary avail-inquire" id="avail-inquire" href="#inquiry" hidden data-i18n="avail.cta">Send an inquiry for the selected dates</a>
+    </div>
+  </section>
+
   <!-- ── Stay Info ── -->
   <section id="stay-info" aria-labelledby="stay-info-title">
     <div class="container">
@@ -1343,6 +1357,7 @@
         <a href="#tour" data-i18n="nav.tour">Video</a>
         <a href="#amenities" data-i18n="nav.amenities">Amenities</a>
         <a href="#location" data-i18n="nav.location">Location</a>
+        <a href="#availability" data-i18n="nav.availability">Dates</a>
         <a href="#stay-info" data-i18n="nav.stayInfo">Stay</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
         <a href="#inquiry" data-i18n="nav.inquire">Inquire</a>
@@ -1374,6 +1389,7 @@
   </div>
   <script src="/config.js" defer></script>
   <script src="/content.js" defer></script>
+  <script src="/availability-calendar.js" defer></script>
   <script src="/script.js" defer></script>
 </body>
 </html>

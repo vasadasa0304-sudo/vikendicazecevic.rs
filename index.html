@@ -276,6 +276,7 @@
         <li><a href="#gallery" data-i18n="nav.gallery">Galerija</a></li>
         <li><a href="#amenities" data-i18n="nav.amenities">Sadržaj</a></li>
         <li><a href="#location" data-i18n="nav.location">Lokacija</a></li>
+        <li><a href="#availability" data-i18n="nav.availability">Termini</a></li>
         <li><a href="#faq" data-i18n="nav.faq">Pitanja</a></li>
         <li><a href="#inquiry" class="nav-cta" data-i18n="nav.inquire">Upit</a></li>
       </ul>
@@ -1151,6 +1152,19 @@
     </div>
   </section>
 
+  <!-- ── Availability ── -->
+  <section id="availability" aria-labelledby="availability-title">
+    <div class="container">
+      <p class="section-label reveal" data-i18n="avail.label">Popunjenost</p>
+      <h2 class="section-title reveal" id="availability-title"><span data-i18n="avail.title">Slobodni</span> <em data-i18n="avail.titleEmph">termini</em></h2>
+      <div class="divider reveal"></div>
+      <p class="avail-intro reveal" data-i18n="avail.intro">Pogledajte okvirnu popunjenost vikendice i izaberite termin — potvrđujemo ga kroz upit.</p>
+      <div class="avail-wrap reveal" id="availability-calendar"></div>
+      <p class="avail-selection" id="avail-selection" hidden></p>
+      <a class="btn btn-primary avail-inquire" id="avail-inquire" href="#inquiry" hidden data-i18n="avail.cta">Pošaljite upit za izabrane datume</a>
+    </div>
+  </section>
+
   <!-- ── Stay Info ── -->
   <section id="stay-info" aria-labelledby="stay-info-title">
     <div class="container">
@@ -1343,6 +1357,7 @@
         <a href="#tour" data-i18n="nav.tour">Video</a>
         <a href="#amenities" data-i18n="nav.amenities">Sadržaj</a>
         <a href="#location" data-i18n="nav.location">Lokacija</a>
+        <a href="#availability" data-i18n="nav.availability">Termini</a>
         <a href="#stay-info" data-i18n="nav.stayInfo">Boravak</a>
         <a href="#faq" data-i18n="nav.faq">Pitanja</a>
         <a href="#inquiry" data-i18n="nav.inquire">Upit</a>
@@ -1374,6 +1389,7 @@
   </div>
   <script src="/config.js" defer></script>
   <script src="/content.js" defer></script>
+  <script src="/availability-calendar.js" defer></script>
   <script src="/script.js" defer></script>
 </body>
 </html>
