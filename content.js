@@ -26,6 +26,13 @@ window.SITE_CONTENT = {
         href: "tel:+381692316941",
       },
       {
+        icon: "viber",
+        label: "Viber",
+        labelEn: "Viber",
+        value: "+381 (0)65 65 89 346",
+        href: "viber://chat?number=%2B381656589346",
+      },
+      {
         icon: "email",
         label: "Email",
         labelEn: "Email",
@@ -465,7 +472,7 @@ window.SITE_CONTENT = {
         successText:
           "Odgovorićemo vam telefonom ili emailom u najkraćem roku.",
         successFallback:
-          "Ako želite, možete nas kontaktirati direktno: +381 (0)65 65 89 346 ili vikendicazecevic@gmail.com.",
+          "Ako želite, možete nas kontaktirati direktno: +381 (0)65 65 89 346 (telefon ili Viber) ili vikendicazecevic@gmail.com.",
         partialSuccess:
           "Upit je primljen. Odgovorićemo vam putem kontakta koji ste naveli.",
         partialTitle: "Upit je primljen.",
@@ -485,6 +492,10 @@ window.SITE_CONTENT = {
 
       footer: {
         copyBase: "Vikendica Zečević Zlatar · Brdo bb, Zlatar, Nova Varoš, Srbija",
+      },
+
+      viber: {
+        fabAria: "Pišite nam na Viber",
       },
     },
 
@@ -802,7 +813,7 @@ window.SITE_CONTENT = {
         successText:
           "We will respond by phone or email as soon as possible.",
         successFallback:
-          "If you prefer, you can contact us directly: +381 (0)65 65 89 346 or vikendicazecevic@gmail.com.",
+          "If you prefer, you can contact us directly: +381 (0)65 65 89 346 (phone or Viber) or vikendicazecevic@gmail.com.",
         partialSuccess:
           "Inquiry received. We will respond using the contact you provided.",
         partialTitle: "Inquiry received.",
@@ -822,6 +833,10 @@ window.SITE_CONTENT = {
 
       footer: {
         copyBase: "Vikendica Zečević Zlatar · Brdo bb, Zlatar, Nova Varoš, Serbia",
+      },
+
+      viber: {
+        fabAria: "Message us on Viber",
       },
     },
   },
