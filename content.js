@@ -29,8 +29,8 @@ window.SITE_CONTENT = {
         icon: "viber",
         label: "Viber",
         labelEn: "Viber",
-        value: "+381 (0)65 65 89 346",
-        href: "viber://chat?number=%2B381656589346",
+        value: "+381 (0)69 231 69 41",
+        href: "viber://chat?number=%2B381692316941",
       },
       {
         icon: "email",
@@ -472,7 +472,7 @@ window.SITE_CONTENT = {
         successText:
           "Odgovorićemo vam telefonom ili emailom u najkraćem roku.",
         successFallback:
-          "Ako želite, možete nas kontaktirati direktno: +381 (0)65 65 89 346 (telefon ili Viber) ili vikendicazecevic@gmail.com.",
+          "Ako želite, možete nas kontaktirati direktno: +381 (0)65 65 89 346, Viber +381 (0)69 231 69 41 ili vikendicazecevic@gmail.com.",
         partialSuccess:
           "Upit je primljen. Odgovorićemo vam putem kontakta koji ste naveli.",
         partialTitle: "Upit je primljen.",
@@ -813,7 +813,7 @@ window.SITE_CONTENT = {
         successText:
           "We will respond by phone or email as soon as possible.",
         successFallback:
-          "If you prefer, you can contact us directly: +381 (0)65 65 89 346 (phone or Viber) or vikendicazecevic@gmail.com.",
+          "If you prefer, you can contact us directly: +381 (0)65 65 89 346, Viber +381 (0)69 231 69 41 or vikendicazecevic@gmail.com.",
         partialSuccess:
           "Inquiry received. We will respond using the contact you provided.",
         partialTitle: "Inquiry received.",
