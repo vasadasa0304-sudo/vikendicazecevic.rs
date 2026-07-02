@@ -27,7 +27,13 @@
     .preview-lang { display: inline-flex; gap: 0.25rem; margin-bottom: 2rem; padding: 0.25rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-strong); }
     .preview-lang button { padding: 0.35rem 0.9rem; border: 0; border-radius: 999px; background: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ink-mid); cursor: pointer; }
     .preview-lang button.active { background: var(--green); color: #fff; }
-    .preview-cta { margin-top: 2.6rem; }
+    .preview-selection {
+      margin-top: 2rem; padding: 0.85rem 1.1rem;
+      border: 1px solid var(--amber-soft); border-radius: 12px;
+      background: var(--surface-strong); color: var(--ink);
+      font-weight: 600; font-variant-numeric: tabular-nums;
+    }
+    .preview-cta { margin-top: 1.4rem; }
     .preview-cta a {
       display: inline-block; padding: 0.9rem 1.7rem; border-radius: 12px;
       background: var(--green); color: #fff; text-decoration: none; font-weight: 600; letter-spacing: 0.01em;
@@ -55,6 +61,8 @@
 
     <div class="avail-wrap" id="availability-calendar"></div>
 
+    <p class="preview-selection" id="selection-status" hidden></p>
+
     <p class="preview-cta">
       <a href="https://vikendicazecevic.rs/#inquiry" id="cta">Pošaljite upit za rezervaciju</a>
     </p>
@@ -68,32 +76,67 @@
         banner: "Interni pregled — nije objavljeno na sajtu",
         label: "Popunjenost",
         title: "Slobodni <em>termini</em>",
-        sub: "Pogledajte okvirnu popunjenost vikendice. Termin se potvrđuje kroz upit — odgovaramo u najkraćem roku.",
+        sub: "Pogledajte okvirnu popunjenost vikendice i izaberite termin. Termin se potvrđuje kroz upit — odgovaramo u najkraćem roku.",
         cta: "Pošaljite upit za rezervaciju",
+        ctaDates: "Pošaljite upit za izabrane datume",
+        selected: "Izabrani termin:",
       },
       en: {
         banner: "Internal preview — not published on the site",
         label: "Availability",
         title: "Open <em>dates</em>",
-        sub: "See the cabin's indicative availability. Dates are confirmed through an inquiry — we reply as soon as possible.",
+        sub: "See the cabin's indicative availability and pick your dates. Dates are confirmed through an inquiry — we reply as soon as possible.",
         cta: "Send a reservation inquiry",
+        ctaDates: "Send an inquiry for the selected dates",
+        selected: "Selected dates:",
       },
     };
 
-    AvailabilityCalendar.mount(document.getElementById("availability-calendar"), { lang: "sr" });
+    let currentLang = "sr";
+    let currentSelection = null;
+
+    function refreshSelectionUi() {
+      const t = PREVIEW_STRINGS[currentLang];
+      const status = document.getElementById("selection-status");
+      const cta = document.getElementById("cta");
+
+      if (currentSelection) {
+        status.hidden = false;
+        status.textContent = `${t.selected} ${currentSelection.label}`;
+        cta.textContent = t.ctaDates;
+        cta.href =
+          "https://vikendicazecevic.rs/?checkin=" + currentSelection.from +
+          "&checkout=" + currentSelection.to + "#inquiry";
+      } else {
+        status.hidden = true;
+        status.textContent = "";
+        cta.textContent = t.cta;
+        cta.href = "https://vikendicazecevic.rs/#inquiry";
+      }
+    }
+
+    AvailabilityCalendar.mount(document.getElementById("availability-calendar"), {
+      lang: "sr",
+      endpoint: "/api/availability", // 404s in local python server → falls back to availability-data.js
+      selectable: true,
+      onSelect(selection) {
+        currentSelection = selection;
+        refreshSelectionUi();
+      },
+    });
 
     document.querySelectorAll(".preview-lang button").forEach((button) => {
       button.addEventListener("click", () => {
-        const lang = button.dataset.lang;
+        currentLang = button.dataset.lang;
         document.querySelectorAll(".preview-lang button").forEach((b) => b.classList.toggle("active", b === button));
-        document.documentElement.lang = lang;
-        const t = PREVIEW_STRINGS[lang];
+        document.documentElement.lang = currentLang;
+        const t = PREVIEW_STRINGS[currentLang];
         document.getElementById("banner").textContent = t.banner;
         document.getElementById("head-label").textContent = t.label;
         document.getElementById("head-title").innerHTML = t.title;
         document.getElementById("head-sub").textContent = t.sub;
-        document.getElementById("cta").textContent = t.cta;
-        AvailabilityCalendar.setLang(lang);
+        AvailabilityCalendar.setLang(currentLang); // re-fires onSelect with re-localized label
+        refreshSelectionUi();
       });
     });
   </script>

@@ -121,6 +121,42 @@
   box-shadow: 0 0 0 2px var(--amber);
 }
 
+/* clickable days (range selection) */
+.avail-day-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.avail-day-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.avail-day--free:not(.avail-day--selected) .avail-day-btn:hover span {
+  border-color: var(--amber);
+  background: var(--white);
+}
+
+.avail-day--selected span {
+  background: var(--amber);
+  border: 1px solid var(--amber);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.avail-day--inrange span {
+  background: var(--amber-soft);
+  border: 1px solid var(--amber-soft);
+}
+
 .avail-blank {
   background: none;
 }
@@ -160,6 +196,10 @@
 .avail-key--today::before {
   background: var(--white);
   box-shadow: 0 0 0 2px var(--amber);
+}
+
+.avail-key--selected::before {
+  background: var(--amber);
 }
 
 .avail-note {
