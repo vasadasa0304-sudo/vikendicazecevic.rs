@@ -425,6 +425,12 @@ function generateEnglish(srHtml) {
   // head: title / description (shared across title, og, twitter, JSON-LD)
   html = html.split(srSeo.title).join(enSeo.title);
   html = html.split(srSeo.description).join(enSeo.description);
+  // VideoObject JSON-LD is hand-written in index.html in Serbian — localise it
+  // too, or the English page advertises a Serbian video title/description.
+  html = html.split(srSeo.videoName).join(enSeo.videoName);
+  html = html.split(srSeo.videoDescription).join(enSeo.videoDescription);
+  // LodgingBusiness JSON-LD "url" must be this page's own URL, not the SR home.
+  html = html.replace(`"url": "${srSeo.url}"`, `"url": "${enSeo.url}"`);
   // lang + per-page locale/canonical
   html = html.replace('<html lang="sr">', '<html lang="en">');
   html = html.replace('"inLanguage": "sr"', '"inLanguage": "en"');
@@ -539,6 +545,14 @@ fs.writeFileSync(EN_INDEX, enHtml);
 fs.writeFileSync(SITEMAP, buildSitemap());
 
 // ── sanity assertions (fail the build loudly rather than ship empty) ──
+function canonicalOf(html) {
+  const m = html.match(/<link id="canonical-url" rel="canonical" href="([^"]*)"/);
+  return m ? m[1] : null;
+}
+function ogUrlOf(html) {
+  const m = html.match(/<meta id="meta-og-url" property="og:url" content="([^"]*)"/);
+  return m ? m[1] : null;
+}
 const firstReview = REVIEWS.items[0];
 const checks = [
   [srHtml.includes("amenity-card"), "SR amenities not baked"],
@@ -565,10 +579,33 @@ const checks = [
   [enHtml.includes("amenity-card"), "EN amenities not baked"],
   [enHtml.includes('<html lang="en">'), "EN lang not set"],
   [enHtml.includes(getLocale("en").amenities.groups[0].items[1].name), "EN amenity text not swapped"],
-  [enHtml.includes(`${ORIGIN}/en/`), "EN canonical not set"],
+  // Check the canonical/og:url TAGS, not just that the string appears somewhere
+  // — the hreflang links contain "/en/" too, so a substring test always passed.
+  [canonicalOf(enHtml) === `${ORIGIN}/en/`, `EN canonical wrong: ${canonicalOf(enHtml)}`],
+  [ogUrlOf(enHtml) === `${ORIGIN}/en/`, `EN og:url wrong: ${ogUrlOf(enHtml)}`],
+  [canonicalOf(srHtml) === `${ORIGIN}/`, `SR canonical wrong: ${canonicalOf(srHtml)}`],
+  [ogUrlOf(srHtml) === `${ORIGIN}/`, `SR og:url wrong: ${ogUrlOf(srHtml)}`],
+  // The locale's own seo.url must agree, since script.js and the JSON-LD read it.
+  [getLocale("en").seo.url === `${ORIGIN}/en/`, "en.seo.url must be the /en/ URL"],
+  [getLocale("sr").seo.url === `${ORIGIN}/`, "sr.seo.url must be the root URL"],
   [enHtml.includes('"@type": "FAQPage"'), "EN FAQ JSON-LD not baked"],
   [enHtml.includes(getLocale("en").faq.items[0].q), "EN FAQ text not swapped (missing en.faq in content.js?)"],
   [!enHtml.includes(getLocale("sr").faq.items[0].q), "EN page still shows Serbian FAQ text"],
+  // EN JSON-LD: own URL + localised video copy (the SR strings must be gone).
+  [
+    enHtml.includes(`"url": "${getLocale("en").seo.url}"`),
+    "EN LodgingBusiness JSON-LD url not switched to /en/",
+  ],
+  [enHtml.includes(getLocale("en").seo.videoName), "EN VideoObject name not swapped"],
+  [
+    !enHtml.includes(getLocale("sr").seo.videoName),
+    "EN page still shows the Serbian VideoObject name",
+  ],
+  [
+    !enHtml.includes(getLocale("sr").seo.videoDescription),
+    "EN page still shows the Serbian VideoObject description",
+  ],
+  [srHtml.includes(getLocale("sr").seo.videoName), "SR VideoObject name missing from index.html"],
 ];
 for (const [ok, msg] of checks) {
   if (msg && !ok) throw new Error(`prebake: assertion failed — ${msg}`);

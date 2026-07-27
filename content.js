@@ -227,6 +227,11 @@ window.SITE_CONTENT = {
         ogDescription:
           "Porodična A-frame vikendica na Zlataru za do 6 gostiju, sa terasom, Wi-Fi internetom, parkingom, roštiljem i planinskim mirom na 1.200 m.",
         url: "https://vikendicazecevic.rs/",
+        // VideoObject JSON-LD in index.html. Prebake swaps the SR strings for
+        // the EN ones on /en/, so these must match index.html exactly.
+        videoName: "Vikendica Zečević Zlatar — video tura",
+        videoDescription:
+          "Video tura A-frame vikendice Zečević na Zlataru: dnevni boravak, kuhinja, spavaće sobe, terasa sa pogledom i okolina na 1.200 m.",
       },
 
       brand: {
@@ -602,7 +607,12 @@ window.SITE_CONTENT = {
         ogTitle: "Vikendica Zečević Zlatar — official site | A-frame at 1,200 m",
         ogDescription:
           "A-frame family cabin in Zlatar for up to 6 guests, with terrace, Wi-Fi, parking, barbecue, and a peaceful mountain setting at 1,200 m altitude.",
-        url: "https://vikendicazecevic.rs/",
+        // The English page lives at /en/ — must NOT be the Serbian home URL, or
+        // the English page would declare itself a duplicate of the Serbian one.
+        url: "https://vikendicazecevic.rs/en/",
+        videoName: "Vikendica Zečević Zlatar — video tour",
+        videoDescription:
+          "Video tour of the Zečević A-frame cabin on Zlatar: living room, kitchen, bedrooms, the terrace with a view, and the surroundings at 1,200 m.",
       },
 
       brand: {

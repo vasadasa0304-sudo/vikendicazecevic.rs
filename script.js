@@ -464,10 +464,10 @@ function applyLocalizedMeta(lang) {
   document.getElementById("meta-twitter-title").setAttribute("content", applyTokens(seo.ogTitle));
   document.getElementById("meta-twitter-description").setAttribute("content", applyTokens(seo.ogDescription));
 
-  const canonicalUrl = document.getElementById("canonical-url");
-  const ogUrl = document.getElementById("meta-og-url");
-  if (seo.url && canonicalUrl) canonicalUrl.setAttribute("href", seo.url);
-  if (seo.url && ogUrl) ogUrl.setAttribute("content", seo.url);
+  // canonical / og:url are deliberately NOT touched here. They belong to the
+  // PAGE (/ vs /en/), not to the toggled language: prebake bakes the right one
+  // into each page, and rewriting them from the locale made the English page
+  // declare the Serbian home page as its canonical.
 }
 
 function applyLocalizedText(lang) {

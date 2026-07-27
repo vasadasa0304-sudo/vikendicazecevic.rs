@@ -267,6 +267,32 @@ div {
     border-color 0.35s ease;
 }
 
+/* At the top of the page the bar is transparent over the hero photo, so the
+   brand lockup, links and language toggle sat on whatever the photo happened
+   to be — over the bright sky they dropped to ~1.5-2.2:1. This scrim gives
+   them a guaranteed dark backdrop and fades out once .scrolled paints its own
+   solid background. Sits behind the bar's content via z-index on the ::before. */
+#main-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: 190%;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 10, 8, 0.78) 0%,
+    rgba(6, 10, 8, 0.52) 46%,
+    rgba(6, 10, 8, 0) 100%
+  );
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+#main-nav.scrolled::before {
+  opacity: 0;
+}
+
 #main-nav.scrolled {
   background: rgba(248, 244, 236, 0.84);
   backdrop-filter: blur(18px);
@@ -456,7 +482,9 @@ div {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.58);
+  /* was 0.58 — too dim to read over the hero even with the nav scrim. The
+     inactive language still reads as secondary next to the amber active pill. */
+  color: rgba(255, 255, 255, 0.86);
   transition: color 0.2s ease, background 0.2s ease;
 }
 
@@ -545,11 +573,21 @@ div {
   background: linear-gradient(180deg, rgba(8, 12, 10, 0.08) 0%, rgba(8, 12, 10, 0.26) 34%, rgba(9, 13, 10, 0.84) 100%);
 }
 
+/* Full-bleed scrim. The middle stops carry the weight: the hero title and
+   eyebrow cross the sunlit cabin siding, where white text measured ~2.5:1.
+   Deliberately a full-width linear gradient rather than a scrim behind the
+   text block — a boxed gradient shows hard edges where its box clips it. */
 .hero-photo::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 12, 10, 0.1) 0%, rgba(8, 12, 10, 0.34) 36%, rgba(9, 13, 10, 0.86) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(8, 12, 10, 0.18) 0%,
+    rgba(8, 12, 10, 0.46) 30%,
+    rgba(8, 12, 10, 0.66) 52%,
+    rgba(9, 13, 10, 0.9) 100%
+  );
 }
 
 .hero-image {
@@ -1043,7 +1081,14 @@ em.em-brand {
   display: grid;
   gap: 0.15rem;
   padding: 0.75rem 0.85rem;
-  background: linear-gradient(transparent, rgba(10, 15, 12, 0.72));
+  /* Deepened: over a pale photo the old scrim left the caption at ~3.2:1.
+     The extra mid stop puts the darkest part exactly where the text sits. */
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(8, 12, 10, 0.62) 38%,
+    rgba(8, 12, 10, 0.93) 100%
+  );
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.22s ease;
@@ -1061,7 +1106,7 @@ em.em-brand {
 .gallery-text {
   display: block;
   margin-top: 0.15rem;
-  color: rgba(255, 255, 255, 0.76);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 0.75rem;
   line-height: 1.4;
 }
@@ -2154,7 +2199,9 @@ footer {
   gap: 0.5rem;
   padding: 0.72rem 1.15rem;
   border-radius: 999px;
-  background: #7360f2;
+  /* Viber purple, nudged a shade darker: #7360f2 put white label text at
+     4.48:1, just under the 4.5:1 AA floor. Hover (#6550ec) already passes. */
+  background: #6d59ec;
   color: #fff;
   font-weight: 600;
   font-size: 0.92rem;

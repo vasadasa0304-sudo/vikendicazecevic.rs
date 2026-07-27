@@ -105,7 +105,21 @@ function parseIcs(icsText, todayIso) {
   }
 
   ranges.sort((a, b) => (a.from < b.from ? -1 : 1));
-  return { busy: ranges, updated, warnings: [...new Set(warnings)] };
+
+  // Duplicate calendar entries (the same stay saved twice, or an event carried
+  // in the feed more than once) produced identical ranges in the payload. The
+  // renderer is idempotent so it never showed, but the API should not report a
+  // busy range twice — dedupe on the exact from/to pair.
+  const seenRange = new Set();
+  const busy = ranges.filter((range) => {
+    const key = `${range.from}|${range.to}`;
+    if (seenRange.has(key)) return false;
+    seenRange.add(key);
+    return true;
+  });
+  if (busy.length !== ranges.length) warnings.push("duplicate_events_removed");
+
+  return { busy, updated, warnings: [...new Set(warnings)] };
 }
 
 async function fetchIcs(url) {
