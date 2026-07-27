@@ -573,21 +573,30 @@ div {
   background: linear-gradient(180deg, rgba(8, 12, 10, 0.08) 0%, rgba(8, 12, 10, 0.26) 34%, rgba(9, 13, 10, 0.84) 100%);
 }
 
-/* Full-bleed scrim. The middle stops carry the weight: the hero title and
-   eyebrow cross the sunlit cabin siding, where white text measured ~2.5:1.
-   Deliberately a full-width linear gradient rather than a scrim behind the
-   text block — a boxed gradient shows hard edges where its box clips it. */
+/* Directional scrim. Reads as lighting rather than as an overlay: the weight
+   is thrown into the lower-left where the type sits, leaving the sky and the
+   lit cabin face open, instead of flattening the whole frame with an even
+   wash. Painted on this full-bleed layer (inset 0) on purpose — the same
+   gradient on the text block showed hard edges where its box clipped it.
+   Buys the hero title/eyebrow their contrast (white was ~2.5:1 over the
+   sunlit siding) while giving the photograph back its highlights. */
 .hero-photo::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 12, 10, 0.18) 0%,
-    rgba(8, 12, 10, 0.46) 30%,
-    rgba(8, 12, 10, 0.66) 52%,
-    rgba(9, 13, 10, 0.9) 100%
-  );
+  background:
+    radial-gradient(
+      82% 68% at 24% 62%,
+      rgba(6, 10, 8, 0.9) 0%,
+      rgba(6, 10, 8, 0.74) 30%,
+      rgba(6, 10, 8, 0.4) 56%,
+      rgba(6, 10, 8, 0.1) 76%,
+      rgba(6, 10, 8, 0) 88%
+    ),
+    /* seats the base so the frame edge and the scroll cue hold */
+    linear-gradient(180deg, rgba(8, 12, 10, 0) 56%, rgba(9, 13, 10, 0.6) 100%),
+    /* whisper of overall depth so the sky never blows out */
+    linear-gradient(180deg, rgba(8, 12, 10, 0.2) 0%, rgba(8, 12, 10, 0.05) 44%);
 }
 
 .hero-image {
@@ -617,7 +626,7 @@ div {
 }
 
 .hero-eyebrow {
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.4rem;
   color: rgba(255, 236, 204, 0.86);
   font-size: 0.74rem;
   font-weight: 600;
@@ -625,14 +634,17 @@ div {
   text-transform: uppercase;
 }
 
+/* Deliberately smaller than the 6rem it started at. At 96px the title shouted;
+   editorial work of this kind is more confident a size down with more air
+   around it, and it lets the photograph carry more of the frame. */
 .hero-title {
   max-width: 12ch;
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.65rem;
   font-family: var(--ff-head);
-  font-size: clamp(3.15rem, 7vw, 6rem);
+  font-size: clamp(2.75rem, 5.1vw, 4.5rem);
   font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  line-height: 1.02;
+  letter-spacing: -0.028em;
   color: var(--white);
   text-wrap: balance;
 }
@@ -2369,7 +2381,7 @@ footer {
 
   .hero-title {
     max-width: 100%;
-    font-size: 3.25rem;
+    font-size: 2.95rem;
   }
 
   .hero-sub {
