@@ -34,6 +34,9 @@ const INQUIRY_ICONS = {
 const GALLERY_OVERLAY_ICON =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>';
 
+const REVIEW_STAR_ICON =
+  '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.6 2.83 5.73 6.32.92-4.57 4.46 1.08 6.3L12 17.03l-5.66 2.98 1.08-6.3-4.57-4.46 6.32-.92L12 2.6z"></path></svg>';
+
 const revealObserver =
   "IntersectionObserver" in window
     ? new IntersectionObserver(
@@ -694,6 +697,97 @@ function renderAttractions(lang) {
     .join("");
 }
 
+function buildReviewStars(count, ariaLabel) {
+  const filled = Math.max(0, Math.min(5, Math.round(Number(count) || 0)));
+  const stars = Array.from(
+    { length: 5 },
+    (_, index) =>
+      `<span class="review-star${index < filled ? " is-filled" : ""}">${REVIEW_STAR_ICON}</span>`
+  ).join("");
+
+  return `<span class="review-stars" role="img" aria-label="${escapeHtml(ariaLabel)}">${stars}</span>`;
+}
+
+// Google reviews: numbers come from shared.googleReviews, wording from the
+// locale, so neither the rating nor the counts are ever retyped by hand.
+function buildReviewsMarkup(lang) {
+  const copy = getLocale(lang).reviews;
+  const data = CONTENT.shared.googleReviews;
+
+  if (!copy || !data || !Array.isArray(data.items) || !data.items.length) return "";
+
+  const isEnglish = lang === "en";
+  const ratingText = isEnglish ? data.rating.toFixed(1) : data.ratingSr;
+  const statValues = {
+    rating: ratingText,
+    total: String(data.total),
+    written: String(data.items.length),
+  };
+
+  const stats = copy.stats
+    .map(
+      (stat) => `
+        <div class="reviews-stat">
+          <div class="reviews-stat-value">${escapeHtml(statValues[stat.key] || "")}</div>
+          ${
+            stat.key === "rating"
+              ? buildReviewStars(data.rating, copy.summaryAria.replace("{n}", ratingText))
+              : ""
+          }
+          <div class="reviews-stat-label">${escapeHtml(applyTokens(stat.label))}</div>
+        </div>
+      `
+    )
+    .join("");
+
+  const cards = data.items
+    .map((item) => {
+      const text = isEnglish && item.textEn ? item.textEn : item.text;
+      const date = isEnglish && item.dateEn ? item.dateEn : item.date;
+      const badge =
+        isEnglish && item.textEn && copy.translatedBadge
+          ? `<span class="review-translated">${escapeHtml(copy.translatedBadge)}</span>`
+          : "";
+
+      return `
+        <figure class="review-card reveal">
+          ${buildReviewStars(item.stars, copy.starsAria.replace("{n}", String(item.stars)))}
+          <blockquote class="review-quote"><p>${escapeHtml(text)}</p></blockquote>
+          <figcaption class="review-meta">
+            <span class="review-author">${escapeHtml(item.author)}</span>
+            <span class="review-date">${escapeHtml(date)}</span>
+            ${badge}
+          </figcaption>
+        </figure>
+      `;
+    })
+    .join("");
+
+  return `
+    <div class="reviews-summary reveal">
+      <div class="reviews-stats">${stats}</div>
+      <a
+        class="reviews-link"
+        href="${escapeHtml(data.url)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="${escapeHtml(applyTokens(copy.linkAria))}">${escapeHtml(applyTokens(copy.link))}<span aria-hidden="true">→</span></a>
+    </div>
+    <div class="reviews-grid">${cards}</div>
+    <p class="reviews-note reveal">
+      ${escapeHtml(applyTokens(copy.note))}
+      <span class="reviews-captured">${escapeHtml(applyTokens(copy.captured))}</span>
+    </p>
+  `;
+}
+
+function renderReviews(lang) {
+  const container = document.getElementById("reviews-wrap");
+  if (!container) return;
+
+  container.innerHTML = buildReviewsMarkup(lang);
+}
+
 function renderInquiryContact(lang) {
   const container = document.getElementById("inquiry-contact-list");
   const { highlights } = getLocale(lang).inq;
@@ -753,6 +847,7 @@ function renderDynamicContent(lang) {
   renderGallery(lang);
   renderAmenities(lang);
   renderAttractions(lang);
+  renderReviews(lang);
   renderInquiryContact(lang);
   renderGuestOptions(lang);
   observeRevealElements(document);

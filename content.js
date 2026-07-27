@@ -155,6 +155,66 @@ window.SITE_CONTENT = {
         layout: "standard",
       },
     ],
+
+    /*
+     * Real Google reviews for the cabin's Google Business Profile
+     * (maps.google.com/?cid=14610069702881659516), read off the live listing
+     * on 2026-07-27: average 5.0 from 7 reviews, 4 of which have written text.
+     *
+     * `text` is the guest's own Serbian, transliterated Cyrillic → Latin to
+     * match the rest of the site (same words, no rewording). `textEn` is a
+     * translation, flagged as such on the English page.
+     *
+     * To refresh: reopen the listing, update `rating`, `total`, `captured`
+     * and the items below. Only quote what a guest actually wrote.
+     */
+    googleReviews: {
+      rating: 5.0,
+      ratingSr: "5,0",
+      total: 7,
+      captured: "2026-07-27",
+      url: "https://maps.google.com/?cid=14610069702881659516",
+      items: [
+        {
+          author: "Nevena Saković",
+          stars: 5,
+          date: "jul 2026.",
+          dateEn: "July 2026",
+          text:
+            "Sve je bilo baš kako treba. Apartman je čist, udoban i ima sve što je potrebno. Domaćini su ljubazni, a lokacija super. Zaista smo uživali i bez razmišljanja bismo ponovo rezervisali ovaj smeštaj ☺️",
+          textEn:
+            "Everything was exactly as it should be. The place is clean, comfortable and has everything you need. The hosts are kind and the location is great. We really enjoyed it and would book this place again without a second thought ☺️",
+        },
+        {
+          author: "Marko Ilic",
+          stars: 5,
+          date: "jul 2026.",
+          dateEn: "July 2026",
+          text:
+            "Odlično mesto za opuštanje, mir, priroda i pogled su fenomenalni. Vikendica je čista i udobna, a domaćini su veoma ljubazni - sigurno ćemo ponovo doći.",
+          textEn:
+            "An excellent place to unwind — the quiet, the nature and the view are phenomenal. The cabin is clean and comfortable and the hosts are very kind — we will certainly come again.",
+        },
+        {
+          author: "Srdjan Marjanovic",
+          stars: 5,
+          date: "jul 2026.",
+          dateEn: "July 2026",
+          text:
+            "Zaista mesto za odmor i osveženje. Domaćini su izuzetno ljubazni i iskreni. Toplo preporučujem!",
+          textEn:
+            "Truly a place for rest and refreshment. The hosts are exceptionally kind and genuine. I warmly recommend it!",
+        },
+        {
+          author: "Milica Vulovic",
+          stars: 5,
+          date: "jul 2026.",
+          dateEn: "July 2026",
+          text: "Bilo je divno! Sve pohvale za domaćine!",
+          textEn: "It was wonderful! All praise to the hosts!",
+        },
+      ],
+    },
   },
 
   localized: {
@@ -181,6 +241,7 @@ window.SITE_CONTENT = {
         amenities: "Sadržaj",
         location: "Lokacija",
         availability: "Termini",
+        reviews: "Utisci",
         faq: "Pitanja",
         stayInfo: "Boravak",
         inquire: "Upit",
@@ -508,6 +569,29 @@ window.SITE_CONTENT = {
         selectedPrefix: "Izabrani termin:",
         cta: "Pošaljite upit za izabrane datume",
       },
+
+      reviews: {
+        label: "Utisci gostiju",
+        title: "Ocene",
+        titleEmph: "sa Google-a",
+        intro:
+          "Ocene i utisci koje su gosti sami ostavili na Google profilu vikendice.",
+        // `key` bira vrednost iz shared.googleReviews — brojevi se ne prepisuju ručno.
+        stats: [
+          { key: "rating", label: "Prosečna ocena" },
+          { key: "total", label: "Broj recenzija" },
+          { key: "written", label: "Sa komentarom" },
+        ],
+        note:
+          "Utiske prenosimo u celini, presloveni sa ćirilice na latinicu. Ostali gosti ostavili su ocenu bez komentara.",
+        captured: "Stanje na dan 27. jul 2026.",
+        link: "Pogledajte recenzije na Google-u",
+        linkAria:
+          "Pogledajte recenzije vikendice na Google mapama (otvara se u novoj kartici)",
+        starsAria: "Ocena {n} od 5",
+        summaryAria: "Prosečna ocena {n} od 5",
+        translatedBadge: "",
+      },
     },
 
     en: {
@@ -533,6 +617,7 @@ window.SITE_CONTENT = {
         amenities: "Amenities",
         location: "Location",
         availability: "Dates",
+        reviews: "Reviews",
         faq: "FAQ",
         stayInfo: "Stay",
         inquire: "Inquire",
@@ -859,6 +944,29 @@ window.SITE_CONTENT = {
           "See the cabin's indicative availability and pick your dates — we confirm them through an inquiry.",
         selectedPrefix: "Selected dates:",
         cta: "Send an inquiry for the selected dates",
+      },
+
+      reviews: {
+        label: "Guest reviews",
+        title: "Ratings",
+        titleEmph: "from Google",
+        intro:
+          "Ratings and reviews guests left themselves on the cabin's Google profile.",
+        // `key` picks the value out of shared.googleReviews — no number is retyped.
+        stats: [
+          { key: "rating", label: "Average rating" },
+          { key: "total", label: "Reviews" },
+          { key: "written", label: "With a comment" },
+        ],
+        note:
+          "Reviews are shown in full, translated from Serbian. The remaining guests left a rating without a comment.",
+        captured: "As shown on 27 July 2026.",
+        link: "See the reviews on Google",
+        linkAria:
+          "See the cabin's reviews on Google Maps (opens in a new tab)",
+        starsAria: "Rated {n} out of 5",
+        summaryAria: "Average rating {n} out of 5",
+        translatedBadge: "Translated from Serbian",
       },
     },
   },

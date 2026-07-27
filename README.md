@@ -82,6 +82,8 @@ For normal content updates, edit `content.js`, then run `npm run build` (or just
 - Text, captions, amenities, nearby distances, contact details, SEO copy, form labels, and the FAQ now live in `content.js` (Serbian under `localized.sr`, English under `localized.en`)
 - `index.html` is the **baked Serbian page**; the prerender fills its containers and `en/index.html` from `content.js` — don't hand-edit the generated regions or `en/index.html`
 - The `LodgingBusiness`/`VacationRental` structured data lives in `index.html`; update it only when the verified business facts change. The `FAQPage` schema is generated from `content.js` `faq`.
+- **Guest reviews** (`shared.googleReviews` in `content.js`) are real reviews read off the cabin's Google Business Profile. To refresh them: open the listing, then update `rating`, `total`, `captured` and `items` together, and mirror the new numbers in `llms.txt`. Rules that the build enforces — quote only what a guest actually wrote, keep every written review in `items` (the "with a comment" figure is its length), and never list more quoted reviews than `total`. `text` is the guest's Serbian transliterated to Latin script; `textEn` is a translation and is labelled as one on `/en/`.
+- No `Review`/`AggregateRating` structured data is emitted for these on purpose: Google's review-snippet policy excludes ratings collected from a third-party site and self-serving ratings about your own business, so marking them up risks a manual action. They are displayed for visitors only.
 
 ## Analytics (optional, privacy-first)
 

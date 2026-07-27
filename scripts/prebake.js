@@ -36,6 +36,16 @@ if (!CONTENT || !CONTENT.localized) {
   throw new Error("prebake: content.js did not define window.SITE_CONTENT");
 }
 
+// index.html carries the reviews section unconditionally, so an empty item list
+// would ship a heading with nothing under it. Checked up front, before anything
+// is written, so a bad edit can't leave half-baked pages on disk.
+const REVIEWS = CONTENT.shared.googleReviews;
+if (!REVIEWS || !Array.isArray(REVIEWS.items) || !REVIEWS.items.length) {
+  throw new Error(
+    "prebake: shared.googleReviews.items is empty — restore the reviews, or remove the #reviews section and its nav links from index.html"
+  );
+}
+
 // ── pull the icon sets out of script.js (single source of truth) ──
 const scriptText = fs.readFileSync(SCRIPT, "utf8");
 function extractLiteral(name) {
@@ -50,6 +60,9 @@ const INQUIRY_ICONS = new Function(
 )(AMENITY_ICONS);
 const overlayMatch = scriptText.match(/const GALLERY_OVERLAY_ICON =\s*('[\s\S]*?');/);
 const GALLERY_OVERLAY_ICON = overlayMatch ? new Function(`return (${overlayMatch[1]});`)() : "";
+const starMatch = scriptText.match(/const REVIEW_STAR_ICON =\s*('[\s\S]*?');/);
+const REVIEW_STAR_ICON = starMatch ? new Function(`return (${starMatch[1]});`)() : "";
+if (!REVIEW_STAR_ICON) throw new Error("prebake: could not extract REVIEW_STAR_ICON from script.js");
 
 // ── helpers mirrored from script.js ──
 function escapeHtml(value) {
@@ -230,6 +243,86 @@ function buildAttractions(lang) {
     )
     .join("");
 }
+function buildReviewStars(count, ariaLabel) {
+  const filled = Math.max(0, Math.min(5, Math.round(Number(count) || 0)));
+  const stars = Array.from(
+    { length: 5 },
+    (_, index) =>
+      `<span class="review-star${index < filled ? " is-filled" : ""}">${REVIEW_STAR_ICON}</span>`
+  ).join("");
+
+  return `<span class="review-stars" role="img" aria-label="${escapeHtml(ariaLabel)}">${stars}</span>`;
+}
+function buildReviews(lang) {
+  const copy = getLocale(lang).reviews;
+  const data = CONTENT.shared.googleReviews;
+
+  if (!copy || !data || !Array.isArray(data.items) || !data.items.length) return "";
+
+  const isEnglish = lang === "en";
+  const ratingText = isEnglish ? data.rating.toFixed(1) : data.ratingSr;
+  const statValues = {
+    rating: ratingText,
+    total: String(data.total),
+    written: String(data.items.length),
+  };
+
+  const stats = copy.stats
+    .map(
+      (stat) => `
+        <div class="reviews-stat">
+          <div class="reviews-stat-value">${escapeHtml(statValues[stat.key] || "")}</div>
+          ${
+            stat.key === "rating"
+              ? buildReviewStars(data.rating, copy.summaryAria.replace("{n}", ratingText))
+              : ""
+          }
+          <div class="reviews-stat-label">${escapeHtml(applyTokens(stat.label, lang))}</div>
+        </div>
+      `
+    )
+    .join("");
+
+  const cards = data.items
+    .map((item) => {
+      const text = isEnglish && item.textEn ? item.textEn : item.text;
+      const date = isEnglish && item.dateEn ? item.dateEn : item.date;
+      const badge =
+        isEnglish && item.textEn && copy.translatedBadge
+          ? `<span class="review-translated">${escapeHtml(copy.translatedBadge)}</span>`
+          : "";
+
+      return `
+        <figure class="review-card reveal">
+          ${buildReviewStars(item.stars, copy.starsAria.replace("{n}", String(item.stars)))}
+          <blockquote class="review-quote"><p>${escapeHtml(text)}</p></blockquote>
+          <figcaption class="review-meta">
+            <span class="review-author">${escapeHtml(item.author)}</span>
+            <span class="review-date">${escapeHtml(date)}</span>
+            ${badge}
+          </figcaption>
+        </figure>
+      `;
+    })
+    .join("");
+
+  return `
+    <div class="reviews-summary reveal">
+      <div class="reviews-stats">${stats}</div>
+      <a
+        class="reviews-link"
+        href="${escapeHtml(data.url)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="${escapeHtml(applyTokens(copy.linkAria, lang))}">${escapeHtml(applyTokens(copy.link, lang))}<span aria-hidden="true">→</span></a>
+    </div>
+    <div class="reviews-grid">${cards}</div>
+    <p class="reviews-note reveal">
+      ${escapeHtml(applyTokens(copy.note, lang))}
+      <span class="reviews-captured">${escapeHtml(applyTokens(copy.captured, lang))}</span>
+    </p>
+  `;
+}
 function buildInquiryContact(lang) {
   const { highlights } = getLocale(lang).inq;
   const contactDetails = CONTENT.shared.contactDetails;
@@ -296,6 +389,7 @@ function bakeContainers(html, lang) {
   html = fillSentinel(html, "gallery", buildGallery(lang));
   html = fillSentinel(html, "amenities", buildAmenities(lang));
   html = fillSentinel(html, "attractions", buildAttractions(lang));
+  html = fillSentinel(html, "reviews", buildReviews(lang));
   html = fillSentinel(html, "inquiryContact", buildInquiryContact(lang));
   html = fillSentinel(html, "guests", buildGuests(lang));
   html = fillSentinel(html, "faqJsonLd", buildFaqJsonLd(lang));
@@ -445,10 +539,27 @@ fs.writeFileSync(EN_INDEX, enHtml);
 fs.writeFileSync(SITEMAP, buildSitemap());
 
 // ── sanity assertions (fail the build loudly rather than ship empty) ──
+const firstReview = REVIEWS.items[0];
 const checks = [
   [srHtml.includes("amenity-card"), "SR amenities not baked"],
   [srHtml.includes("gallery-card"), "SR gallery not baked"],
   [srHtml.includes("attraction-name"), "SR attractions not baked"],
+  [srHtml.includes("review-card"), "SR Google reviews not baked"],
+  [srHtml.includes(escapeHtml(firstReview.text)), "SR review quote not baked"],
+  [enHtml.includes(escapeHtml(firstReview.textEn)), "EN review translation not baked"],
+  [
+    !enHtml.includes(escapeHtml(firstReview.text)),
+    "EN page still shows the Serbian review text",
+  ],
+  // Never claim more written reviews, or a different total, than the listing has.
+  [
+    REVIEWS.items.length <= REVIEWS.total,
+    "more quoted reviews than the Google listing total",
+  ],
+  [
+    REVIEWS.items.every((r) => r.author && r.text && r.stars >= 1 && r.stars <= 5),
+    "a review entry is missing an author, text or a 1–5 rating",
+  ],
   [srHtml.includes('"@type": "FAQPage"'), "SR FAQ JSON-LD not baked"],
   [!srHtml.includes("<!--PB:") === false, null], // sentinels intentionally remain as comments
   [enHtml.includes("amenity-card"), "EN amenities not baked"],
@@ -464,5 +575,5 @@ for (const [ok, msg] of checks) {
 }
 
 console.log(
-  `prebake ✓  index.html (SR baked), en/index.html (EN), sitemap.xml — ${getGalleryEntries("sr").length} gallery images, ${getLocale("sr").faq.items.length} FAQ entries`
+  `prebake ✓  index.html (SR baked), en/index.html (EN), sitemap.xml — ${getGalleryEntries("sr").length} gallery images, ${getLocale("sr").faq.items.length} FAQ entries, ${REVIEWS.items.length}/${REVIEWS.total} Google reviews quoted (${REVIEWS.ratingSr})`
 );
