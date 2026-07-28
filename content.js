@@ -158,21 +158,29 @@ window.SITE_CONTENT = {
 
     /*
      * Real Google reviews for the cabin's Google Business Profile
-     * (maps.google.com/?cid=14610069702881659516), read off the live listing
-     * on 2026-07-27: average 5.0 from 7 reviews, 4 of which have written text.
+     * (maps.google.com/?cid=14610069702881659516): average 5.0 from 7 reviews,
+     * 4 of which have written text.
      *
-     * `text` is the guest's own Serbian, transliterated Cyrillic → Latin to
-     * match the rest of the site (same words, no rewording). `textEn` is a
-     * translation, flagged as such on the English page.
+     * ⚠️ SOURCE THE TEXT FROM THE OWNER'S SIGNED-IN "Read reviews" VIEW, never
+     * from the public Maps page. Google MACHINE-TRANSLATES reviews on the
+     * signed-out listing and does not reliably mark it: on 2026-07-27 three of
+     * these four were published here in Google's reworded version before the
+     * owner's view showed the real wording. Corrected 2026-07-28.
      *
-     * To refresh: reopen the listing, update `rating`, `total`, `captured`
+     * `text` = exactly what the guest wrote. Most wrote in Latin script and are
+     * reproduced verbatim, including missing diacritics (Srdjan's "Domacini",
+     * "cestiti") — do not "tidy" them. Nevena wrote in Cyrillic; hers is the
+     * only transliterated one, to match the rest of the site.
+     * `textEn` is our translation, flagged as such on the English page.
+     *
+     * To refresh: reopen the OWNER view, update `rating`, `total`, `captured`
      * and the items below. Only quote what a guest actually wrote.
      */
     googleReviews: {
       rating: 5.0,
       ratingSr: "5,0",
       total: 7,
-      captured: "2026-07-27",
+      captured: "2026-07-28",
       url: "https://maps.google.com/?cid=14610069702881659516",
       items: [
         {
@@ -180,8 +188,9 @@ window.SITE_CONTENT = {
           stars: 5,
           date: "jul 2026.",
           dateEn: "July 2026",
+          // Wrote in Cyrillic — the only transliterated entry.
           text:
-            "Sve je bilo baš kako treba. Apartman je čist, udoban i ima sve što je potrebno. Domaćini su ljubazni, a lokacija super. Zaista smo uživali i bez razmišljanja bismo ponovo rezervisali ovaj smeštaj ☺️",
+            "Sve je bilo baš kako treba. Apartman je čist, udoban i ima sve što je potrebno. Domaćini su ljubazni, a lokacija super. Zaista smo uživali i bez razmišljanja bismo ponovo rezervisali ovaj smeštaj 😊",
           textEn:
             "Everything was exactly as it should be. The place is clean, comfortable and has everything you need. The hosts are kind and the location is great. We really enjoyed it and would book this place again without a second thought ☺️",
         },
@@ -191,26 +200,27 @@ window.SITE_CONTENT = {
           date: "jul 2026.",
           dateEn: "July 2026",
           text:
-            "Odlično mesto za opuštanje, mir, priroda i pogled su fenomenalni. Vikendica je čista i udobna, a domaćini su veoma ljubazni - sigurno ćemo ponovo doći.",
+            "Odlično mesto za odmor, mir, priroda i pogled su fenomenalni. Vikendica je čista i prijatna, a domaćini su baš ljubazni – sigurno dolazimo opet.",
           textEn:
-            "An excellent place to unwind — the quiet, the nature and the view are phenomenal. The cabin is clean and comfortable and the hosts are very kind — we will certainly come again.",
+            "An excellent place to rest — the quiet, the nature and the view are phenomenal. The cabin is clean and pleasant and the hosts are really kind — we're definitely coming again.",
         },
         {
           author: "Srdjan Marjanovic",
           stars: 5,
           date: "jul 2026.",
           dateEn: "July 2026",
+          // Verbatim, including the missing diacritics he typed ("Domacini", "cestiti").
           text:
-            "Zaista mesto za odmor i osveženje. Domaćini su izuzetno ljubazni i iskreni. Toplo preporučujem!",
+            "Zaista mesto za predah i preporod. Domacini izuzetno ljubazni i cestiti. Svaka preporuka!",
           textEn:
-            "Truly a place for rest and refreshment. The hosts are exceptionally kind and genuine. I warmly recommend it!",
+            "Truly a place to pause and recover. The hosts are exceptionally kind and decent. I recommend it to everyone!",
         },
         {
           author: "Milica Vulovic",
           stars: 5,
           date: "jul 2026.",
           dateEn: "July 2026",
-          text: "Bilo je divno! Sve pohvale za domaćine!",
+          text: "Divno je bilo! Sve pohvale za domaćine!",
           textEn: "It was wonderful! All praise to the hosts!",
         },
       ],
@@ -588,8 +598,8 @@ window.SITE_CONTENT = {
           { key: "written", label: "Sa komentarom" },
         ],
         note:
-          "Utiske prenosimo u celini, presloveni sa ćirilice na latinicu. Ostali gosti ostavili su ocenu bez komentara.",
-        captured: "Stanje na dan 27. jul 2026.",
+          "Utiske prenosimo u celini, onako kako su ih gosti napisali — jedan je preveden sa ćirilice na latinicu. Ostali gosti ostavili su ocenu bez komentara.",
+        captured: "Stanje na dan 28. jul 2026.",
         link: "Pogledajte recenzije na Google-u",
         linkAria:
           "Pogledajte recenzije vikendice na Google mapama (otvara se u novoj kartici)",
@@ -969,8 +979,8 @@ window.SITE_CONTENT = {
           { key: "written", label: "With a comment" },
         ],
         note:
-          "Reviews are shown in full, translated from Serbian. The remaining guests left a rating without a comment.",
-        captured: "As shown on 27 July 2026.",
+          "Reviews are shown in full as the guests wrote them, translated from Serbian. The remaining guests left a rating without a comment.",
+        captured: "As shown on 28 July 2026.",
         link: "See the reviews on Google",
         linkAria:
           "See the cabin's reviews on Google Maps (opens in a new tab)",
