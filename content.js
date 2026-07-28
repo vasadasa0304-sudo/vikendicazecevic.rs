@@ -192,7 +192,7 @@ window.SITE_CONTENT = {
           text:
             "Sve je bilo baš kako treba. Apartman je čist, udoban i ima sve što je potrebno. Domaćini su ljubazni, a lokacija super. Zaista smo uživali i bez razmišljanja bismo ponovo rezervisali ovaj smeštaj 😊",
           textEn:
-            "Everything was exactly as it should be. The place is clean, comfortable and has everything you need. The hosts are kind and the location is great. We really enjoyed it and would book this place again without a second thought ☺️",
+            "Everything was exactly as it should be. The place is clean, comfortable and has everything you need. The hosts are kind and the location is great. We really enjoyed it and would book this place again without a second thought 😊",
         },
         {
           author: "Marko Ilic",
